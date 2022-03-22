@@ -6,6 +6,7 @@ body {
 
 :root {
   --main-blue: #002940;
+  --main-green: #87c641;
   --blue-gradient: linear-gradient(
     180deg,
     rgba(117, 161, 185, 1) 0%,
@@ -56,7 +57,7 @@ body {
     justify-content: space-between;
     bottom: 80px;
     left: 5%;
-    width: 600px;
+    width: 400px;
     height: 70%;
     background-color: rgba(0, 0, 0, 0.2);
     padding: 1rem;
@@ -71,10 +72,10 @@ body {
         font-size: 2rem;
       }
       :nth-child(2) {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
       :nth-child(3) {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
     }
     .buttons {
@@ -121,20 +122,117 @@ body {
     opacity: 1;
   }
 }
-.main-section-2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  img {
-    margin: 1rem;
-    width: 100%;
+.main {
+  .main-section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    img {
+      margin: 1rem;
+      width: 100%;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #002940;
+      background: var(--blue-gradient);
+    }
   }
-  button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid #002940;
-    background: var(--blue-gradient);
+  .main-section-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    img {
+      max-width: 250px;
+    }
+    .text {
+      text-align: center;
+      p {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+  }
+  .blue-strip {
+    background-color: var(--main-blue);
+    color: white;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      background-color: var(--main-green);
+      padding: 7px 10px;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+  }
+  .main-section-4 {
+    display: grid;
+    margin-top: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    h2 {
+      font-weight: 300;
+      margin-bottom: 20px;
+      line-height: 1.7rem;
+    }
+    p {
+      font-size: 0.7rem;
+      ul {
+        margin: 10px 30px;
+      }
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #002940;
+      background: var(--blue-gradient);
+      margin-top: 10px;
+    }
+  }
+}
+.footer {
+  background-color: #333;
+  color: white;
+  font-size: 0.8rem;
+  .box {
+    width: 100%;
+    .top {
+      margin: 1rem 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      .category {
+        text-align: start;
+        .contact {
+          position: relative;
+          font-weight: bold;
+          margin: 1rem 0;
+          #Ireland::after {
+            content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
+            font-weight: normal;
+          }
+          #UK::after {
+            content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
+            font-weight: normal;
+          }
+        }
+        ul {
+          list-style: none;
+        }
+      }
+    }
+    .bottom {
+      padding: 2rem;
+      p {
+        transform: translateX(-50px);
+      }
+    }
   }
 }
