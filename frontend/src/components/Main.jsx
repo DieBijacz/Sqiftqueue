@@ -8,8 +8,10 @@ import results from '../images/section-3/SQ_icon_patient_results-275.png'
 import security from '../images/section-3/SQ_icon_security-275.png'
 import kiosk from '../images/section-3/SQ_icon_service_kiosk.png'
 import macbook from '../images/macbook1.png'
+import { useNavigate } from 'react-router-dom'
 
 const Main = () => {
+  const navigate = useNavigate()
   return (
     <>
       <div className="main">
@@ -19,7 +21,7 @@ const Main = () => {
               <p>Reduce Clinic Waiting Times from Day One</p>
               <p>Join #1 Online Healthcare Appointment Platform</p>
             </div>
-            <button className='btn'>Visit Our Help Centre</button>
+            <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
             <img src={browserImage} alt="browsers" />
         </div>
         </Container>
@@ -75,8 +77,8 @@ const Main = () => {
         </div>
         <Container>
           <div className="main-section-4">
-            <div className="left">
-              <h2>Co-ordinated Healthcare... Empowered</h2>
+            <div>
+              <h1>Co-ordinated Healthcare... Empowered</h1>
               <p>Growing demand... higher expectations... more patient interactions.
               This is the reality of healthcare today. Swiftqueue has delivered an enterprise
               platform to better manage the requirements of everyone involved - clinicians,
@@ -88,16 +90,16 @@ const Main = () => {
                 <li>Integrated Solutions</li>
               </ul>
               Delivering an all round greater personal experience.</p>
-              <button className='btn'>Visit Our Help Centre</button>
+              <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
             </div>
-            <div className="right">
+            <div>
               <img src={macbook} alt="stats" />
             </div>
           </div>
         </Container>
         <div className="blue-strip">
           Need help booking online?
-          <button className='btn'>Visit Our Help Centre</button>
+          <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
         </div>
       </div>
     </>

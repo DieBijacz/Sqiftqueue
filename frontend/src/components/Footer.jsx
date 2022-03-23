@@ -11,10 +11,12 @@ const Footer = () => {
               <div className="category">
                 Contact Us
                 <div className="contact">
-                  <div id='Ireland'>Ireland:</div>
-                  <div id='UK'>UK:</div>
+                  <p id='Ireland'>Ireland:</p>
+                  <p id='UK'>UK:</p>
                 </div>
-                Click Here To Visit Our Help Centre
+                <p>
+                  Click Here To Visit Our Help Centre
+                </p>
               </div>
               <div className="category">
                 Quick Links
