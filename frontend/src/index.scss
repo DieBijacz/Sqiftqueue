@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
-body {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 :root {
   --main-blue: #002940;
   --main-green: #87c641;
@@ -19,8 +14,12 @@ body {
 *::before {
   margin: 0;
   padding: 0;
+  font-weight: 200;
 }
-
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
 p {
   font-size: 0.8rem;
 }
@@ -31,10 +30,19 @@ p {
 .span-3 {
   grid-column: span 3;
 }
+ul {
+  list-style: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+hr {
+  margin: 2rem 0;
+}
 
 // COMPONENTS
 .container {
-  display: flex;
   position: relative;
   height: 100%;
   margin: 0 auto;
@@ -52,11 +60,18 @@ p {
 .header {
   height: 50px;
   width: 100%;
-  background-color: aliceblue;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   img {
     height: 100%;
     cursor: pointer;
+  }
+  a {
+    color: var(--main-green);
+  }
+  a:hover {
+    text-decoration: underline;
   }
 }
 
@@ -121,11 +136,11 @@ p {
     bottom: 0;
   }
 }
-
 .herby {
   display: grid;
   grid-template-columns: repeat(5, 90px);
   justify-content: center;
+  gap: 5rem;
   img {
     padding: 10px;
     width: 100%;
@@ -156,17 +171,29 @@ p {
   }
   // SECTION 3
   .main-section-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    img {
-      max-width: 250px;
-    }
-    .text {
-      text-align: center;
-      p {
+    text-align: center;
+    .icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 1rem 0;
+      .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 300px;
+        margin: 1rem auto;
+      }
+      img {
+        max-width: 250px;
+      }
+      .text {
         text-align: center;
-        margin-top: 5px;
+        p {
+          text-align: center;
+          margin-top: 5px;
+        }
       }
     }
   }
@@ -224,39 +251,57 @@ p {
       z-index: -1;
     }
   }
-  .buttons {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    width: 100%;
-    margin: 3rem 0;
-    button {
-      height: 100px;
-      border: 1px solid var(--main-green);
-      color: var(--main-green);
-      margin: 1rem;
-      background-color: white;
+  .main {
+    display: flex;
+    flex-direction: column;
+    .buttons {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      :nth-child(1) {
-        font-size: 1.1rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      button {
+        height: 100px;
+        padding: 20px 30px;
+        max-width: 100%;
+        flex: 1 0 340px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--main-green);
+        color: var(--main-green);
+        background-color: white;
+        gap: 1rem;
+        margin: 15px 30px;
+        span {
+          text-align: center;
+          width: 100%;
+        }
+      }
+      button:hover {
+        background-color: var(--main-green);
+        color: white;
       }
     }
-    button:hover {
-      background-color: var(--main-green);
-      color: white;
+    .promoted-articles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      .promoted-articles-item {
+        flex: 1 0 auto;
+        padding: 30px 0px 10px;
+        margin-right: 2rem;
+        border-bottom: 1px solid #ccc;
+        a:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
 .footer {
   background-color: #333;
   color: white;
+  padding: 1rem 0;
   .box {
     width: 100%;
     .top {
-      margin: 1rem 0;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -276,7 +321,6 @@ p {
           }
         }
         ul {
-          list-style: none;
           margin: 1rem 0;
           font-size: 0.8rem;
         }
