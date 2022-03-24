@@ -109,7 +109,7 @@ const HomeScreen = () => {
         </Container>
         <div className="blue-strip">
           Need help booking online?
-          <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
+          <button className='btn btn-green' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
         </div>
       </div>
     </>

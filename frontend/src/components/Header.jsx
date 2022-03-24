@@ -10,7 +10,10 @@ const Header = () => {
     <Container>
       <div className="header">
         <img src={logo} alt="Swiftqueue" onClick={() => navigate('/')}/>
-        <a href="/profile">Go To Your Account</a>
+        <div className="panel">
+          <a href="/profile">Go To Your Account</a>
+          <button className='btn btn-green' onClick={()=>navigate('/search')}>Book an Appointment</button>
+        </div>
       </div>
     </Container>
   )
