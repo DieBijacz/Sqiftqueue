@@ -1,21 +1,20 @@
 import React from 'react'
 import logo from "../images/Swiftqueue_Logo.png"
-import { useNavigate } from 'react-router-dom'
-import Container from './Container'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
-  const navigate = useNavigate()
-
   return (
-    <Container>
-      <div className="header">
-        <img src={logo} alt="Swiftqueue" onClick={() => navigate('/')}/>
-        <div className="panel">
-          <a href="/profile">Go To Your Account</a>
-          <button className='btn btn-green' onClick={()=>navigate('/search')}>Book an Appointment</button>
-        </div>
+    <div className="header">
+      <Link to="/">
+        <img src={logo} alt="Swiftqueue"/>
+      </Link>
+      <div className="panel">
+        <Link to="/profile">Go To Your Account</Link>
+        <Link to="/search">
+          <button className='btn btn-green'>Book an Appointment</button>
+        </Link>
       </div>
-    </Container>
+    </div>
   )
 }
 export default Header

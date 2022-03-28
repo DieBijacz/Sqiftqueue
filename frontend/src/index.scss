@@ -52,7 +52,7 @@ hr {
   height: 100%;
   margin: 0 auto;
   padding: 0 3rem;
-  max-width: 1200px;
+  max-width: 1000px;
 }
 .btn {
   display: inline-block;
@@ -68,11 +68,11 @@ hr {
   background-color: var(--main-green);
 }
 // COMPONENTS
-
+// HEADER
 .header {
   height: 65px;
-  padding: 0 15px;
-  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,7 +87,6 @@ hr {
     text-decoration: underline;
   }
 }
-
 .hero {
   position: relative;
   width: 100%;
@@ -119,15 +118,11 @@ hr {
         font-size: 1.3rem;
       }
     }
-    .buttons {
-      display: flex;
-      gap: 5px;
-      button {
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: 1px solid #002940;
-        background: var(--blue-gradient);
-      }
+    button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #002940;
+      background: var(--blue-gradient);
     }
   }
   img {
@@ -150,13 +145,12 @@ hr {
   }
 }
 .herby {
-  display: grid;
-  grid-template-columns: repeat(5, 90px);
+  display: flex;
   justify-content: center;
-  gap: 5rem;
   img {
     padding: 10px;
-    width: 100%;
+    max-height: 100px;
+    object-fit: cover;
     opacity: 0.3;
     transition: 1s;
   }
@@ -164,7 +158,7 @@ hr {
     opacity: 1;
   }
 }
-.main {
+.main-homescreen {
   .main-section-2 {
     display: flex;
     flex-direction: column;
@@ -184,10 +178,8 @@ hr {
   .main-section-3 {
     text-align: center;
     .icons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
       .box {
         display: flex;
         justify-content: center;
@@ -242,38 +234,21 @@ hr {
   }
 }
 .helpdesk {
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    // TODO SEARCH BAR HERE
-    img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-  }
   .main {
-    display: flex;
-    flex-direction: column;
     .buttons {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
-      button {
-        height: 100px;
-        padding: 20px 30px;
-        max-width: 100%;
-        flex: 1 0 340px;
+      a {
         display: flex;
+        flex: 1 0 340px;
+        max-width: 100%;
         flex-direction: column;
+        padding: 20px 30px;
+        text-align: center;
         border: 1px solid var(--main-green);
         color: var(--main-green);
-        background-color: white;
         gap: 1rem;
-        margin: 15px 30px;
         span {
           text-align: center;
           width: 100%;
@@ -287,10 +262,8 @@ hr {
     .promoted-articles {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
       .promoted-articles-item {
-        flex: 1 0 auto;
-        padding: 30px 0px 10px;
-        margin-right: 2rem;
         border-bottom: 1px solid #ccc;
         a:hover {
           text-decoration: underline;
@@ -313,7 +286,37 @@ hr {
   }
   .searchbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
+    .item {
+      width: 100%;
+      label {
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+      input {
+        padding: 15px;
+        border-radius: 5px;
+        border: none;
+      }
+    }
+    button {
+      align-self: flex-end;
+    }
+  }
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0;
+    .icon {
+      width: 100%;
+    }
+    :nth-child(1) {
+      font-size: 1.5rem;
+    }
   }
 }
 .footer {
@@ -324,10 +327,10 @@ hr {
     width: 100%;
     .top {
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
       .category {
         text-align: start;
+        width: 100%;
         .contact {
           position: relative;
           font-weight: bold;
@@ -352,6 +355,18 @@ hr {
       p {
         transform: translateX(-50px);
       }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .helpdesk .main .promoted-articles {
+    grid-template-columns: 1fr;
+  }
+  .search-for-appointment {
+    .searchbar,
+    .icons {
+      flex-direction: column;
     }
   }
 }

@@ -1,0 +1,528 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+:root {
+  --main-blue: #002940;
+  --second-blue: #024166;
+  --main-green: #87c641;
+  --blue-gradient: linear-gradient(
+    180deg,
+    rgba(117, 161, 185, 1) 0%,
+    rgba(27, 72, 97, 1) 75%
+  );
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  font-weight: 200;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+.d-flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.span-3 {
+  grid-column: span 3;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+hr {
+  margin: 2rem 0;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  max-width: 1000px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-green {
+  background-color: var(--main-green);
+}
+
+.header {
+  height: 65px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.header a {
+  color: var(--main-green);
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.hero .card {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  bottom: 80px;
+  left: 3rem;
+  right: 3rem;
+  max-width: 400px;
+  height: 70%;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.hero .card .card-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.hero .card .card-text :nth-child(1) {
+  font-size: 2rem;
+  line-height: 2.2rem;
+}
+
+.hero .card .card-text :nth-child(2) {
+  font-size: 1.3rem;
+}
+
+.hero .card button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #002940;
+  background: var(--blue-gradient);
+}
+
+.hero img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+
+.hero .hero-bottom {
+  background-color: var(--main-blue);
+  color: white;
+  height: 80px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.herby {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.herby img {
+  padding: 10px;
+  max-height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.3;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.herby img:hover {
+  opacity: 1;
+}
+
+.main-homescreen .main-section-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.main-homescreen .main-section-2 img {
+  margin: 1rem;
+  width: 100%;
+}
+
+.main-homescreen .main-section-2 button {
+  border: 1px solid #002940;
+  background: var(--blue-gradient);
+}
+
+.main-homescreen .main-section-3 {
+  text-align: center;
+}
+
+.main-homescreen .main-section-3 .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.main-homescreen .main-section-3 .icons .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 300px;
+  margin: 1rem auto;
+}
+
+.main-homescreen .main-section-3 .icons img {
+  max-width: 250px;
+}
+
+.main-homescreen .main-section-3 .icons .text {
+  text-align: center;
+}
+
+.main-homescreen .main-section-3 .icons .text p {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.main-homescreen .blue-strip {
+  background-color: var(--main-blue);
+  color: white;
+  height: 80px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-homescreen .main-section-4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3rem;
+  width: 100%;
+  gap: 5rem;
+}
+
+.main-homescreen .main-section-4 h1 {
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 2rem;
+}
+
+.main-homescreen .main-section-4 ul {
+  margin: 20px 30px;
+}
+
+.main-homescreen .main-section-4 button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #002940;
+  background: var(--blue-gradient);
+  margin-top: 10px;
+}
+
+.helpdesk .main .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.helpdesk .main .buttons a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 340px;
+          flex: 1 0 340px;
+  max-width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 30px;
+  text-align: center;
+  border: 1px solid var(--main-green);
+  color: var(--main-green);
+  gap: 1rem;
+}
+
+.helpdesk .main .buttons a span {
+  text-align: center;
+  width: 100%;
+}
+
+.helpdesk .main .buttons button:hover {
+  background-color: var(--main-green);
+  color: white;
+}
+
+.helpdesk .main .promoted-articles {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.helpdesk .main .promoted-articles .promoted-articles-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.helpdesk .main .promoted-articles .promoted-articles-item a:hover {
+  text-decoration: underline;
+}
+
+.search-for-appointment {
+  background-color: var(--second-blue);
+  min-height: 75%;
+  color: white;
+  width: 100%;
+}
+
+.search-for-appointment .top {
+  padding: 3rem 0;
+}
+
+.search-for-appointment .top :nth-child(1) {
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.search-for-appointment .searchbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.search-for-appointment .searchbar .item {
+  width: 100%;
+}
+
+.search-for-appointment .searchbar .item label {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.search-for-appointment .searchbar .item input {
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+.search-for-appointment .searchbar button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.search-for-appointment .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.search-for-appointment .icons .icon {
+  width: 100%;
+}
+
+.search-for-appointment .icons :nth-child(1) {
+  font-size: 1.5rem;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 1rem 0;
+}
+
+.footer .box {
+  width: 100%;
+}
+
+.footer .box .top {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footer .box .top .category {
+  text-align: start;
+  width: 100%;
+}
+
+.footer .box .top .category .contact {
+  position: relative;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.footer .box .top .category .contact #Ireland::after {
+  content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
+  font-weight: normal;
+}
+
+.footer .box .top .category .contact #UK::after {
+  content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
+  font-weight: normal;
+}
+
+.footer .box .top .category ul {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+}
+
+.footer .box .bottom {
+  padding: 2rem;
+}
+
+.footer .box .bottom p {
+  -webkit-transform: translateX(-50px);
+          transform: translateX(-50px);
+}
+
+@media (max-width: 992px) {
+  .helpdesk .main .promoted-articles {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .search-for-appointment .searchbar,
+  .search-for-appointment .icons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+/*# sourceMappingURL=index.css.map */
