@@ -24,10 +24,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-p {
-  font-size: 0.8rem;
-}
-
 .d-flex-column {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,6 +55,10 @@ hr {
   margin: 2rem 0;
 }
 
+img {
+  width: 100%;
+}
+
 .container {
   position: relative;
   height: 100%;
@@ -68,18 +68,34 @@ hr {
 }
 
 .btn {
-  display: inline-block;
-  font-weight: 400;
   color: white;
-  cursor: pointer;
   padding: 10px 20px;
   margin: 0 10px;
-  border: none;
+  border: var(--second-blue) 1px solid;
   border-radius: 5px;
+  background: var(--blue-gradient);
+  cursor: pointer;
 }
 
 .btn-green {
-  background-color: var(--main-green);
+  border: none;
+  background: var(--main-green);
+}
+
+.blue-strip {
+  background-color: var(--main-blue);
+  color: white;
+  height: 80px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header {
@@ -160,16 +176,8 @@ hr {
   font-size: 1.3rem;
 }
 
-.hero .card button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: 1px solid #002940;
-  background: var(--blue-gradient);
-}
-
 .hero img {
   position: absolute;
-  width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -177,19 +185,6 @@ hr {
 }
 
 .hero .hero-bottom {
-  background-color: var(--main-blue);
-  color: white;
-  height: 80px;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: absolute;
   bottom: 0;
 }
@@ -198,16 +193,18 @@ hr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow: hidden;
+  gap: 3rem;
 }
 
 .herby img {
   padding: 10px;
-  max-height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  max-width: 100px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
   opacity: 0.3;
   -webkit-transition: 1s;
   transition: 1s;
@@ -215,6 +212,14 @@ hr {
 
 .herby img:hover {
   opacity: 1;
+}
+
+.main-homescreen {
+  text-align: center;
+}
+
+.main-homescreen h4 {
+  font-weight: bold;
 }
 
 .main-homescreen .main-section-2 {
@@ -231,21 +236,10 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 1rem;
-}
-
-.main-homescreen .main-section-2 img {
-  margin: 1rem;
-  width: 100%;
 }
 
 .main-homescreen .main-section-2 button {
-  border: 1px solid #002940;
-  background: var(--blue-gradient);
-}
-
-.main-homescreen .main-section-3 {
-  text-align: center;
+  margin: 2rem 0;
 }
 
 .main-homescreen .main-section-3 .icons {
@@ -254,86 +248,80 @@ hr {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 3rem;
 }
 
 .main-homescreen .main-section-3 .icons .box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-width: 300px;
-  margin: 1rem auto;
-}
-
-.main-homescreen .main-section-3 .icons img {
-  max-width: 250px;
-}
-
-.main-homescreen .main-section-3 .icons .text {
-  text-align: center;
-}
-
-.main-homescreen .main-section-3 .icons .text p {
-  text-align: center;
-  margin-top: 5px;
-}
-
-.main-homescreen .blue-strip {
-  background-color: var(--main-blue);
-  color: white;
-  height: 80px;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 300px;
+  margin: 1rem auto;
+  gap: 10px;
 }
 
 .main-homescreen .main-section-4 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 3rem;
-  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 3rem 0;
   gap: 5rem;
 }
 
-.main-homescreen .main-section-4 h1 {
-  font-weight: 300;
-  margin-bottom: 20px;
-  line-height: 2rem;
+.main-homescreen .main-section-4 .section-4-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: start;
+  gap: 1rem;
 }
 
-.main-homescreen .main-section-4 ul {
-  margin: 20px 30px;
+.main-homescreen .main-section-4 .section-4-info ul {
+  margin-left: 40px;
+  list-style: initial;
 }
 
-.main-homescreen .main-section-4 button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: 1px solid #002940;
-  background: var(--blue-gradient);
-  margin-top: 10px;
+.main-homescreen .main-section-4 .section-4-info button {
+  margin: 0 auto 0 0;
 }
 
-.helpdesk .main .buttons {
+.helpdesk img {
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.helpdesk .main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2rem 0;
+  gap: 2rem;
+}
+
+.helpdesk .main .blocks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,31 +332,26 @@ hr {
           justify-content: flex-start;
 }
 
-.helpdesk .main .buttons a {
+.helpdesk .main .blocks a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 340px;
-          flex: 1 0 340px;
-  max-width: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 20px 30px;
   text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 200px;
+          flex: 1 0 200px;
   border: 1px solid var(--main-green);
   color: var(--main-green);
   gap: 1rem;
+  padding: 20px 30px;
+  margin: 1rem;
 }
 
-.helpdesk .main .buttons a span {
-  text-align: center;
-  width: 100%;
-}
-
-.helpdesk .main .buttons button:hover {
+.helpdesk .main .blocks a:hover {
   background-color: var(--main-green);
   color: white;
 }
@@ -466,50 +449,49 @@ hr {
   padding: 1rem 0;
 }
 
-.footer .box {
-  width: 100%;
+.footer .split {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  margin: 1rem 0;
 }
 
-.footer .box .top {
-  width: 100%;
+.footer .left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.footer .box .top .category {
-  text-align: start;
-  width: 100%;
-}
-
-.footer .box .top .category .contact {
-  position: relative;
-  font-weight: bold;
-  margin: 1rem 0;
-}
-
-.footer .box .top .category .contact #Ireland::after {
+.footer .left #Ireland::after {
   content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
-  font-weight: normal;
 }
 
-.footer .box .top .category .contact #UK::after {
+.footer .left #UK::after {
   content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
-  font-weight: normal;
 }
 
-.footer .box .top .category ul {
-  margin: 1rem 0;
-  font-size: 0.8rem;
+.footer .left a {
+  color: white;
+  margin-top: 1rem;
 }
 
-.footer .box .bottom {
-  padding: 2rem;
+.footer .left a:hover {
+  text-decoration: underline;
 }
 
-.footer .box .bottom p {
-  -webkit-transform: translateX(-50px);
-          transform: translateX(-50px);
+@media (max-width: 768px) {
+  .main-homescreen .main-section-4 {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .main-homescreen .main-section-4 img {
+    display: none;
+  }
 }
 
 @media (max-width: 992px) {

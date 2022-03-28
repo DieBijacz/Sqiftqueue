@@ -22,7 +22,7 @@ const Hero = () => {
           </div>
         </div>
       </Container>
-      <div className="hero-bottom">
+      <div className="blue-strip hero-bottom">
         Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
       </div>
     </div>

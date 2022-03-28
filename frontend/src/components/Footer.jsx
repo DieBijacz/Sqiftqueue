@@ -6,33 +6,27 @@ const Footer = () => {
     <>
       <div className="footer">
         <Container>
-          <div className="box">
-            <div className="top">
-              <div className="category">
-                Contact Us
-                <div className="contact">
-                  <p id='Ireland'>Ireland:</p>
-                  <p id='UK'>UK:</p>
-                </div>
-                <p>
-                  Click Here To Visit Our Help Centre
-                </p>
+            <div className="top split">
+              <p>Contact Us</p>
+              <p>Quick Links</p>
+            </div>
+            <div className="mid split">
+              <div className="left">
+                <p id='Ireland'>Ireland:</p>
+                <p id='UK'>UK:</p>
+                <a href="/helpdesk">Click Here To Visit Our Help Centre</a>
               </div>
-              <div className="category">
-                Quick Links
-                  <ul>
-                    <li>Home</li>
-                    <li>Services</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                  </ul>
+              <div className="right">
+                <div>Home</div>
+                <div>Services</div>
+                <div>About</div>
+                <div>Contact</div>
               </div>
             </div>
             <hr />
             <div className="bottom">
               <p>2022 © Masta</p>
             </div>
-          </div>
         </Container>
       </div>
     </>
