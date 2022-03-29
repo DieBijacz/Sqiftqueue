@@ -24,6 +24,11 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+body::-webkit-scrollbar {
+  overflow-x: hidden;
+  display: none;
+}
+
 .d-flex-column {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -198,6 +203,7 @@ img {
           justify-content: flex-start;
   overflow: hidden;
   gap: 3rem;
+  margin-top: 2rem;
 }
 
 .herby img {
@@ -441,6 +447,18 @@ img {
 
 .search-for-appointment .icons :nth-child(1) {
   font-size: 1.5rem;
+}
+
+.clinics-map main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 400px;
 }
 
 .footer {

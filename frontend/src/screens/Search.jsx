@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Container from '../components/Container'
 
 const Search = () => {
+  const [myCurrentLocation, setMyCurrentLocation] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [allowed, setAllowed] = useState(false)
+
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    if(myCurrentLocation){
+      setLoading(true)
+      setTimeout(() => {
+        navigate('/clinicsmap')
+      }, 2000)
+    } else {
+      allowed && navigator.geolocation.getCurrentPosition((pos) => {
+        setMyCurrentLocation([pos.coords.latitude, pos.coords.longitude])
+      })
+    }
+  }, [navigate, myCurrentLocation, allowed])
+  
   return (
     <div className="search-for-appointment">
       <Container>
         <div className='top d-flex-column'>
+          <button onClick={() => setAllowed(true)}>Allow Geolocation</button>
+          {loading && <h1>You will be moved</h1>}
           <span>Find a GP/Clinic and Book an Appointment</span>
           <span>Simple Instant Healthcare Bookings</span>
         </div>

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import ClinicsList from './screens/ClinicsList'
 import HelpDeskScreen from './screens/HelpDeskScreen'
 import HomeScreen from './screens/HomeScreen'
 import Profile from './screens/Profile'
@@ -10,12 +11,15 @@ function App() {
   return (
     <Router>
       <Header />
+      <div className="main">
         <Routes>
           <Route path='/' element={<HomeScreen />} />
           <Route path='/helpdesk' element={<HelpDeskScreen />} />
           <Route path='/search' element={<Search />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/clinicsmap' element={<ClinicsList />} />
         </Routes>
+      </div>
       <Footer />
     </Router>
   )
