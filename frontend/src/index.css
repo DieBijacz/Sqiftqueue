@@ -3,6 +3,7 @@
   --main-blue: #002940;
   --second-blue: #024166;
   --main-green: #87c641;
+  --main-green-hover: #66972f;
   --blue-gradient: linear-gradient(
     180deg,
     rgba(117, 161, 185, 1) 0%,
@@ -56,6 +57,13 @@ a {
   text-decoration: none;
 }
 
+input {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
 hr {
   margin: 2rem 0;
 }
@@ -87,6 +95,10 @@ img {
   background: var(--main-green);
 }
 
+.btn-green:hover {
+  background: var(--main-green-hover);
+}
+
 .blue-strip {
   background-color: var(--main-blue);
   color: white;
@@ -101,6 +113,11 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 400px;
 }
 
 .header {
@@ -309,6 +326,128 @@ img {
   margin: 0 auto 0 0;
 }
 
+.login-screen section {
+  position: relative;
+  height: 500px;
+}
+
+.login-screen section img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.login-screen section .card {
+  display: none;
+  position: absolute;
+  text-align: center;
+  color: white;
+  left: 50%;
+  top: 50%;
+  width: 1000px;
+  height: 250px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.login-screen section .active {
+  display: block;
+}
+
+.login-screen section #roles .options {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.login-screen section #roles .options .option {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login-screen section #roles .options .option button {
+  padding: 30px;
+  font-size: 2rem;
+}
+
+.login-screen section #roles .options .option #icon {
+  font-size: 3rem;
+  margin: 10px;
+}
+
+.login-screen section #roles .options .option p {
+  font-size: 1.3rem;
+}
+
+.login-screen section #login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.login-screen section #login .box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 20px;
+}
+
+.login-screen section #login .box h1 {
+  margin: 10px 0 20px;
+}
+
+.login-screen section #login .box form {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.login-screen section #login .box form .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.login-screen section #login .box #register-btn {
+  height: 100px;
+  font-size: 2rem;
+  background: #024166;
+}
+
 .helpdesk img {
   height: 500px;
   -o-object-fit: cover;
@@ -454,11 +593,6 @@ img {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-}
-
-.leaflet-container {
-  width: 100%;
-  height: 400px;
 }
 
 .footer {

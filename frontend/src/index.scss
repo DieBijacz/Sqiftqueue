@@ -3,6 +3,7 @@
   --main-blue: #002940;
   --second-blue: #024166;
   --main-green: #87c641;
+  --main-green-hover: #66972f;
   --blue-gradient: linear-gradient(
     180deg,
     rgba(117, 161, 185, 1) 0%,
@@ -42,6 +43,12 @@ a {
   color: #333;
   text-decoration: none;
 }
+input {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
 hr {
   margin: 2rem 0;
 }
@@ -69,6 +76,9 @@ img {
   border: none;
   background: var(--main-green);
 }
+.btn-green:hover {
+  background: var(--main-green-hover);
+}
 .blue-strip {
   background-color: var(--main-blue);
   color: white;
@@ -77,6 +87,10 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.leaflet-container {
+  width: 100%;
+  height: 400px;
 }
 // COMPONENTS
 // HEADER
@@ -212,6 +226,89 @@ img {
     }
   }
 }
+.login-screen {
+  section {
+    position: relative;
+    height: 500px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card {
+      display: none;
+      position: absolute;
+      text-align: center;
+      color: white;
+      left: 50%;
+      top: 50%;
+      width: 1000px;
+      height: 250px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+    }
+    .active {
+      display: block;
+    }
+    #roles {
+      .options {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        .option {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          button {
+            padding: 30px;
+            font-size: 2rem;
+          }
+          #icon {
+            font-size: 3rem;
+            margin: 10px;
+          }
+          p{
+            font-size: 1.3rem;
+          }
+  
+        }
+      }
+    }
+    #login {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      font-size: 1.3rem;
+      .box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        h1 {
+          margin: 10px 0 20px;
+        }
+        form {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          .buttons {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+        #register-btn {
+          height: 100px;
+          font-size: 2rem;
+          background: #024166;
+        }
+      }
+    }
+
+  }
+}
 .helpdesk {
   img {
     height: 500px;
@@ -307,10 +404,6 @@ img {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-}
-.leaflet-container {
-  width: 100%;
-  height: 400px;
 }
 .footer {
   background-color: #333;

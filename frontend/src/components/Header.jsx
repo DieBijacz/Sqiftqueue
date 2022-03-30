@@ -9,7 +9,9 @@ const Header = () => {
         <img src={logo} alt="Swiftqueue"/>
       </Link>
       <div className="panel">
-        <Link to="/profile">Go To Your Account</Link>
+        <Link to="/login">
+          <button className='btn btn-blue'>Login / Create Account</button>
+        </Link>
         <Link to="/search">
           <button className='btn btn-green'>Book an Appointment</button>
         </Link>
