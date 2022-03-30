@@ -6,6 +6,7 @@ import HelpDeskScreen from './screens/HelpDeskScreen'
 import HomeScreen from './screens/HomeScreen'
 import Profile from './screens/Profile'
 import Search from './screens/Search'
+import WIPScreen from './screens/WIPScreen'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/search' element={<Search />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/clinicsmap' element={<ClinicsList />} />
+          <Route path='/wip' element={<WIPScreen />} />
         </Routes>
       </div>
       <Footer />
