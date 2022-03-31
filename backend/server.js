@@ -2,10 +2,15 @@ import express from 'express'
 import colors from 'colors'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
+// import userRoutes from './routes/userRoutes.js'
+import { authUser } from './controllers/userController.js'
 
 const app = express()
 dotenv.config()
 connectDB()
+app.use(express.json())
+
+app.use('/api/users', authUser)
 
 app.get('/', (req, res) => {
   res.send('API is runninasdg...')

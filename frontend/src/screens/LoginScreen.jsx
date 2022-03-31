@@ -6,7 +6,7 @@ import { faUserDoctor } from '@fortawesome/free-solid-svg-icons'
 const LoginScreen = () => {
   return (
     <div className='login-screen'>
-      <div className="blue-strip">Login/Register</div>
+      <div className="blue-strip"><h1>Login/Register</h1></div>
       <section>
         <img src={bgPhoto} alt='...' />
         <div className="card" id='roles' >
