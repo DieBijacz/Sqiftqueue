@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
 :root {
   --main-blue: #002940;
   --second-blue: #024166;
   --main-green: #87c641;
   --main-green-hover: #66972f;
-  --blue-gradient: linear-gradient(
-    180deg,
-    rgba(117, 161, 185, 1) 0%,
-    rgba(27, 72, 97, 1) 75%
-  );
+  --blue-gradient: linear-gradient(180deg,
+      rgba(117, 161, 185, 1) 0%,
+      rgba(27, 72, 97, 1) 75%);
 }
 
 *,
@@ -18,43 +17,54 @@
   padding: 0;
   font-weight: 200;
 }
+
 body {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
+
 body::-webkit-scrollbar {
   overflow-x: hidden;
   display: none;
 }
+
 .d-flex-column {
   display: flex;
   flex-direction: column;
 }
+
 .span-2 {
   grid-column: span 2;
 }
+
 .span-3 {
   grid-column: span 3;
 }
+
 ul {
   list-style: none;
 }
+
 a {
   color: #333;
   text-decoration: none;
 }
+
 input {
   padding: 10px;
   border-radius: 4px;
   border: none;
   outline: none;
 }
+
 hr {
   margin: 2rem 0;
 }
+
 img {
   width: 100%;
 }
+
 // COMPONENTS
 .container {
   position: relative;
@@ -63,6 +73,7 @@ img {
   padding: 0 3rem;
   max-width: 1000px;
 }
+
 .btn {
   color: white;
   padding: 10px 20px;
@@ -72,13 +83,16 @@ img {
   background: var(--blue-gradient);
   cursor: pointer;
 }
+
 .btn-green {
   border: none;
   background: var(--main-green);
 }
+
 .btn-green:hover {
   background: var(--main-green-hover);
 }
+
 .blue-strip {
   background-color: var(--main-blue);
   color: white;
@@ -88,10 +102,12 @@ img {
   justify-content: center;
   align-items: center;
 }
+
 .leaflet-container {
   width: 100%;
   height: 400px;
 }
+
 // COMPONENTS
 // HEADER
 .header {
@@ -101,21 +117,26 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   img {
     height: 50px;
     cursor: pointer;
   }
+
   a {
     color: var(--main-green);
   }
+
   a:hover {
     text-decoration: underline;
   }
 }
+
 .hero {
   position: relative;
   width: 100%;
   height: 500px;
+
   .card {
     position: absolute;
     display: flex;
@@ -130,37 +151,44 @@ img {
     padding: 1rem;
     color: white;
     border-radius: 10px 10px 0 0;
+
     .card-text {
       display: flex;
       flex-direction: column;
       gap: 20px;
       height: 100%;
+
       :nth-child(1) {
         font-size: 2rem;
         line-height: 2.2rem;
       }
+
       :nth-child(2) {
         font-size: 1.3rem;
       }
     }
   }
+
   img {
     position: absolute;
     height: 100%;
     object-fit: cover;
     z-index: -1;
   }
+
   .hero-bottom {
     position: absolute;
     bottom: 0;
   }
 }
+
 .herby {
   display: flex;
   justify-content: flex-start;
   overflow: hidden;
   gap: 3rem;
   margin-top: 2rem;
+
   img {
     padding: 10px;
     max-width: 100px;
@@ -168,31 +196,38 @@ img {
     opacity: 0.3;
     transition: 1s;
   }
+
   img:hover {
     opacity: 1;
   }
 }
+
 .main-homescreen {
   text-align: center;
+
   h4 {
     font-weight: bold;
   }
+
   // SECTION 2
   .main-section-2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     button {
       margin: 2rem 0;
     }
   }
+
   // SECTION 3
   .main-section-3 {
     .icons {
       display: flex;
       flex-wrap: wrap;
       margin: 3rem;
+
       .box {
         display: flex;
         flex-direction: column;
@@ -204,6 +239,7 @@ img {
       }
     }
   }
+
   // SECTION 4
   .main-section-4 {
     display: grid;
@@ -211,94 +247,123 @@ img {
     align-items: center;
     margin: 3rem 0;
     gap: 5rem;
+
     .section-4-info {
       display: flex;
       flex-direction: column;
       text-align: start;
       gap: 1rem;
+
       ul {
         margin-left: 40px;
         list-style: initial;
       }
+
       button {
         margin: 0 auto 0 0;
       }
     }
   }
 }
+
 .login-screen {
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card {
+    position: absolute;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .register-data-info {
+    .bg {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 21;
+    }
+
+    .card {
+      max-height: 80vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      z-index: 22;
+      background-color: whitesmoke;
+      color: black;
+
+      p {
+        text-align: start;
+        font-size: .9rem;
+      }
+
+      h4,
+      h1 {
+        font-weight: 400
+      }
+
+      ul {
+        text-align: start;
+        list-style: initial;
+        margin-left: 30px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: end;
+      }
+    }
+
+    .card::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   section {
     position: relative;
     height: 500px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+
     .card {
-      display: none;
-      position: absolute;
-      text-align: center;
-      color: white;
-      left: 50%;
-      top: 50%;
       width: 1000px;
       height: 250px;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      transform: translate(-50%, -50%);
-      border-radius: 10px;
     }
-    .active {
-      display: block;
-    }
-    #roles {
-      .options {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: space-between;
-        .option {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          button {
-            padding: 30px;
-            font-size: 2rem;
-          }
-          #icon {
-            font-size: 3rem;
-            margin: 10px;
-          }
-          p{
-            font-size: 1.3rem;
-          }
-  
-        }
-      }
-    }
+
     #login {
       display: flex;
       justify-content: space-between;
       text-align: center;
       font-size: 1.3rem;
+
       .box {
         width: 100%;
         display: flex;
         flex-direction: column;
         padding: 0 20px;
+
         h1 {
           margin: 10px 0 20px;
         }
+
         form {
           height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: space-around;
+
           .buttons {
             display: flex;
             justify-content: space-between;
           }
         }
+
         #register-btn {
           height: 100px;
           font-size: 2rem;
@@ -309,20 +374,25 @@ img {
 
   }
 }
+
+
 .helpdesk {
   img {
     height: 500px;
     object-fit: cover;
   }
+
   .main {
     display: flex;
     flex-direction: column;
     margin: 2rem 0;
     gap: 2rem;
+
     .blocks {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
+
       a {
         display: flex;
         flex-direction: column;
@@ -334,17 +404,21 @@ img {
         padding: 20px 30px;
         margin: 1rem;
       }
+
       a:hover {
         background-color: var(--main-green);
         color: white;
       }
     }
+
     .promoted-articles {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+
       .promoted-articles-item {
         border-bottom: 1px solid #ccc;
+
         a:hover {
           text-decoration: underline;
         }
@@ -352,81 +426,100 @@ img {
     }
   }
 }
+
 .search-for-appointment {
   background-color: var(--second-blue);
   min-height: 75%;
   color: white;
   width: 100%;
+
   .top {
     padding: 3rem 0;
+
     :nth-child(1) {
       font-weight: 100;
       font-size: 2rem;
     }
   }
+
   .searchbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+
     .item {
       width: 100%;
+
       label {
         font-weight: 400;
         margin-bottom: 5px;
       }
+
       input {
         padding: 15px;
         border-radius: 5px;
         border: none;
       }
     }
+
     button {
       align-self: flex-end;
     }
   }
+
   .icons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     padding: 3rem 0;
+
     .icon {
       width: 100%;
     }
+
     :nth-child(1) {
       font-size: 1.5rem;
     }
   }
 }
+
 .clinics-map {
   main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 .footer {
   background-color: #333;
   color: white;
   padding: 1rem 0;
+
   .split {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 1rem 0;
   }
+
   .left {
     display: flex;
     flex-direction: column;
+
     #Ireland::after {
       content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
     }
+
     #UK::after {
       content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
     }
+
     a {
       color: white;
       margin-top: 1rem;
     }
+
     a:hover {
       text-decoration: underline;
     }
@@ -437,17 +530,21 @@ img {
   .main-homescreen {
     .main-section-4 {
       grid-template-columns: 1fr;
+
       img {
         display: none;
       }
     }
   }
 }
+
 @media (max-width: 992px) {
   .helpdesk .main .promoted-articles {
     grid-template-columns: 1fr;
   }
+
   .search-for-appointment {
+
     .searchbar,
     .icons {
       flex-direction: column;
