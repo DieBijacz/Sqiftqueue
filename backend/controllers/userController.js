@@ -9,7 +9,7 @@ export const authUser = asyncHandler(async(req, res) => {
   const user = await User.findOne({email})
   if(user && (await user.matchPassword(password))) {
     res.json({
-      _id: user._is,
+      _id: user._id,
       email: user.email,
       locations: user.locations,
       token: generateToken(user._id)
@@ -20,13 +20,42 @@ export const authUser = asyncHandler(async(req, res) => {
   }
 })
 
+// POST register user
+export const registerUser = asyncHandler(async( req, res) => {
+  const {name, email, password} = req.body
+  
+  // check if that email is not in db
+  const userExist = await User.findOne({ email })
+  if(userExist) {
+    res.status(400)
+    throw new Error('Email already registered')
+  }
+  
+  // create new user -> save new user / password will be encrypted in middleware in userModel.js
+  const user = await User.create({name, email, password,})
+
+  if(user) {
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id), // generate token for new user
+    })
+  } else {
+    res.status(401)
+    throw new Error('Invalid user data')
+  }
+})
+
 // GET user Profile
 export const getUserProfile = asyncHandler(async (req, res) => {
-  console.log('here')
   const user = await User.findById(req.user._id)
-  if (user) {
-    console.log(user)
-    res.json({user})
+  if(user){
+    res.json({
+      _id: user._id,
+      email: user.email,
+      locations: user.locations,
+    })
   } else {
     res.status(401)
     throw new Error('User not found')
