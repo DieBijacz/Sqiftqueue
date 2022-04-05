@@ -1,10 +1,14 @@
 import React from 'react'
+import Column from './Column'
+import Row from './Row'
 
-const Container = ({children}) => {
+const Container = ({ children }) => {
   return (
-    <div className="container">
-      {children}
-    </div>
+    <Row>
+      <div className="container">
+        {children}
+      </div>
+    </Row>
   )
 }
 

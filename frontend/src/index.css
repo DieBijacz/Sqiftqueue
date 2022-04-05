@@ -15,11 +15,11 @@
   margin: 0;
   padding: 0;
   font-weight: 200;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -70,14 +70,27 @@ img {
   width: 100%;
 }
 
+.bg-img {
+  position: absolute;
+  inset: 0;
+  z-index: -20;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
 
 .column {
   width: 100%;
+  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -88,11 +101,29 @@ img {
 }
 
 .container {
-  position: relative;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 3rem;
-  max-width: 1000px;
+  width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 3rem;
+}
+
+.card {
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 .btn {
@@ -235,6 +266,7 @@ img {
       -ms-flex-pack: start;
           justify-content: flex-start;
   overflow: hidden;
+  overflow-x: auto;
   gap: 3rem;
   margin-top: 2rem;
 }
@@ -342,93 +374,34 @@ img {
   margin: 0 auto 0 0;
 }
 
-.login-screen img {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.login-screen .card {
-  position: absolute;
-  text-align: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.login-screen .register-data-info .bg {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 21;
-}
-
-.login-screen .register-data-info .card {
-  max-height: 80vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  z-index: 22;
-  background-color: whitesmoke;
-  color: black;
-}
-
-.login-screen .register-data-info .card p {
-  text-align: start;
-  font-size: .9rem;
-}
-
-.login-screen .register-data-info .card h4,
-.login-screen .register-data-info .card h1 {
-  font-weight: 400;
-}
-
-.login-screen .register-data-info .card ul {
-  font-size: .9rem;
-  text-align: start;
-  list-style: initial;
-  margin: 10px 0 10px 30px;
-}
-
-.login-screen .register-data-info .card .buttons {
+.login-screen {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-}
-
-.login-screen .register-data-info .card::-webkit-scrollbar {
-  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .login-screen section {
   position: relative;
-  height: 500px;
-}
-
-.login-screen section .card {
-  width: 1000px;
-  height: 250px;
-}
-
-.login-screen section #login {
+  height: 60vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-align: center;
-  font-size: 1.3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.login-screen section #login .box {
+.login-screen #login-register {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -437,15 +410,32 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.login-screen section #login .box h1 {
-  margin: 10px 0 20px;
+.login-screen #login-register .card {
+  width: 100%;
 }
 
-.login-screen section #login .box form {
-  height: 100%;
+.login-screen #login-register .card .row {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.login-screen #login-register .card #register-btn {
+  background: #024166;
+  padding: 2rem;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.login-screen #login-register .card form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -453,38 +443,35 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
 }
 
-.login-screen section #login .box form .buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.login-screen section #login .box #register-btn {
-  height: 100px;
-  font-size: 2rem;
-  background: #024166;
+.login-screen #login-register .card form input {
+  width: 100%;
 }
 
 .register-screen {
   position: relative;
+  height: 80vh;
 }
 
 .register-screen img {
-  height: 100vh;
+  position: absolute;
   -o-object-fit: cover;
      object-fit: cover;
+  height: 100%;
 }
 
 .register-screen .card {
-  position: absolute;
-  inset: 2rem;
+  height: 80%;
+  overflow: hidden;
+  overflow-y: scroll;
   text-align: center;
   color: white;
   padding: 20px;
@@ -504,13 +491,16 @@ img {
   margin: 1rem;
 }
 
-.register-screen .card .column input {
+.register-screen .card input {
   width: 100%;
-  padding: 10px 0;
 }
 
-.register-screen .card .column .number-input {
-  width: auto;
+.register-screen .card input[type=number] {
+  width: 50px;
+}
+
+.register-screen .card::-webkit-scrollbar {
+  display: none;
 }
 
 .helpdesk img {
