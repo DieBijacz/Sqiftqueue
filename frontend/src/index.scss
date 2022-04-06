@@ -61,7 +61,9 @@ hr {
   margin: 2rem 0;
 }
 
-img {
+img,
+form,
+input {
   width: 100%;
 }
 
@@ -70,6 +72,7 @@ img {
   inset: 0;
   z-index: -20;
   object-fit: cover;
+  height: 100%;
 }
 
 .row {
@@ -107,7 +110,7 @@ img {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-
+  width: 100%;
 }
 
 *::-webkit-scrollbar {
@@ -315,126 +318,146 @@ img {
 
   section {
     position: relative;
-    height: 60vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
-    justify-content: center
-  }
+    justify-content: center;
 
-  // .register-data-info {
-  //   .bg {
-  //     position: absolute;
-  //     inset: 0;
-  //     background-color: rgba(0, 0, 0, 0.5);
-  //     z-index: 21;
-  //   }
+    .register-data-info {
+      .bg {
+        position: absolute;
+        inset: 0;
+      }
 
-  //   .card {
-  //     position: absolute;
-  //     max-height: 80vh;
-  //     max-width: 700px;
-  //     overflow-y: scroll;
-  //     overflow-x: hidden;
-  //     z-index: 22;
-  //     background-color: whitesmoke;
-  //     color: black;
+      .card {
+        position: absolute;
+        inset: 3rem;
+        overflow: hidden;
+        overflow-y: scroll;
+        width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 0 100px black;
+        background-color: whitesmoke;
+        color: black;
+        font-size: .8rem;
 
-  //     p {
-  //       text-align: start;
-  //       font-size: .9rem;
-  //     }
+        p {
+          text-align: start;
+        }
 
-  //     h4,
-  //     h1 {
-  //       font-weight: 400
-  //     }
+        h4,
+        h1 {
+          font-weight: 400
+        }
 
-  //     ul {
-  //       font-size: .9rem;
-  //       text-align: start;
-  //       list-style: initial;
-  //       margin: 10px 0 10px 30px;
-  //     }
+        ul {
+          text-align: start;
+          list-style: initial;
+          margin: 10px 0 10px 30px;
+        }
 
-  //     .buttons {
-  //       display: flex;
-  //       justify-content: end;
-  //     }
-  //   }
+        .buttons {
+          display: flex;
+          justify-content: end;
+        }
+      }
+    }
 
-
-  // }
-
-  #login-register {
-    width: 100%;
-    @include flex-column;
-
-    .card {
+    #login-register {
       width: 100%;
+      @include flex-column;
 
-      .row {
-        justify-content: space-between;
-      }
+      .card {
+        .row {
+          justify-content: space-between;
+        }
 
-      #register-btn {
-        background: #024166;
-        padding: 2rem;
-        font-size: 2rem;
-        margin: 1rem 0;
-      }
+        #register-btn {
+          background: #024166;
+          padding: 2rem;
+          font-size: 2rem;
+          margin: 1rem 0;
+        }
 
-      form {
-        @include flex-column();
-        gap: 1rem;
+        form {
+          @include flex-column();
+          gap: 1rem;
 
-        input {
-          width: 100%;
+          input {
+            width: 100%;
+          }
         }
       }
     }
   }
+
 }
 
 .register-screen {
   position: relative;
-  height: 80vh;
+  min-height: 70vh;
 
-  img {
-    position: absolute;
-    object-fit: cover;
-    height: 100%;
+  hr {
+    margin: 10px 0;
   }
 
-  .card {
-    height: 80%;
-    overflow: hidden;
-    overflow-y: scroll;
-    text-align: center;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
+  section {
+    position: relative;
+
+    h1 {
+      margin-bottom: 1rem
+    }
+
+    p {
+      font-size: .8rem;
+    }
+
+    button {
+      margin: 10px auto 10px 0;
+    }
 
     .column {
+      gap: 1rem
+    }
+
+    .card {
+      @include flex-column;
+      margin: 3rem 0;
       text-align: start;
-      margin: 1rem;
 
+      overflow: hidden;
+      overflow-y: scroll;
+
+      .number-input {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+
+        span {
+          margin: 0 10px;
+        }
+      }
     }
 
-    input {
-      width: 100%;
+    #please-note {
+      background-color: whitesmoke;
+      color: black;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: .8rem;
+
+      span {
+        font-weight: bold;
+      }
+
+      ul {
+        list-style: initial;
+
+        li {
+          margin-left: 2rem;
+        }
+      }
     }
-
-    input[type=number] {
-      width: 50px;
-    }
-
-  }
-
-  .card::-webkit-scrollbar {
-    display: none;
   }
 }
 
