@@ -85,10 +85,9 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 3rem;
 }
 
 .column {
@@ -104,6 +103,7 @@ input {
 }
 
 .container {
+  position: relative;
   width: 1000px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,7 +114,7 @@ input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 3rem;
+  margin: 0 auto;
 }
 
 .card {
@@ -200,31 +200,24 @@ input {
 }
 
 .hero {
-  position: relative;
-  width: 100%;
   height: 500px;
+  position: relative;
+}
+
+.hero .bg-img {
+  height: 420px;
+}
+
+.hero .blue-strip {
+  position: absolute;
+  bottom: 0;
 }
 
 .hero .card {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  bottom: 80px;
-  left: 3rem;
-  right: 3rem;
+  left: 0;
   max-width: 400px;
-  height: 70%;
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  color: white;
   border-radius: 10px 10px 0 0;
 }
 
@@ -249,17 +242,8 @@ input {
   font-size: 1.3rem;
 }
 
-.hero img {
-  position: absolute;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  z-index: -1;
-}
-
-.hero .hero-bottom {
-  position: absolute;
-  bottom: 0;
+.hero .card .buttons {
+  margin-top: 1rem;
 }
 
 .herby {
@@ -405,41 +389,32 @@ input {
           justify-content: center;
 }
 
-.login-screen section .register-data-info .bg {
-  position: absolute;
-  inset: 0;
-}
-
-.login-screen section .register-data-info .card {
-  position: absolute;
-  inset: 3rem;
-  overflow: hidden;
-  overflow-y: scroll;
-  width: 600px;
-  margin: 0 auto;
-  -webkit-box-shadow: 0 0 100px black;
-          box-shadow: 0 0 100px black;
+.login-screen section #register-data-info .card {
   background-color: whitesmoke;
   color: black;
+  -webkit-box-shadow: 0 0 50px black;
+          box-shadow: 0 0 50px black;
+  margin: 3rem auto;
+  max-width: 800px;
   font-size: .8rem;
 }
 
-.login-screen section .register-data-info .card p {
+.login-screen section #register-data-info .card p {
   text-align: start;
 }
 
-.login-screen section .register-data-info .card h4,
-.login-screen section .register-data-info .card h1 {
+.login-screen section #register-data-info .card h4,
+.login-screen section #register-data-info .card h1 {
   font-weight: 400;
 }
 
-.login-screen section .register-data-info .card ul {
+.login-screen section #register-data-info .card ul {
   text-align: start;
   list-style: initial;
   margin: 10px 0 10px 30px;
 }
 
-.login-screen section .register-data-info .card .buttons {
+.login-screen section #register-data-info .card .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -501,7 +476,6 @@ input {
 
 .register-screen {
   position: relative;
-  min-height: 70vh;
 }
 
 .register-screen hr {
@@ -522,6 +496,12 @@ input {
 
 .register-screen section button {
   margin: 10px auto 10px 0;
+}
+
+.register-screen section .register-btn {
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  font-size: 2rem;
 }
 
 .register-screen section .column {
@@ -546,6 +526,10 @@ input {
   text-align: start;
   overflow: hidden;
   overflow-y: scroll;
+}
+
+.register-screen section .card .row {
+  margin: 0;
 }
 
 .register-screen section .card .number-input {

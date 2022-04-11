@@ -8,7 +8,10 @@ const Hero = () => {
 
   return (
     <div className="hero">
-      <img src={bgPhoto} alt='...' />
+      <img src={bgPhoto} alt='...' className='bg-img' />
+      <div className="blue-strip">
+        Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
+      </div>
       <Container>
         <div className="card">
           <div className="card-text">
@@ -22,9 +25,6 @@ const Hero = () => {
           </div>
         </div>
       </Container>
-      <div className="blue-strip hero-bottom">
-        Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
-      </div>
     </div>
   )
 }

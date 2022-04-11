@@ -3,6 +3,8 @@ import Container from '../components/Container'
 import Row from '../components/Row'
 import Column from '../components/Column'
 import bgPhoto from "../images/hero.jpg"
+import { useDispatch } from 'react-redux'
+import { register } from '../actions/userActions'
 
 const RegisterScreen = () => {
   const [name, setName] = useState('')
@@ -11,17 +13,28 @@ const RegisterScreen = () => {
   const [confirmEmail, setConfirmEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [mobile, setMobile] = useState('')
+  const [homePhone, setHomePhone] = useState('')
 
+  const disptach = useDispatch()
 
+  const submitHandler = (e) => {
+    e.preventDefault()
+    if (password === confirmPassword) {
+      if (email === confirmEmail) {
+        disptach(register(name, email, password))
+      }
+    }
+  }
 
   return (
     <div className='register-screen'>
       <div className="blue-strip"><h1>Register as Patient</h1></div>
       <section>
+        <img src={bgPhoto} alt='...' className='bg-img' />
         <Container>
-          <img src={bgPhoto} alt='...' className='bg-img' />
           <div className="card">
-            <form>
+            <form onSubmit={submitHandler}>
               <Row>
                 <button className='btn'>Already have an account? Sign in here</button>
               </Row>
@@ -31,19 +44,19 @@ const RegisterScreen = () => {
                   <h1>Login Details</h1>
                   <div>
                     <label htmlFor="email">Email*</label>
-                    <input type='email' id='email'></input>
+                    <input value={email} type='email' id='email' onChange={(e) => setEmail(e.target.value)}></input>
                   </div>
                   <div>
                     <label htmlFor="confirm-email">Confirm Email*</label>
-                    <input type='email' id='confirm-email'></input>
+                    <input value={confirmEmail} type='email' id='confirm-email' onChange={(e) => setConfirmEmail(e.target.value)}></input>
                   </div>
                   <div>
                     <label htmlFor="password">Password*</label>
-                    <input type='password' id='password'></input>
+                    <input value={password} type='password' id='password' onChange={(e) => setPassword(e.target.value)}></input>
                   </div>
                   <div>
                     <label htmlFor="confirm-password">Confirm Password*</label>
-                    <input type='password' id='confirm-password'></input>
+                    <input value={confirmPassword} type='password' id='confirm-password' onChange={(e) => setConfirmPassword(e.target.value)}></input>
                   </div>
                 </Column>
                 <Column>
@@ -82,11 +95,11 @@ const RegisterScreen = () => {
                   <h1>Personal Details</h1>
                   <div>
                     <label htmlFor="name">Fisrt Name*</label>
-                    <input type='text' id='name'></input>
+                    <input value={name} type='text' id='name' onChange={(e) => setName(e.target.value)}></input>
                   </div>
                   <div>
                     <label htmlFor="surname">Surname*</label>
-                    <input type='text' id='surname'></input>
+                    <input value={surname} type='text' id='surname' onChange={(e) => setSurname(e.target.value)}></input>
                   </div>
                   <div>
                     <label htmlFor="email">Date Of Birth ( DD / MM / YYYY )*</label>
@@ -103,12 +116,12 @@ const RegisterScreen = () => {
                   </div>
                   <div>
                     <label htmlFor="mobile-number">Mobile</label>
-                    <input type='number' id='mobile-number'></input>
+                    <input value={mobile} type='number' id='mobile-number' onChange={(e) => setMobile(e.target.value)}></input>
                     <p>Please enter your mobile number without spaces or dashes</p>
                   </div>
                   <div>
                     <label htmlFor="home-number">Home Phone</label>
-                    <input type='number' id='home-number'></input>
+                    <input value={homePhone} type='number' id='home-number' onChange={(e) => setHomePhone(e.target.value)}></input>
                   </div>
                 </Column>
                 <Column>
@@ -122,9 +135,11 @@ const RegisterScreen = () => {
                   </div>
                 </Column>
               </Row>
+              <Row>
+                <button type='submit' className='btn register-btn'>Register Now</button>
+              </Row>
             </form>
           </div>
-          <button className='btn register-btn'>Register</button>
         </Container>
       </section>
     </div >

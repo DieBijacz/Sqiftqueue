@@ -48,8 +48,7 @@ const LoginScreen = () => {
         <Container>
           {loading && 'LOADING...'}
           {showDataInfo ? (
-            <div className='register-data-info'>
-              <div onClick={() => setShowDataInfo(false)} className="bg"></div>
+            <div id='register-data-info'>
               <div className="card">
                 <h1>Data Processing Consent</h1>
                 <hr />
