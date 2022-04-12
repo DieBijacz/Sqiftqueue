@@ -3,11 +3,11 @@ import User from "../Models/userModel.js";
 import generateToken from '../utils/generateToken.js'
 
 // POST Auth user
-export const authUser = asyncHandler(async(req, res) => {
-  const {email, password} = req.body
+export const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body
 
-  const user = await User.findOne({email})
-  if(user && (await user.matchPassword(password))) {
+  const user = await User.findOne({ email })
+  if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       email: user.email,
@@ -21,20 +21,20 @@ export const authUser = asyncHandler(async(req, res) => {
 })
 
 // POST register user
-export const registerUser = asyncHandler(async( req, res) => {
-  const {name, email, password} = req.body
-  
+export const registerUser = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body
+
   // check if that email is not in db
   const userExist = await User.findOne({ email })
-  if(userExist) {
+  if (userExist) {
     res.status(400)
     throw new Error('Email already registered')
   }
-  
-  // create new user -> save new user / password will be encrypted in middleware in userModel.js
-  const user = await User.create({name, email, password,})
 
-  if(user) {
+  // create new user -> save new user / password will be encrypted in middleware in userModel.js
+  const user = await User.create({ name, email, password, })
+
+  if (user) {
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -50,7 +50,7 @@ export const registerUser = asyncHandler(async( req, res) => {
 // GET user Profile
 export const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
-  if(user){
+  if (user) {
     res.json({
       _id: user._id,
       email: user.email,

@@ -318,12 +318,13 @@ input {
     justify-content: center;
 
     #register-data-info {
+      display: flex;
 
       .card {
         background-color: whitesmoke;
         color: black;
         box-shadow: 0 0 50px black;
-        margin: 3rem auto;
+        margin: 3rem;
         max-width: 800px;
         font-size: .8rem;
 

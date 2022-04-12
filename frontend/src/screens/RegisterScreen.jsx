@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Row from '../components/Row'
 import Column from '../components/Column'
 import bgPhoto from "../images/hero.jpg"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../actions/userActions'
+import { useNavigate } from 'react-router-dom'
+import { USER_REGISTER_RESET } from '../constants/userConstants'
 
 const RegisterScreen = () => {
   const [name, setName] = useState('')
@@ -17,6 +19,16 @@ const RegisterScreen = () => {
   const [homePhone, setHomePhone] = useState('')
 
   const disptach = useDispatch()
+  const navigate = useNavigate()
+
+  const { loading, success, error } = useSelector(state => state.userRegister)
+
+  useEffect(() => {
+    if (success) {
+      disptach({ type: USER_REGISTER_RESET })
+      navigate('/')
+    }
+  }, [success])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -136,7 +148,9 @@ const RegisterScreen = () => {
                 </Column>
               </Row>
               <Row>
-                <button type='submit' className='btn register-btn'>Register Now</button>
+                {loading ? <div>LOADING....</div> :
+                  <button type='submit' className='btn register-btn'>Register Now</button>
+                }
               </Row>
             </form>
           </div>
