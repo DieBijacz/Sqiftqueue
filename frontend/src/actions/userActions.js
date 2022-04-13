@@ -62,6 +62,7 @@ export const userLocation = (location) => async (dispatch, getState) => {
 
     // get user token for veryfication
     const { userLogin: { userInfo } } = getState()
+    const userId = userInfo._id
 
     const config = {
       headers: {
@@ -70,7 +71,7 @@ export const userLocation = (location) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put('/api/users/profile', { location }, config)
+    const { data } = await axios.put('/api/users/profile', { userId, location }, config)
 
     setTimeout(() => {
       dispatch({

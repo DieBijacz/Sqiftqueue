@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import User from "../Models/userModel.js";
 import generateToken from '../utils/generateToken.js'
+import colors from 'colors'
 
 // POST Auth user
 export const authUser = asyncHandler(async (req, res) => {
@@ -62,13 +63,24 @@ export const getUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
+// ====================== UPDATE USER PROFILE ======================
 export const updateUserProfile = asyncHandler(async (req, res) => {
-  console.log(req.body.location)
-  // const user = await User.findById(req.user._id)
-  // if (user) {
-  //   res.json(user)
-  // } else {
-  //   res.status(404)
-  //   throw new Error('User not found')
-  // }
+  const { userId, location } = req.body
+  console.log(userId, location)
+
+  const user = await User.findById(req.body.userId)
+  console.log(user)
+  if (user) {
+    user.name = req.body.name || user.name
+    user.email = req.body.email || user.email
+    if (location)
+      user.locations = [...user.locations, { latitude: location[0], longitude: location[1] }] || user.locations
+    console.log(`${user.locations}`.red)
+
+    const updatedUser = await user.save()
+    console.log(updatedUser)
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
 })
