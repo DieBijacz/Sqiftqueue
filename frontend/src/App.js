@@ -7,7 +7,7 @@ import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
 import Profile from './screens/Profile'
 import RegisterScreen from './screens/RegisterScreen'
-import Search from './screens/Search'
+import SearchScreen from './screens/SearchScreen'
 import WIPScreen from './screens/WIPScreen'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomeScreen />} />
           <Route path='/helpdesk' element={<HelpDeskScreen />} />
-          <Route path='/search' element={<Search />} />
+          <Route path='/search' element={<SearchScreen />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/clinicsmap' element={<ClinicsList />} />
           <Route path='/wip' element={<WIPScreen />} />

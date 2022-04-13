@@ -9,9 +9,7 @@ const ClinicsList = () => {
       <div className='blue-strip'></div>
       <Container>
         <main>
-          <div className='list span-2'>
-            
-          </div>
+          <h2>lewa strona odpowiada</h2>
           <div className='map'>
             <MapContainer center={position} zoom={13} scrollWheelZoom={true}>
               <TileLayer
@@ -26,6 +24,7 @@ const ClinicsList = () => {
             </MapContainer>
           </div>
         </main>
+
       </Container>
     </div>
   )

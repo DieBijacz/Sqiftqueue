@@ -61,3 +61,14 @@ export const getUserProfile = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 })
+
+export const updateUserProfile = asyncHandler(async (req, res) => {
+  console.log(req.body.location)
+  // const user = await User.findById(req.user._id)
+  // if (user) {
+  //   res.json(user)
+  // } else {
+  //   res.status(404)
+  //   throw new Error('User not found')
+  // }
+})

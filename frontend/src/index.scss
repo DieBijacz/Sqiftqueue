@@ -514,6 +514,10 @@ input {
   color: white;
   width: 100%;
 
+  .container {
+    flex-direction: column;
+  }
+
   .top {
     padding: 3rem 0;
 
@@ -523,7 +527,12 @@ input {
     }
   }
 
+  .row {
+    width: 100%;
+  }
+
   .searchbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -568,9 +577,15 @@ input {
 
 .clinics-map {
   main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
+
+  .map {
+    min-width: 400px;
+  }
+
 }
 
 .footer {

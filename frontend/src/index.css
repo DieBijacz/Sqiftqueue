@@ -648,6 +648,13 @@ input {
   width: 100%;
 }
 
+.search-for-appointment .container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .search-for-appointment .top {
   padding: 3rem 0;
 }
@@ -657,7 +664,12 @@ input {
   font-size: 2rem;
 }
 
+.search-for-appointment .row {
+  width: 100%;
+}
+
 .search-for-appointment .searchbar {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -713,10 +725,17 @@ input {
 }
 
 .clinics-map main {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.clinics-map .map {
+  min-width: 400px;
 }
 
 .footer {
