@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { logout } from '../actions/userActions'
+import { getUserDetails, logout } from '../actions/userActions'
 import Container from '../components/Container'
 
 const Profile = () => {
@@ -17,6 +17,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!userInfo) navigate('/')
+    dispatch(getUserDetails(userInfo._id))
   })
 
   return (

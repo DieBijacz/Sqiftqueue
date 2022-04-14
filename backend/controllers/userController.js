@@ -75,10 +75,8 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
     user.email = req.body.email || user.email
     if (location)
       user.locations = [...user.locations, { latitude: location[0], longitude: location[1] }] || user.locations
-    console.log(`${user.locations}`.red)
 
     const updatedUser = await user.save()
-    console.log(updatedUser)
   } else {
     res.status(404)
     throw new Error('User not found')

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { USER_LOCATION_FAIL, USER_LOCATION_REQUEST, USER_LOCATION_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants"
+import { USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOCATION_FAIL, USER_LOCATION_REQUEST, USER_LOCATION_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants"
 
 // LOGIN
 export const login = (email, password) => async (dispatch) => {
@@ -56,7 +56,38 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 }
 
-export const userLocation = (location) => async (dispatch, getState) => {
+// GET USER PROFILE
+export const getUserDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_DETAILS_REQUEST })
+
+    // get user token for veryfication
+    const { userLogin: { userInfo } } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`, //! token
+      },
+    }
+
+    const { data } = await axios.get('/api/users/profile', { id }, config)
+    console.log(data)
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data
+    })
+
+  } catch (error) {
+    dispatch({
+      type: USER_LOCATION_FAIL,
+      payload: error.message
+    })
+  }
+}
+
+// UPDATE USER LOCATION
+export const updateUserLocation = (location) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_LOCATION_REQUEST })
 

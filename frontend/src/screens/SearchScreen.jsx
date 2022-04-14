@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { userLocation } from '../actions/userActions'
+import { updateUserLocation } from '../actions/userActions'
 import Container from '../components/Container'
 import Row from '../components/Row'
 
 const Search = () => {
-  const [myCurrentLocation, setMyCurrentLocation] = useState('')
+  const [userLocation, setUserLocation] = useState('')
   const [loading, setLoading] = useState(false)
   const [allowed, setAllowed] = useState(false)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const userLogin = useSelector(state => state.userLogin)
+  const { loading: loadingUser, error, userInfo } = userLogin
+
   useEffect(() => {
-    if (myCurrentLocation) {
-      console.log(myCurrentLocation)
-      dispatch(userLocation(myCurrentLocation))
+    if (!userInfo) navigate('/login')
+    if (userLocation) {
+      console.log(userLocation)
+      dispatch(updateUserLocation(userLocation))
 
     } else {
       allowed && navigator.geolocation.getCurrentPosition((pos) => {
-        setMyCurrentLocation([pos.coords.latitude, pos.coords.longitude])
+        setUserLocation([pos.coords.latitude, pos.coords.longitude])
       })
     }
-  }, [navigate, myCurrentLocation, allowed])
+  }, [navigate, dispatch, userLocation, allowed, userInfo])
 
   return (
     <div className="search-for-appointment">
