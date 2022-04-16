@@ -67,10 +67,17 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     user.name = name || user.name
     user.email
-    if (location)
-      user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
-
+    if (location) {
+      // add only new locations 
+      if (user.locations.filter(loc => loc.latitude !== location[0] && loc.longitude !== location[1]).length === 0) {
+        user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
+        console.log('Dodał'.green.bold)
+      } else {
+        console.log('Nie dodał'.red.bold)
+      }
+    }
     const updatedUser = await user.save()
+    res.json(updatedUser)
   } else {
     res.status(404)
     throw new Error('User not found')

@@ -27,6 +27,19 @@ const appointmetSchema = mongoose.Schema({
   }
 }, { timestamps: true })
 
+const placeSchema = mongoose.Schema({
+  placeName: {
+    type: String,
+    required: true
+  },
+  address: {
+    address: { type: String, required: true },
+    city: { type: String, required: true },
+    postCode: { type: String, required: true },
+    country: { type: String, required: true },
+  }
+})
+
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -42,8 +55,8 @@ const userSchema = mongoose.Schema({
     required: true
   },
   locations: [locationSchema],
-  appointmets: [appointmetSchema]
-
+  appointmets: [appointmetSchema],
+  places: [placeSchema]
 }, {
   timestamps: true
 })

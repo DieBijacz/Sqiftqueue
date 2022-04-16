@@ -39,11 +39,12 @@ const ClinicsList = () => {
       generetedLocations.push(newLocation)
       id += 1
     }
+    console.log(generetedLocations)
     setAvailableLocations(generetedLocations)
   }
 
   function randomNumber() {
-    return (Math.random() * searchRange / 10)
+    return (Math.random() * (Math.random() > 0.5 ? -searchRange / 10 : searchRange / 10))
   }
 
   return (
@@ -55,7 +56,7 @@ const ClinicsList = () => {
             <h2>lewa strona odpowiada</h2>
             <input value={searchRange} onChange={(e) => setSearchRange(e.target.value)} type='range' min={0} max={20} />
             <p>{searchRange}</p>
-            <button onClick={() => console.log(genereteRandomLocations(userCoords))}>LOG</button>
+            <button onClick={() => genereteRandomLocations(userCoords)}>LOG</button>
           </Row>
           <div className='map'>
             {userCoords && (
