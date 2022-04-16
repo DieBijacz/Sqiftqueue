@@ -4,9 +4,28 @@ import mongoose from "mongoose";
 const locationSchema = mongoose.Schema({
   latitude: { type: String, required: true },
   longitude: { type: String, required: true }
-}, {
-  timestamps: true
-})
+}, { timestamps: true })
+
+const appointmetSchema = mongoose.Schema({
+  userName: {
+    type: String,
+    required: true
+  },
+  userEmail: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  address: {
+    address: { type: String, required: true },
+    city: { type: String, required: true },
+    postCode: { type: String, required: true },
+    country: { type: String, required: true },
+  }
+}, { timestamps: true })
 
 const userSchema = mongoose.Schema({
   name: {
@@ -22,7 +41,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  locations: [locationSchema]
+  locations: [locationSchema],
+  appointmets: [appointmetSchema]
+
 }, {
   timestamps: true
 })
