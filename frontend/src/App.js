@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import ClinicsList from './screens/ClinicsList'
+import ClinicsScreen from './screens/ClinicsScreen'
 import HelpDeskScreen from './screens/HelpDeskScreen'
 import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
@@ -20,7 +20,7 @@ function App() {
           <Route path='/helpdesk' element={<HelpDeskScreen />} />
           <Route path='/search' element={<SearchScreen />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/clinicsmap' element={<ClinicsList />} />
+          <Route path='/clinicsmap' element={<ClinicsScreen />} />
           <Route path='/wip' element={<WIPScreen />} />
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />

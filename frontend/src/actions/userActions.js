@@ -79,7 +79,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
     // get data from specific user based on passed id
     const { data } = await axios.get(`/api/users/${id}`, config)
-    console.log(data)
 
     // pass data to reducer
     dispatch({
@@ -98,7 +97,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 export const updateUserLocation = (location) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_LOCATION_REQUEST })
-    console.log('ok')
 
     // get user token for veryfication
     const { userLogin: { userInfo } } = getState()
@@ -112,7 +110,6 @@ export const updateUserLocation = (location) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put('/api/users/profile', { userId, location }, config)
-    console.log(data)
 
     setTimeout(() => {
       dispatch({
