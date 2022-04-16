@@ -59,25 +59,33 @@ export const register = (name, email, password) => async (dispatch) => {
 // GET USER PROFILE
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
-    dispatch({ type: USER_DETAILS_REQUEST })
+    dispatch({
+      type: USER_DETAILS_REQUEST,
+    })
 
-    // get user token for veryfication
-    const { userLogin: { userInfo } } = getState()
+    // Get userInfo from state
+    const {
+      userLogin: { userInfo },
+    } = getState()
 
+    // prepare headers with user token inside
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`, //! token
+        // token
+        Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
-    const { data } = await axios.get('/api/users/profile', { id }, config)
+    // get data from specific user based on passed id
+    const { data } = await axios.get(`/api/users/${id}`, config)
     console.log(data)
+
+    // pass data to reducer
     dispatch({
       type: USER_DETAILS_SUCCESS,
-      payload: data
+      payload: data,
     })
-
   } catch (error) {
     dispatch({
       type: USER_LOCATION_FAIL,
@@ -90,6 +98,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 export const updateUserLocation = (location) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_LOCATION_REQUEST })
+    console.log('ok')
 
     // get user token for veryfication
     const { userLogin: { userInfo } } = getState()
@@ -103,6 +112,7 @@ export const updateUserLocation = (location) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put('/api/users/profile', { userId, location }, config)
+    console.log(data)
 
     setTimeout(() => {
       dispatch({

@@ -2,8 +2,8 @@ import bcrypt from 'bcryptjs'
 import mongoose from "mongoose";
 
 const locationSchema = mongoose.Schema({
-  latitude: {type: String, required: true},
-  longitude: {type: String, required: true}
+  latitude: { type: String, required: true },
+  longitude: { type: String, required: true }
 }, {
   timestamps: true
 })
@@ -29,15 +29,15 @@ const userSchema = mongoose.Schema({
 
 // METHOD TO CHECK USER PASSWORD
 // to be called on specific user -> this.password = user.password
-userSchema.methods.matchPassword = async function(enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
 // PASSWORD ENCRYPTION MIDDLEWARE
 // to encrypt user password when register
 // to be executed before save -> .pre save
-userSchema.pre('save', async function(next) {
-  if(!this.isModified('password')) {
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
     next()
   }
 

@@ -12,7 +12,6 @@ export const authUser = asyncHandler(async (req, res) => {
     res.json({
       _id: user._id,
       email: user.email,
-      locations: user.locations,
       token: generateToken(user._id)
     })
   } else {
@@ -49,14 +48,11 @@ export const registerUser = asyncHandler(async (req, res) => {
 })
 
 // GET user Profile
-export const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id)
+export const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select('-password')
+
   if (user) {
-    res.json({
-      _id: user._id,
-      email: user.email,
-      locations: user.locations,
-    })
+    res.json(user)
   } else {
     res.status(401)
     throw new Error('User not found')
@@ -65,16 +61,14 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 
 // ====================== UPDATE USER PROFILE ======================
 export const updateUserProfile = asyncHandler(async (req, res) => {
-  const { userId, location } = req.body
-  console.log(userId, location)
+  const { userId, location, name } = req.body
 
-  const user = await User.findById(req.body.userId)
-  console.log(user)
+  const user = await User.findById(userId)
   if (user) {
-    user.name = req.body.name || user.name
-    user.email = req.body.email || user.email
+    user.name = name || user.name
+    user.email
     if (location)
-      user.locations = [...user.locations, { latitude: location[0], longitude: location[1] }] || user.locations
+      user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
 
     const updatedUser = await user.save()
   } else {

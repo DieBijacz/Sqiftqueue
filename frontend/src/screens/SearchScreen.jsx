@@ -7,7 +7,7 @@ import Row from '../components/Row'
 
 const Search = () => {
   const [userLocation, setUserLocation] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [moving, setMoving] = useState(false)
   const [allowed, setAllowed] = useState(false)
 
   const navigate = useNavigate()
@@ -19,9 +19,11 @@ const Search = () => {
   useEffect(() => {
     if (!userInfo) navigate('/login')
     if (userLocation) {
-      console.log(userLocation)
       dispatch(updateUserLocation(userLocation))
-
+      setMoving(true)
+      setTimeout(() => {
+        navigate('/clinicsmap')
+      }, 2000)
     } else {
       allowed && navigator.geolocation.getCurrentPosition((pos) => {
         setUserLocation([pos.coords.latitude, pos.coords.longitude])
@@ -36,7 +38,7 @@ const Search = () => {
           <div className="top">
             <div>
               <button onClick={() => setAllowed(true)}>Use my current location</button>
-              {loading && <h1>You will be moved</h1>}
+              {moving && <h1>You will be moved</h1>}
             </div>
             <span>Find a GP/Clinic and Book an Appointment</span>
             <span>Simple Instant Healthcare Bookings</span>
