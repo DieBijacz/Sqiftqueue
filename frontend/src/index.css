@@ -104,7 +104,7 @@ input {
 
 .container {
   position: relative;
-  width: 1000px;
+  width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -732,10 +732,23 @@ input {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 1rem;
+}
+
+.clinics-map main .locations {
+  width: 100%;
+}
+
+.clinics-map main .locations .location {
+  margin: 2px;
+  background-color: #002940;
+  color: white;
+  padding: 10px;
 }
 
 .clinics-map .map {
   min-width: 400px;
+  margin: 1rem 0;
 }
 
 .footer {

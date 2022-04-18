@@ -99,7 +99,7 @@ input {
 // COMPONENTS
 .container {
   position: relative;
-  width: 1000px;
+  width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -580,10 +580,25 @@ input {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
+
+    .locations {
+      width: 100%;
+
+      .location {
+        margin: 2px;
+        background-color: #002940;
+        color: white;
+        padding: 10px;
+      }
+    }
   }
+
+  .card {}
 
   .map {
     min-width: 400px;
+    margin: 1rem 0;
   }
 
 }

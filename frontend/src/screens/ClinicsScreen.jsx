@@ -12,7 +12,7 @@ const ClinicsList = () => {
 
   const [userCoords, setUserCoords] = useState(null)
   const [avaiableLocations, setAvailableLocations] = useState([])
-  const [searchRange, setSearchRange] = useState(10)
+  const [searchRange, setSearchRange] = useState(1)
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -34,8 +34,13 @@ const ClinicsList = () => {
   function genereteRandomLocations(coords) {
     let generetedLocations = []
     let id = 1
-    while (generetedLocations.length < 10) {
-      const newLocation = [coords[0] + randomNumber(), coords[1] + randomNumber(), id]
+    while (generetedLocations.length < (searchRange * 30)) {
+      const newLocation = {
+        id,
+        latitude: coords[0] + randomNumber(),
+        longitude: coords[1] + randomNumber(),
+      }
+      // const newLocation = [coords[0] + randomNumber(), coords[1] + randomNumber(), id]
       generetedLocations.push(newLocation)
       id += 1
     }
@@ -52,28 +57,37 @@ const ClinicsList = () => {
       <div className='blue-strip'></div>
       <Container>
         <main>
-          <Row>
-            <h2>lewa strona odpowiada</h2>
-            <input value={searchRange} onChange={(e) => setSearchRange(e.target.value)} type='range' min={0} max={20} />
-            <p>{searchRange}</p>
-            <button onClick={() => genereteRandomLocations(userCoords)}>LOG</button>
-          </Row>
+          <div className="locations">
+            {avaiableLocations && avaiableLocations.map(loc => (
+              <div className='location'>
+                id: {loc.id} <br />
+                lat: {loc.latitude} <br />
+                lat: {loc.longitude} <br />
+              </div>
+            ))}
+          </div>
           <div className='map'>
+            <div>
+              <input value={searchRange} onChange={(e) => setSearchRange(e.target.value)} type='range' min={1} max={5} />
+              <button className='btn btn-green' onClick={() => genereteRandomLocations(userCoords)}>LOG</button>
+            </div>
             {userCoords && (
-              <MapContainer center={userCoords} zoom={10} scrollWheelZoom={true}>
+              <MapContainer center={userCoords} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 />
                 <Marker position={userCoords}>
                   <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    You are here!
                   </Popup>
                 </Marker>
                 {avaiableLocations.map(loc => {
-                  return <Marker key={loc[2]} position={[loc[0], loc[1]]}>
+                  return <Marker key={loc.id} riseOnHover position={[loc.latitude, loc.longitude]}>
                     <Popup>
-                      {loc[2]}
+                      Location Id: {loc.id} <br />
+                      lat: {loc.latitude.toFixed(2)} <br />
+                      long: {loc.longitude.toFixed(2)}
                     </Popup>
                   </Marker>
                 })}
@@ -83,7 +97,7 @@ const ClinicsList = () => {
         </main>
 
       </Container>
-    </div>
+    </div >
   )
 }
 
