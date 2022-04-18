@@ -10,9 +10,8 @@ const ClinicsList = () => {
   const navigate = useNavigate()
   const disptach = useDispatch()
 
-  const [userCoords, setUserCoords] = useState(null)
-  const [avaiableLocations, setAvailableLocations] = useState([])
   const [searchRange, setSearchRange] = useState(1)
+  const [userData, setUserData] = useState(null)
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -25,32 +24,10 @@ const ClinicsList = () => {
     if (!user) {
       disptach(getUserDetails(userInfo._id))
     } else {
-      const updatedCoords = [Number(user.locations[0].latitude), Number(user.locations[0].longitude)]
-      setUserCoords(updatedCoords)
-      // genereteRandomLocations(updatedCoords)
+      setUserData(user)
     }
-  }, [disptach, navigate, user, userInfo])
-
-  function genereteRandomLocations(coords) {
-    let generetedLocations = []
-    let id = 1
-    while (generetedLocations.length < (searchRange * 30)) {
-      const newLocation = {
-        id,
-        latitude: coords[0] + randomNumber(),
-        longitude: coords[1] + randomNumber(),
-      }
-      // const newLocation = [coords[0] + randomNumber(), coords[1] + randomNumber(), id]
-      generetedLocations.push(newLocation)
-      id += 1
-    }
-    console.log(generetedLocations)
-    setAvailableLocations(generetedLocations)
-  }
-
-  function randomNumber() {
-    return (Math.random() * (Math.random() > 0.5 ? -searchRange / 10 : searchRange / 10))
-  }
+    console.log(userData)
+  }, [disptach, navigate, user, userInfo, userData])
 
   return (
     <div className='clinics-map'>
@@ -58,36 +35,35 @@ const ClinicsList = () => {
       <Container>
         <main>
           <div className="locations">
-            {avaiableLocations && avaiableLocations.map(loc => (
-              <div className='location'>
-                id: {loc.id} <br />
-                lat: {loc.latitude} <br />
-                lat: {loc.longitude} <br />
+            {userData && userData.places.map(place => (
+              <div key={place._id} className='location'>
+                id: {place._id} <br />
+                lat: {place.latitude} <br />
+                lat: {place.longitude} <br />
               </div>
             ))}
           </div>
           <div className='map'>
             <div>
               <input value={searchRange} onChange={(e) => setSearchRange(e.target.value)} type='range' min={1} max={5} />
-              <button className='btn btn-green' onClick={() => genereteRandomLocations(userCoords)}>LOG</button>
             </div>
-            {userCoords && (
-              <MapContainer center={userCoords} zoom={13} scrollWheelZoom={true}>
+            {userData && (
+              <MapContainer center={[userData.locations[0].latitude, userData.locations[0].longitude]} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 />
-                <Marker position={userCoords}>
+                <Marker position={[userData.locations[0].latitude, userData.locations[0].longitude]}>
                   <Popup>
                     You are here!
                   </Popup>
                 </Marker>
-                {avaiableLocations.map(loc => {
-                  return <Marker key={loc.id} riseOnHover position={[loc.latitude, loc.longitude]}>
+                {userData.places.map(place => {
+                  return <Marker key={place._id} riseOnHover position={[place.latitude, place.longitude]}>
                     <Popup>
-                      Location Id: {loc.id} <br />
-                      lat: {loc.latitude.toFixed(2)} <br />
-                      long: {loc.longitude.toFixed(2)}
+                      Location Id: {place._id} <br />
+                      lat: {place.latitude} <br />
+                      long: {place.longitude}
                     </Popup>
                   </Marker>
                 })}

@@ -67,11 +67,33 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     user.name = name || user.name
     user.email
+    // if updateds location
     if (location) {
-      // add only new locations 
+      // adds only new locations 
       if (user.locations.filter(loc => loc.latitude !== location[0] && loc.longitude !== location[1]).length === 0) {
         user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
         console.log('Dodał'.green.bold)
+        // generate random clinics for new user location
+
+        function genereteRandomLocations(coords) {
+          let generetedLocations = 0
+          while (generetedLocations < 2) { //TODO SEARACH RANGE
+            const newLocation = {
+              latitude: (coords[0] + randomNumber()).toFixed(10),
+              longitude: (coords[1] + randomNumber()).toFixed(10),
+            }
+            user.places = [...user.places, { latitude: newLocation.latitude, longitude: newLocation.longitude }]
+            generetedLocations += 1
+          }
+          console.log(`${user.places}`.green.bold)
+        }
+
+        function randomNumber() {
+          return (Math.random() * (Math.random() > 0.5 ? -2 / 10 : 2 / 10))
+        }
+
+        genereteRandomLocations(location)
+
       } else {
         console.log('Nie dodał'.red.bold)
       }

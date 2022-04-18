@@ -740,10 +740,19 @@ input {
 }
 
 .clinics-map main .locations .location {
-  margin: 2px;
-  background-color: #002940;
+  margin: 20px;
+  background-color: #b5bbf3;
   color: white;
   padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+}
+
+.clinics-map main .locations .location:nth-child(2n) {
+  background-color: #7c83c7;
 }
 
 .clinics-map .map {

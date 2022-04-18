@@ -586,10 +586,18 @@ input {
       width: 100%;
 
       .location {
-        margin: 2px;
-        background-color: #002940;
-        color: white;
+        margin: 20px;
+        background-color: #b5bbf3;
+        color: rgb(255, 255, 255);
         padding: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 20px;
+        box-shadow: 0 0 5px black;
+      }
+
+      .location:nth-child(2n) {
+        background-color: #7c83c7;
       }
     }
   }
