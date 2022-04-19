@@ -102,6 +102,32 @@ input {
           flex-direction: column;
 }
 
+.icon {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  height: 1.3rem;
+}
+
+.icon:hover {
+  font-size: 1.3rem;
+}
+
+.align-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
 .container {
   position: relative;
   width: 1200px;
@@ -737,22 +763,39 @@ input {
 
 .clinics-map main .locations {
   width: 100%;
+  max-height: 600px;
+  margin: 1rem 0;
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 10px #a3a3a3;
+          box-shadow: 0 0 10px #a3a3a3;
+  border-radius: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .clinics-map main .locations .location {
   margin: 20px;
-  background-color: #b5bbf3;
+  background-color: var(--second-blue);
   color: white;
   padding: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 20px;
-  -webkit-box-shadow: 0 0 5px black;
-          box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 5px var(--main-blue);
+          box-shadow: 0 0 5px var(--main-blue);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .clinics-map main .locations .location:nth-child(2n) {
-  background-color: #7c83c7;
+  background-color: white;
+  color: var(--second-blue);
+}
+
+.clinics-map main .locations .location:nth-child(2n) .icon {
+  color: var(--second-blue);
 }
 
 .clinics-map .map {

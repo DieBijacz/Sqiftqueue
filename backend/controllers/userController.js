@@ -74,10 +74,9 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
         user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
         console.log('Dodał'.green.bold)
         // generate random clinics for new user location
-
         function genereteRandomLocations(coords) {
           let generetedLocations = 0
-          while (generetedLocations < 2) { //TODO SEARACH RANGE
+          while (generetedLocations < 20) { //TODO SEARACH RANGE
             const newLocation = {
               latitude: (coords[0] + randomNumber()).toFixed(10),
               longitude: (coords[1] + randomNumber()).toFixed(10),
@@ -85,11 +84,10 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
             user.places = [...user.places, { latitude: newLocation.latitude, longitude: newLocation.longitude }]
             generetedLocations += 1
           }
-          console.log(`${user.places}`.green.bold)
         }
 
         function randomNumber() {
-          return (Math.random() * (Math.random() > 0.5 ? -2 / 10 : 2 / 10))
+          return (Math.random() * (Math.random() > 0.5 ? -1 / 10 : 1 / 10)) //TODO -1 and 1 sets range
         }
 
         genereteRandomLocations(location)

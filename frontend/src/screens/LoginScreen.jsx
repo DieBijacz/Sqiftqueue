@@ -9,7 +9,7 @@ import { login } from '../actions/userActions'
 
 const LoginScreen = () => {
   const [showDataInfo, setShowDataInfo] = useState(false)
-  const [email, setEmail] = useState('mastanilewicz@gmail.com') //!TO BE REMOVED
+  const [email, setEmail] = useState('masta@example.com') //!TO BE REMOVED
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()

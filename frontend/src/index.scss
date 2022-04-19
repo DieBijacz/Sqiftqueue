@@ -89,6 +89,26 @@ input {
   flex-direction: column;
 }
 
+.icon {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  height: 1.3rem;
+
+  &:hover {
+    font-size: 1.3rem;
+  }
+}
+
+
+.align-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -584,25 +604,35 @@ input {
 
     .locations {
       width: 100%;
+      max-height: 600px;
+      margin: 1rem 0;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgb(163, 163, 163);
+      border-radius: 20px;
+      overflow: hidden;
+      overflow-y: scroll;
 
       .location {
         margin: 20px;
-        background-color: #b5bbf3;
+        background-color: var(--second-blue);
         color: rgb(255, 255, 255);
         padding: 10px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        border-radius: 20px;
-        box-shadow: 0 0 5px black;
+        border-radius: 10px;
+        box-shadow: 0 0 5px var(--main-blue);
+        display: flex;
+        justify-content: space-between;
       }
 
       .location:nth-child(2n) {
-        background-color: #7c83c7;
+        background-color: white;
+        color: var(--second-blue);
+
+        .icon {
+          color: var(--second-blue);
+        }
       }
     }
   }
-
-  .card {}
 
   .map {
     min-width: 400px;
@@ -610,6 +640,8 @@ input {
   }
 
 }
+
+
 
 .footer {
   background-color: #333;
