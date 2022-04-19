@@ -28,6 +28,10 @@ const appointmetSchema = mongoose.Schema({
 }, { timestamps: true })
 
 const placeSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
   latitude: {
     type: String,
     required: true

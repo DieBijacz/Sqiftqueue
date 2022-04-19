@@ -2,6 +2,7 @@ import asyncHandler from 'express-async-handler'
 import User from "../Models/userModel.js";
 import generateToken from '../utils/generateToken.js'
 import colors from 'colors'
+import { names } from '../data/ClinicNames.js';
 
 // POST Auth user
 export const authUser = asyncHandler(async (req, res) => {
@@ -76,12 +77,15 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
         // generate random clinics for new user location
         function genereteRandomLocations(coords) {
           let generetedLocations = 0
-          while (generetedLocations < 20) { //TODO SEARACH RANGE
+          while (generetedLocations < 10) { //TODO SEARACH RANGE
+            // create new location
             const newLocation = {
+              name: names[generetedLocations],
               latitude: (coords[0] + randomNumber()).toFixed(10),
               longitude: (coords[1] + randomNumber()).toFixed(10),
             }
-            user.places = [...user.places, { latitude: newLocation.latitude, longitude: newLocation.longitude }]
+            // add new locations to previous
+            user.places = [...user.places, { ...newLocation }]
             generetedLocations += 1
           }
         }

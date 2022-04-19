@@ -1,0 +1,20 @@
+export const names = [
+  'Geralt Pharmacy',
+  'Django Pharmacy',
+  'Python Pharmacy',
+  'Warhammer Pharmacy',
+  'Thrall Pharmacy',
+  'Masta Pharmacy',
+  'Emcik Pharmacy',
+  'Wacom Clinic',
+  'Szklanka Clinic',
+  'Kluczyk Clinic',
+  'Szczątki Clinic',
+  'Zgłębnik Clinic',
+  'Papuga Clinic',
+  'Plecy Clinic',
+  'Lampa Clinic',
+  'Matrix Clinic',
+  'Klimed Clinic',
+  'Frytka Clinic'
+]

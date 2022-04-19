@@ -1,19 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
-import { MapContainer, TileLayer, Marker, Popup, useMapEvent, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
-import Row from '../components/Row'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCrosshairs } from '@fortawesome/free-solid-svg-icons'
-import { Map } from 'leaflet'
 
 const ClinicsList = () => {
   const navigate = useNavigate()
   const disptach = useDispatch()
 
-  const mapRef = useRef()
   const [userData, setUserData] = useState(null)
   const [showLocation, setShowLocation] = useState()
 
@@ -52,6 +49,7 @@ const ClinicsList = () => {
             {userData && userData.places.map(place => (
               <div key={place._id} className='location'>
                 <>
+                  name: {place.name} <br />
                   id: {place._id} <br />
                   lat: {place.latitude} <br />
                   lat: {place.longitude} <br />
@@ -66,7 +64,6 @@ const ClinicsList = () => {
             ))}
           </div>
           <div className='map'>
-            {showLocation}
             {userData && (
               <MapContainer center={[51.30, -0.7]} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
@@ -82,6 +79,7 @@ const ClinicsList = () => {
                 {userData.places.map(place => {
                   return <Marker key={place._id} riseOnHover position={[place.latitude, place.longitude]}>
                     <Popup>
+                      <span>{place.name}</span>
                       Location Id: {place._id} <br />
                       lat: {place.latitude} <br />
                       long: {place.longitude}
