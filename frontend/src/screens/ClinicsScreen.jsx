@@ -27,6 +27,7 @@ const ClinicsList = () => {
     } else {
       setUserData(user)
     }
+    console.log(userData)
   }, [disptach, navigate, user, userInfo, userData])
 
   function setLocationHandler(e) {
@@ -34,6 +35,7 @@ const ClinicsList = () => {
     const coords = [location.latitude, location.longitude]
     setShowLocation(coords)
   }
+
   function GoTo({ location }) {
     const map = useMap()
     map.flyTo(location, 14, { duration: 1.5 })
@@ -79,7 +81,7 @@ const ClinicsList = () => {
                 {userData.places.map(place => {
                   return <Marker key={place._id} riseOnHover position={[place.latitude, place.longitude]}>
                     <Popup>
-                      <span>{place.name}</span>
+                      <span>{place.name}</span> <br />
                       Location Id: {place._id} <br />
                       lat: {place.latitude} <br />
                       long: {place.longitude}

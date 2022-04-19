@@ -16,5 +16,7 @@ export const names = [
   'Lampa Clinic',
   'Matrix Clinic',
   'Klimed Clinic',
-  'Frytka Clinic'
+  'Frytka Clinic',
+  'Teraz Clinic',
+  'To Tu Clinic',
 ]

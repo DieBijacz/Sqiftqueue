@@ -3,6 +3,7 @@ import User from "../Models/userModel.js";
 import generateToken from '../utils/generateToken.js'
 import colors from 'colors'
 import { names } from '../data/ClinicNames.js';
+import { generateRandomPlaces } from '../Hooks/generateRandomPlaces.js';
 
 // POST Auth user
 export const authUser = asyncHandler(async (req, res) => {
@@ -61,6 +62,8 @@ export const getUserById = asyncHandler(async (req, res) => {
 })
 
 // ====================== UPDATE USER PROFILE ======================
+// uppdates user details
+// creates new locations
 export const updateUserProfile = asyncHandler(async (req, res) => {
   const { userId, location, name } = req.body
 
@@ -70,32 +73,12 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
     user.email
     // if updateds location
     if (location) {
-      // adds only new locations 
+      // adds only new location to user locations
       if (user.locations.filter(loc => loc.latitude !== location[0] && loc.longitude !== location[1]).length === 0) {
         user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
         console.log('Dodał'.green.bold)
-        // generate random clinics for new user location
-        function genereteRandomLocations(coords) {
-          let generetedLocations = 0
-          while (generetedLocations < 10) { //TODO SEARACH RANGE
-            // create new location
-            const newLocation = {
-              name: names[generetedLocations],
-              latitude: (coords[0] + randomNumber()).toFixed(10),
-              longitude: (coords[1] + randomNumber()).toFixed(10),
-            }
-            // add new locations to previous
-            user.places = [...user.places, { ...newLocation }]
-            generetedLocations += 1
-          }
-        }
 
-        function randomNumber() {
-          return (Math.random() * (Math.random() > 0.5 ? -1 / 10 : 1 / 10)) //TODO -1 and 1 sets range
-        }
-
-        genereteRandomLocations(location)
-
+        generateRandomPlaces(user, location)
       } else {
         console.log('Nie dodał'.red.bold)
       }
@@ -106,4 +89,8 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('User not found')
   }
+})
+
+export const generateAppointments = asyncHandler(async (req, res) => {
+
 })

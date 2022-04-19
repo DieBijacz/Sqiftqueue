@@ -39,14 +39,9 @@ const placeSchema = mongoose.Schema({
   longitude: {
     type: String,
     required: true
+  },
+  availableAppointments: {
   }
-  // placeName: {
-  //   type: String,
-  //   required: true
-  // },
-  // address: {
-  //   city: { type: String, required: true },
-  // }
 })
 
 const userSchema = mongoose.Schema({
