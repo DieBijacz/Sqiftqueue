@@ -197,6 +197,24 @@ input {
   height: 400px;
 }
 
+.popup span {
+  line-height: 2em;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.popup .popup-bottom {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 3px;
+}
+
+.popup .popup-bottom button {
+  padding: 5px;
+  margin: 3px auto;
+}
+
 .header {
   height: 65px;
   max-width: 1000px;
@@ -625,28 +643,26 @@ input {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  gap: 1rem;
 }
 
-.helpdesk .main .blocks a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: center;
+.helpdesk .main .blocks button {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 200px;
           flex: 1 0 200px;
+  padding: 30px;
   border: 1px solid var(--main-green);
   color: var(--main-green);
-  gap: 1rem;
-  padding: 20px 30px;
-  margin: 1rem;
+  background-color: white;
+  border-radius: 5px;
 }
 
-.helpdesk .main .blocks a:hover {
+.helpdesk .main .blocks button :nth-child(1) {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.helpdesk .main .blocks button:hover {
   background-color: var(--main-green);
   color: white;
 }
@@ -660,10 +676,11 @@ input {
 }
 
 .helpdesk .main .promoted-articles .promoted-articles-item {
+  padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }
 
-.helpdesk .main .promoted-articles .promoted-articles-item a:hover {
+.helpdesk .main .promoted-articles .promoted-articles-item p:hover {
   text-decoration: underline;
 }
 
@@ -764,11 +781,6 @@ input {
 .clinics-map main .locations {
   width: 100%;
   max-height: 1000px;
-  margin: 1rem 0;
-  padding: 1rem;
-  -webkit-box-shadow: 0 0 10px #a3a3a3;
-          box-shadow: 0 0 10px #a3a3a3;
-  border-radius: 20px;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -778,7 +790,7 @@ input {
   background-color: var(--second-blue);
   color: white;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   -webkit-box-shadow: 0 0 5px var(--main-blue);
           box-shadow: 0 0 5px var(--main-blue);
   display: -webkit-box;

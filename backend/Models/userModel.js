@@ -27,6 +27,13 @@ const appointmetSchema = mongoose.Schema({
   }
 }, { timestamps: true })
 
+const slot = mongoose.Schema({
+  time: {
+    type: String,
+    required: true
+  }
+})
+
 const placeSchema = mongoose.Schema({
   name: {
     type: String,
@@ -40,8 +47,11 @@ const placeSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  availableAppointments: {
-  }
+  phone: {
+    type: String,
+    required: true
+  },
+  availableAppointments: [slot]
 })
 
 const userSchema = mongoose.Schema({

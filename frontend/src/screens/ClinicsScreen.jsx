@@ -27,7 +27,7 @@ const ClinicsList = () => {
     } else {
       setUserData(user)
     }
-    console.log(userData)
+    userData && console.log(userData)
   }, [disptach, navigate, user, userInfo, userData])
 
   function setLocationHandler(e) {
@@ -42,6 +42,10 @@ const ClinicsList = () => {
     return null
   }
 
+  function bookAppointmentHandler(e) {
+    e.preventDefault()
+  }
+
   return (
     <div className='clinics-map'>
       <div className='blue-strip'></div>
@@ -51,15 +55,15 @@ const ClinicsList = () => {
             {userData && userData.places.map(place => (
               <div key={place._id} className='location'>
                 <>
-                  name: {place.name} <br />
-                  id: {place._id} <br />
-                  lat: {place.latitude} <br />
-                  lat: {place.longitude} <br />
+                  {place.name} <br />
+                  {`(${place.phone})`} <br />
+                  8:00 - 18:00
                 </>
                 <div className='align-right'>
                   <button value={place._id} className='icon' onClick={(e) => setLocationHandler(e)}><FontAwesomeIcon icon={faCrosshairs} /></button>
                   <div>
                     Next available appointment: <br />
+                    {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
                   </div>
                 </div>
               </div>
@@ -80,11 +84,20 @@ const ClinicsList = () => {
                 </Marker>
                 {userData.places.map(place => {
                   return <Marker key={place._id} riseOnHover position={[place.latitude, place.longitude]}>
-                    <Popup>
+                    <Popup className='popup'>
                       <span>{place.name}</span> <br />
-                      Location Id: {place._id} <br />
-                      lat: {place.latitude} <br />
-                      long: {place.longitude}
+                      {`(${place.phone})`} <br />
+                      <div className="popup-bottom">
+                        <form onSubmit={(e) => bookAppointmentHandler(e)}>
+                          Next available time: <br />
+                          <select onChange={(e) => console.log(e.target.value)}>
+                            <option>Select time</option>
+                            {place.availableAppointments.map(a => <option key={a._id} value={a._id}>{a.time}</option>)}
+                          </select>
+                          <br />
+                          <button type='submit' className='btn'>Book an appointment</button>
+                        </form>
+                      </div>
                     </Popup>
                   </Marker>
                 })}
@@ -92,7 +105,6 @@ const ClinicsList = () => {
             )}
           </div>
         </main>
-
       </Container>
     </div >
   )

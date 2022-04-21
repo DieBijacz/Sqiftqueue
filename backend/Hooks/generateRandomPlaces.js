@@ -1,17 +1,18 @@
 import { names } from "../data/ClinicNames.js"
 
 const NUMBER_OF_PLACES = 10
-const MAX_APPOINTMENTS_FOR_PLACE = 4
+const MAX_APPOINTMENTS_FOR_PLACE = 7
 
 export const generateRandomPlaces = (user, coords) => {
   let generatedPlaces = 0
   while (generatedPlaces < NUMBER_OF_PLACES) {
     // generate available appointments
-    const appointmets = generateAppointments(Math.floor(Math.random() * MAX_APPOINTMENTS_FOR_PLACE))
+    const appointmets = generateAppointments(Math.floor(Math.random() * MAX_APPOINTMENTS_FOR_PLACE) + 1)
 
     // create new place
     const newPlace = {
       name: names[generatedPlaces],
+      phone: '02476257930',
       latitude: (coords[0] + randomNumber(0.5, 20)).toFixed(10),
       longitude: (coords[1] + randomNumber(0.5, 20)).toFixed(10),
       availableAppointments: [...appointmets]
@@ -31,15 +32,19 @@ export const generateRandomPlaces = (user, coords) => {
 
 export const generateAppointments = (n) => {
   const appointmets = []
-  while (appointmets.length < n + 1) {
+  while (appointmets.length < n) {
     const add = (Math.floor(Math.random() * 40) * 15)
     const m = ((480 + add) / 60).toString().split('.')[1]
     const hour = ((480 + add) / 60).toString().split('.')[0]
     const min = m === undefined ? '00' : m === '75' ? '45' : m === '25' ? '15' : '00'
-    const newApp = {
-      time: `${hour}:${min}`
-    }
+
+    const newApp = { time: `${hour.length === 1 ? `0${hour}` : `${hour}`}:${min}` } // add '0' to 8:45 => 08:45
     appointmets.push(newApp)
   }
+  // SORT 
+  appointmets.sort((a, b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0))
+
   return appointmets
 }
+
+generateAppointments(4)
