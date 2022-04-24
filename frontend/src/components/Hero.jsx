@@ -1,5 +1,4 @@
 import React from 'react'
-import bgPhoto from "../images/hero.jpg"
 import Container from './Container'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,8 +6,7 @@ const Hero = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="hero">
-      <img src={bgPhoto} alt='...' className='bg-img' />
+    <div className="hero bg-image">
       <div className="blue-strip">
         Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
       </div>

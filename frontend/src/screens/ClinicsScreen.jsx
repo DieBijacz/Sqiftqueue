@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
 
 const ClinicsList = () => {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ const ClinicsList = () => {
   }
 
   return (
-    <div className='clinics-map'>
+    <motion.div className='clinics-map' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: '100%' }}>
       <div className='blue-strip'></div>
       <Container>
         <main>
@@ -106,7 +107,7 @@ const ClinicsList = () => {
           </div>
         </main>
       </Container>
-    </div >
+    </motion.div >
   )
 }
 

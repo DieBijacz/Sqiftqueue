@@ -2,11 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Container from '../components/Container'
 import bgPhoto from "../images/hero.jpg"
+import { motion } from 'framer-motion'
 
 const HelpDeskScreen = () => {
   const navigate = useNavigate()
   return (
-    <div className='helpdesk'>
+    <motion.div className='helpdesk' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: '100%' }}>
       <img src={bgPhoto} alt='...' />
       <Container>
         <div className="main">
@@ -64,7 +65,7 @@ const HelpDeskScreen = () => {
           </ul>
         </div>
       </Container>
-    </div>
+    </motion.div>
 
   )
 }

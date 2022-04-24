@@ -66,19 +66,50 @@ hr {
   margin: 2rem 0;
 }
 
-img,
-form,
-input {
-  width: 100%;
+.bg-image {
+  background-image: url("../src/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-.bg-img {
+.backdrop {
   position: absolute;
   inset: 0;
-  z-index: -20;
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal {
+  width: clamp(50%, 700px, 90%);
+  height: calc(max(50%, 600px));
+  margin: auto;
+  padding: 2rem;
+  border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.modal-register {
+  font-size: .8em;
 }
 
 .row {
@@ -149,7 +180,8 @@ input {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
+  width: clamp(50%, 900px, 90%);
+  height: calc(min(50%, 300px));
 }
 
 *::-webkit-scrollbar {
@@ -393,7 +425,7 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-align: start;
+  text-align: flex-start;
   gap: 1rem;
 }
 
@@ -406,21 +438,7 @@ input {
   margin: 0 auto 0 0;
 }
 
-.login-screen {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 .login-screen section {
-  position: relative;
   min-height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -433,48 +451,7 @@ input {
           justify-content: center;
 }
 
-.login-screen section #register-data-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.login-screen section #register-data-info .card {
-  background-color: whitesmoke;
-  color: black;
-  -webkit-box-shadow: 0 0 50px black;
-          box-shadow: 0 0 50px black;
-  margin: 3rem;
-  max-width: 800px;
-  font-size: .8rem;
-}
-
-.login-screen section #register-data-info .card p {
-  text-align: start;
-}
-
-.login-screen section #register-data-info .card h4,
-.login-screen section #register-data-info .card h1 {
-  font-weight: 400;
-}
-
-.login-screen section #register-data-info .card ul {
-  text-align: start;
-  list-style: initial;
-  margin: 10px 0 10px 30px;
-}
-
-.login-screen section #register-data-info .card .buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-}
-
 .login-screen section #login-register {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -482,138 +459,6 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.login-screen section #login-register .card .row {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.login-screen section #login-register .card #register-btn {
-  background: #024166;
-  padding: 2rem;
-  font-size: 2rem;
-  margin: 1rem 0;
-}
-
-.login-screen section #login-register .card form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1rem;
-}
-
-.login-screen section #login-register .card form input {
-  width: 100%;
-}
-
-.register-screen {
-  position: relative;
-}
-
-.register-screen hr {
-  margin: 10px 0;
-}
-
-.register-screen section {
-  position: relative;
-}
-
-.register-screen section h1 {
-  margin-bottom: 1rem;
-}
-
-.register-screen section p {
-  font-size: .8rem;
-}
-
-.register-screen section button {
-  margin: 10px auto 10px 0;
-}
-
-.register-screen section .register-btn {
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  font-size: 2rem;
-}
-
-.register-screen section .column {
-  gap: 1rem;
-}
-
-.register-screen section .card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 3rem 0;
-  text-align: start;
-  overflow: hidden;
-  overflow-y: scroll;
-}
-
-.register-screen section .card .row {
-  margin: 0;
-}
-
-.register-screen section .card .number-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 1.6rem;
-}
-
-.register-screen section .card .number-input span {
-  margin: 0 10px;
-}
-
-.register-screen section #please-note {
-  background-color: whitesmoke;
-  color: black;
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: .8rem;
-}
-
-.register-screen section #please-note span {
-  font-weight: bold;
-}
-
-.register-screen section #please-note ul {
-  list-style: initial;
-}
-
-.register-screen section #please-note ul li {
-  margin-left: 2rem;
 }
 
 .helpdesk img {
@@ -854,29 +699,5 @@ input {
 
 .footer .left a:hover {
   text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .main-homescreen .main-section-4 {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-  .main-homescreen .main-section-4 img {
-    display: none;
-  }
-}
-
-@media (max-width: 992px) {
-  .helpdesk .main .promoted-articles {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-  .search-for-appointment .searchbar,
-  .search-for-appointment .icons {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
 }
 /*# sourceMappingURL=index.css.map */

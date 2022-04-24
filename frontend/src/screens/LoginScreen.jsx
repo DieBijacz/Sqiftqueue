@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Column from '../components/Column'
-import Container from '../components/Container'
 import Row from '../components/Row'
-import bgPhoto from "../images/hero.jpg"
 import { login } from '../actions/userActions'
+import { AnimatePresence, motion } from 'framer-motion'
+import Modal from '../components/Modal/Modal'
 
 const LoginScreen = () => {
-  const [showDataInfo, setShowDataInfo] = useState(false)
   const [email, setEmail] = useState('masta@example.com') //!TO BE REMOVED
   const [password, setPassword] = useState('')
+
+  const [openModal, setOpenModal] = useState(false)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -24,32 +25,21 @@ const LoginScreen = () => {
     dispatch(login(email, password))
   }
 
-  // close popup with escape
-  if (showDataInfo) {
-    document.addEventListener('keydown', (e) => {
-      if (e.keyCode === 27) {
-        setShowDataInfo(false)
-        document.removeEventListener('keydown', () => { })
-      }
-    })
-  }
-
   useEffect(() => {
     userInfo && navigate('/')
   }, [userInfo, navigate])
 
   return (
-    <div className='login-screen'>
-      <div className="blue-strip">
-        <h1>Login/Register</h1>
-      </div>
-      <section>
-        <img src={bgPhoto} alt='...' className='bg-img' />
-        <Container>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+      <div className='login-screen bg-image'>
+        <div className="blue-strip">
+          <h1>Login/Register</h1>
+        </div>
+        <section>
           {loading && 'LOADING...'}
-          {showDataInfo ? (
-            <div id='register-data-info'>
-              <div className="card">
+          <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => null}>
+            {openModal ? <Modal handleClose={() => setOpenModal(false)} text={
+              <div className='modal-register'>
                 <div>
                   <h1>Data Processing Consent</h1>
                   <hr />
@@ -71,41 +61,33 @@ const LoginScreen = () => {
                   <hr />
                 </div>
                 <div className="buttons">
-                  <button onClick={() => setShowDataInfo(false)} className='btn'>I Do Not Agree (Go Back)</button>
+                  <button onClick={() => setOpenModal(false)} className='btn'>I Do Not Agree (Go Back)</button>
                   <button onClick={() => navigate('/register')} className='btn btn-green'>I Agree (Proceed)</button>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div id='login-register'>
-              <div className="card">
-                <Row>
-                  <Column>
-                    <form onSubmit={submitHandler}>
-                      <h1>Existing user login</h1>
-                      <input value={email} type="text" autoFocus={true} placeholder='Email Address' onChange={(e) => setEmail(e.target.value)} />
-                      <input value={password} type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                      <Row>
-                        <button className='btn'>I Forgot my Password</button>
-                        <button className='btn btn-green'>Sign In</button>
-                      </Row>
-                    </form>
-                  </Column>
+            } />
+              : (
+                <motion.div className="card" id='login-register' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }}>
+                  <form onSubmit={submitHandler}>
+                    <h1>Existing user login</h1>
+                    <input value={email} type="text" autoFocus={true} placeholder='Email Address' onChange={(e) => setEmail(e.target.value)} />
+                    <input value={password} type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+                    <button className='btn'>I Forgot my Password</button>
+                    <button className='btn btn-green'>Sign In</button>
+                  </form>
                   <hr />
-                  <Column>
-                    <h1>Are you a new user?</h1>
-                    <button onClick={() => setShowDataInfo(true)} className='btn' id='register-btn'>Register here</button>
-                  </Column>
-                </Row>
-              </div>
-            </div >
-          )}
-        </Container>
-      </section>
-      <div className="blue-strip">
-        Need help booking online? <button className='btn btn-green'>Visit Our Help Centre</button>
-      </div>
-    </div >
+                  Don't have an account yet?
+                  <motion.button onClick={openModal ? () => setOpenModal(false) : () => setOpenModal(true)} className='btn' whileHover={{ scale: 1.02 }} whileTap={{ scale: .9 }}>Register here</motion.button>
+                </motion.div>
+              )}
+          </AnimatePresence>
+        </section>
+        <div className="blue-strip">
+          Need help booking online? <button className='btn btn-green'>Visit Our Help Centre</button>
+        </div>
+      </div >
+    </motion.div >
+
   )
 }
 

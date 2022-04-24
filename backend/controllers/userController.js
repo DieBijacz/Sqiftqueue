@@ -65,9 +65,8 @@ export const getUserById = asyncHandler(async (req, res) => {
 // uppdates user details
 // creates new locations
 export const updateUserProfile = asyncHandler(async (req, res) => {
-  const { userId, location, name } = req.body
-
-  const user = await User.findById(userId)
+  const { location, name } = req.body
+  const { user } = req
   if (user) {
     user.name = name || user.name
     user.email
@@ -89,8 +88,4 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('User not found')
   }
-})
-
-export const generateAppointments = asyncHandler(async (req, res) => {
-
 })

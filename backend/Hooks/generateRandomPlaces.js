@@ -46,5 +46,3 @@ export const generateAppointments = (n) => {
 
   return appointmets
 }
-
-generateAppointments(4)

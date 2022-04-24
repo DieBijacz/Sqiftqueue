@@ -11,12 +11,13 @@ import security from '../images/section-3/SQ_icon_security-275.png'
 import kiosk from '../images/section-3/SQ_icon_service_kiosk.png'
 import macbook from '../images/macbook1.png'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
 
   return (
-    <>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
       <Hero />
       <Herby />
       <hr />
@@ -68,15 +69,15 @@ const HomeScreen = () => {
             </div>
           </div>
         </Container>
-          <div className="blue-strip">Improved Communication   |   Reduced DNA   |   Reduced Waiting Times   |   Cost Effective</div>
+        <div className="blue-strip">Improved Communication   |   Reduced DNA   |   Reduced Waiting Times   |   Cost Effective</div>
         <Container>
           <div className="main-section-4">
             <div className='section-4-info'>
               <h1>Co-ordinated Healthcare... Empowered</h1>
               <p>Growing demand... higher expectations... more patient interactions.
-              This is the reality of healthcare today. Swiftqueue has delivered an enterprise
-              platform to better manage the requirements of everyone involved - clinicians,
-              administrators, health managers and patients - that empowers everyone to have:</p>
+                This is the reality of healthcare today. Swiftqueue has delivered an enterprise
+                platform to better manage the requirements of everyone involved - clinicians,
+                administrators, health managers and patients - that empowers everyone to have:</p>
               <ul>
                 <li>Certainty & Consistency</li>
                 <li>Flexibility & Control</li>
@@ -93,7 +94,7 @@ const HomeScreen = () => {
           <button className='btn btn-green' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
         </div>
       </div>
-    </>
+    </motion.div>
   )
 }
 

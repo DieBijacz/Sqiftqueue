@@ -6,6 +6,6 @@ const router = express.Router()
 router.route('/').post(registerUser)
 router.route('/login').post(authUser)
 router.route('/profile')
-  .put(updateUserProfile)
+  .put(protect, updateUserProfile)
 router.route('/:id').get(getUserById)
 export default router
