@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { updateUserLocation } from '../actions/userActions'
 import Container from '../components/Container'
 import Row from '../components/Row'
+import { motion } from 'framer-motion'
 
 const Search = () => {
   const [userLocation, setUserLocation] = useState('')
@@ -32,7 +33,7 @@ const Search = () => {
   }, [navigate, dispatch, userLocation, allowed, userInfo])
 
   return (
-    <div className="search-for-appointment">
+    <motion.div className="search-for-appointment" initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <Container>
         <Row>
           <div className="top">
@@ -74,7 +75,7 @@ const Search = () => {
           </div>
         </Row>
       </Container>
-    </div>
+    </motion.div>
   )
 }
 

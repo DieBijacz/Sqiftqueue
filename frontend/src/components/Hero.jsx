@@ -7,9 +7,6 @@ const Hero = () => {
 
   return (
     <div className="hero bg-image">
-      <div className="blue-strip">
-        Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
-      </div>
       <Container>
         <div className="card">
           <div className="card-text">
@@ -23,6 +20,9 @@ const Hero = () => {
           </div>
         </div>
       </Container>
+      <div className="blue-strip">
+        Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
+      </div>
     </div>
   )
 }

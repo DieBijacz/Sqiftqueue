@@ -17,19 +17,17 @@ const HomeScreen = () => {
   const navigate = useNavigate()
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <Hero />
       <Herby />
       <hr />
       <div className="main-homescreen">
-        <Container>
-          <div className="main-section-2">
-            <h1>Reduce Clinic Waiting Times from Day One</h1>
-            <h3>Join #1 Online Healthcare Appointment Platform</h3>
-            <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
-            <img src={browserImage} alt="browsers" />
-          </div>
-        </Container>
+        <div className="main-section-2">
+          <h1>Reduce Clinic Waiting Times from Day One</h1>
+          <h3>Join #1 Online Healthcare Appointment Platform</h3>
+          <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
+          <img src={browserImage} alt="browsers" />
+        </div>
         <hr />
         <Container>
           <div className="main-section-3">

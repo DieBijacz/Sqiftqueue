@@ -46,10 +46,6 @@ body::-webkit-scrollbar {
   grid-column: span 3;
 }
 
-ul {
-  list-style: none;
-}
-
 a {
   color: #333;
   text-decoration: none;
@@ -60,10 +56,6 @@ input {
   border-radius: 4px;
   border: none;
   outline: none;
-}
-
-hr {
-  margin: 2rem 0;
 }
 
 .bg-image {
@@ -112,15 +104,6 @@ hr {
   font-size: .8em;
 }
 
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 100%;
-  height: 100%;
-  margin: 0 3rem;
-}
-
 .column {
   width: 100%;
   padding: 1rem;
@@ -160,8 +143,7 @@ hr {
 }
 
 .container {
-  position: relative;
-  width: 1200px;
+  width: calc(min(1200px, 90%));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,13 +156,21 @@ hr {
   margin: 0 auto;
 }
 
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100%;
+  height: 100%;
+}
+
 .card {
   text-align: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  width: clamp(50%, 900px, 90%);
+  width: calc(min(900px, 90%));
   height: calc(min(50%, 300px));
 }
 
@@ -249,7 +239,7 @@ hr {
 
 .header {
   height: 65px;
-  max-width: 1000px;
+  width: calc(min(1200px, 90%));
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -276,23 +266,20 @@ hr {
 }
 
 .hero {
-  height: 500px;
-  position: relative;
-}
-
-.hero .bg-img {
-  height: 420px;
-}
-
-.hero .blue-strip {
-  position: absolute;
-  bottom: 0;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .hero .card {
-  position: absolute;
-  left: 0;
-  max-width: 400px;
+  width: calc(min(500px, 90%));
+  height: auto;
+  margin: auto auto 0 0;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px 10px 0 0;
 }
@@ -351,6 +338,16 @@ hr {
 
 .main-homescreen {
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main-homescreen h4 {
@@ -358,6 +355,8 @@ hr {
 }
 
 .main-homescreen .main-section-2 {
+  width: calc(min(1200px, 90%));
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -375,6 +374,10 @@ hr {
 
 .main-homescreen .main-section-2 button {
   margin: 2rem 0;
+}
+
+.main-homescreen .main-section-2 img {
+  width: 100%;
 }
 
 .main-homescreen .main-section-3 .icons {
@@ -415,6 +418,7 @@ hr {
           align-items: center;
   margin: 3rem 0;
   gap: 5rem;
+  text-align: start;
 }
 
 .main-homescreen .main-section-4 .section-4-info {
@@ -451,7 +455,16 @@ hr {
           justify-content: center;
 }
 
-.login-screen section #login-register {
+.login-screen section .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3rem;
+}
+
+.login-screen section .card .side,
+.login-screen section .card .side form {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -459,12 +472,19 @@ hr {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.helpdesk img {
-  height: 500px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.login-screen section .card .side h1,
+.login-screen section .card .side form h1 {
+  margin-bottom: 10px;
+}
+
+.login-screen section .card .side input,
+.login-screen section .card .side form input {
+  margin-bottom: 10px;
 }
 
 .helpdesk .main {
@@ -699,5 +719,14 @@ hr {
 
 .footer .left a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-screen section .card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=index.css.map */

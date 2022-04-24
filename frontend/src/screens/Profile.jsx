@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getUserDetails, logout } from '../actions/userActions'
 import Container from '../components/Container'
+import { motion } from 'framer-motion'
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -28,11 +29,13 @@ const Profile = () => {
   }, [dispatch, navigate, userInfo])
 
   return (
-    <Container>
-      <div>{userInfo && userInfo.email}</div>
-      <div>{user && user.email}</div>
-      <button onClick={logoutHandler}>Logout</button>
-    </Container>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+      <Container>
+        <div>{userInfo && userInfo.email}</div>
+        <div>{user && user.email}</div>
+        <button onClick={logoutHandler}>Logout</button>
+      </Container>
+    </motion.div>
   )
 }
 

@@ -48,7 +48,7 @@ const ClinicsList = () => {
   }
 
   return (
-    <motion.div className='clinics-map' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: '100%' }}>
+    <motion.div className='clinics-map' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <div className='blue-strip'></div>
       <Container>
         <main>

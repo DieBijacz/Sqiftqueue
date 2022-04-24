@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import Column from '../components/Column'
-import Row from '../components/Row'
 import { login } from '../actions/userActions'
 import { AnimatePresence, motion } from 'framer-motion'
 import Modal from '../components/Modal/Modal'
@@ -30,7 +28,7 @@ const LoginScreen = () => {
   }, [userInfo, navigate])
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <div className='login-screen bg-image'>
         <div className="blue-strip">
           <h1>Login/Register</h1>
@@ -67,17 +65,23 @@ const LoginScreen = () => {
               </div>
             } />
               : (
-                <motion.div className="card" id='login-register' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }}>
-                  <form onSubmit={submitHandler}>
+                <motion.div className="card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }}>
+                  <div className='side'>
                     <h1>Existing user login</h1>
-                    <input value={email} type="text" autoFocus={true} placeholder='Email Address' onChange={(e) => setEmail(e.target.value)} />
-                    <input value={password} type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                    <button className='btn'>I Forgot my Password</button>
-                    <button className='btn btn-green'>Sign In</button>
-                  </form>
+                    <form onSubmit={submitHandler}>
+                      <input value={email} type="text" autoFocus={true} placeholder='Email Address' onChange={(e) => setEmail(e.target.value)} />
+                      <input value={password} type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+                      <div>
+                        <button className='btn'>I Forgot my Password</button>
+                        <button className='btn btn-green'>Sign In</button>
+                      </div>
+                    </form>
+                  </div>
                   <hr />
-                  Don't have an account yet?
-                  <motion.button onClick={openModal ? () => setOpenModal(false) : () => setOpenModal(true)} className='btn' whileHover={{ scale: 1.02 }} whileTap={{ scale: .9 }}>Register here</motion.button>
+                  <div className='side'>
+                    <h1>Don't have an account yet?</h1>
+                    <motion.button onClick={openModal ? () => setOpenModal(false) : () => setOpenModal(true)} className='btn' whileHover={{ scale: 1.02 }} whileTap={{ scale: .9 }}>Register here</motion.button>
+                  </div>
                 </motion.div>
               )}
           </AnimatePresence>
@@ -87,7 +91,6 @@ const LoginScreen = () => {
         </div>
       </div >
     </motion.div >
-
   )
 }
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Container from '../components/Container'
 import Row from '../components/Row'
 import Column from '../components/Column'
 import { useDispatch, useSelector } from 'react-redux'
@@ -40,7 +39,7 @@ const RegisterScreen = () => {
   }
 
   return (
-    <motion.div className='register-screen bg-image' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div className='register-screen bg-image' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <div className="blue-strip"><h1>Register as Patient</h1></div>
       <div className="card">
         <form onSubmit={submitHandler}>
