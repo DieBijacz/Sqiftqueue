@@ -17,6 +17,7 @@
   padding: 0;
   font-weight: 200;
   box-sizing: border-box;
+  font-size: clamp(.875rem, .8vw, 1.1rem);
 }
 
 body {
@@ -70,8 +71,7 @@ input {
 }
 
 .modal {
-  width: clamp(50%, 700px, 90%);
-  height: calc(max(50%, 600px));
+  width: clamp(40%, 700px, 90%);
 
   margin: auto;
   padding: 2rem;
@@ -85,7 +85,21 @@ input {
 }
 
 .modal-register {
-  font-size: .8em;
+  h1 {
+    font-weight: 400;
+  }
+
+  ul {
+    margin-left: 2rem;
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+
+  .buttons {
+    margin-top: 1rem;
+  }
 }
 
 // MODAL
@@ -151,6 +165,16 @@ input {
 
 .btn-green:hover {
   background: var(--main-green-hover);
+}
+
+.register-btn {
+  background: var(--second-blue);
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+button:hover {
+  transform: scale(1.02);
 }
 
 .blue-strip {
@@ -248,11 +272,12 @@ input {
 
 .herby {
   display: flex;
-  justify-content: flex-start;
+  overflow-y: scroll;
+  width: 120px;
+  width: (calc(min(500px, 90%)));
   overflow: hidden;
-  overflow-x: auto;
-  gap: 3rem;
-  margin-top: 2rem;
+  overflow-x: scroll;
+  margin: 1rem auto;
 
   img {
     padding: 10px;
@@ -370,7 +395,80 @@ input {
   }
 }
 
-.register-screen {}
+.register-screen {
+  .card {
+    width: calc(min(1200px, 90%));
+    margin: 2rem auto 0 auto;
+    border-radius: 10px 10px 0 0;
+
+    hr {
+      margin: 10px auto;
+    }
+
+    .top,
+    .mid {
+      display: flex;
+      gap: 3rem;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+
+        h1 {
+          font-weight: 400;
+          font-size: 1.1rem;
+        }
+
+        ul {
+          list-style: none;
+        }
+
+
+        input {
+          margin: 5px 0;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .number-input {
+          display: flex;
+
+          input {
+            width: 100%;
+          }
+        }
+
+        .field {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      #please-note {
+        border: solid 1px rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+
+        hr {
+          border: rgba(255, 255, 255, 0.3) 1px solid;
+        }
+
+        * {
+          font-size: .9rem;
+        }
+      }
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+  }
+}
+
+
 
 .helpdesk {
 
@@ -470,16 +568,18 @@ input {
 
 .clinics-map {
   main {
-    width: 100%;
+    width: calc(min(1200px, 90%));
+    margin: auto;
     display: flex;
-    justify-content: space-between;
     gap: 1rem;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 
     .locations {
-      width: 100%;
-      max-height: 1000px;
+      width: clamp(40%, 600px, 90%);
       overflow: hidden;
       overflow-y: scroll;
+      margin: 0 auto;
 
       .location {
         margin: 20px;
@@ -505,7 +605,7 @@ input {
 
   .map {
     min-width: 400px;
-    margin: 1rem 0;
+    margin: 1rem auto;
   }
 
 }
@@ -513,24 +613,43 @@ input {
 .footer {
   background-color: #333;
   color: white;
-  height: 25vh;
+  padding: 1rem 0;
+
+  * {
+    font-size: .8rem;
+  }
 
   .container {
-    height: 100%;
-    display: flex;
+    flex-direction: column;
+    height: auto;
+
+    .top {
+      display: flex;
+      margin: 0 15px;
+    }
 
     .side {
-      margin-right: auto;
+      width: 100%;
+
+      a {
+        color: white;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      div {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      span {
+        font-weight: bold;
+      }
     }
-  }
 
-
-  #Ireland::after {
-    content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
-  }
-
-  #UK::after {
-    content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
   }
 }
 

@@ -8,13 +8,15 @@ import hse from '../images/Herby/hse.png'
 
 const Herby = () => {
   return (
-    <div className="herby">
-      <img src={beaumount} alt="beaumount" />
-      <img src={tallaght} alt="tallaght" />
-      <img src={hse} alt="hse" />
-      <img src={nhs} alt="nhs" />
-      <img src={bandcf} alt="bandcf" />
-      <img src={james} alt="james" />
+    <div className="container">
+      <div className="herby">
+        <img src={beaumount} alt="beaumount" />
+        <img src={tallaght} alt="tallaght" />
+        <img src={hse} alt="hse" />
+        <img src={nhs} alt="nhs" />
+        <img src={bandcf} alt="bandcf" />
+        <img src={james} alt="james" />
+      </div>
     </div>
   )
 }

@@ -17,6 +17,7 @@
   font-weight: 200;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-size: clamp(0.875rem, 0.8vw, 1.1rem);
 }
 
 body {
@@ -80,8 +81,7 @@ input {
 }
 
 .modal {
-  width: clamp(50%, 700px, 90%);
-  height: calc(max(50%, 600px));
+  width: clamp(40%, 700px, 90%);
   margin: auto;
   padding: 2rem;
   border-radius: 12px;
@@ -100,8 +100,20 @@ input {
   overflow-y: scroll;
 }
 
-.modal-register {
-  font-size: .8em;
+.modal-register h1 {
+  font-weight: 400;
+}
+
+.modal-register ul {
+  margin-left: 2rem;
+}
+
+.modal-register hr {
+  margin: 10px 0;
+}
+
+.modal-register .buttons {
+  margin-top: 1rem;
 }
 
 .column {
@@ -170,6 +182,17 @@ input {
 
 .btn-green:hover {
   background: var(--main-green-hover);
+}
+
+.register-btn {
+  background: var(--second-blue);
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+button:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
 }
 
 .blue-strip {
@@ -287,13 +310,12 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  overflow-y: scroll;
+  width: 120px;
+  width: calc(min(500px, 90%));
   overflow: hidden;
-  overflow-x: auto;
-  gap: 3rem;
-  margin-top: 2rem;
+  overflow-x: scroll;
+  margin: 1rem auto;
 }
 
 .herby img {
@@ -456,6 +478,102 @@ input {
   margin-bottom: 10px;
 }
 
+.register-screen .card {
+  width: calc(min(1200px, 90%));
+  margin: 2rem auto 0 auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.register-screen .card hr {
+  margin: 10px auto;
+}
+
+.register-screen .card .top,
+.register-screen .card .mid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3rem;
+}
+
+.register-screen .card .top .content,
+.register-screen .card .mid .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+
+.register-screen .card .top .content h1,
+.register-screen .card .mid .content h1 {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.register-screen .card .top .content ul,
+.register-screen .card .mid .content ul {
+  list-style: none;
+}
+
+.register-screen .card .top .content input,
+.register-screen .card .mid .content input {
+  margin: 5px 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.register-screen .card .top .content .number-input,
+.register-screen .card .mid .content .number-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.register-screen .card .top .content .number-input input,
+.register-screen .card .mid .content .number-input input {
+  width: 100%;
+}
+
+.register-screen .card .top .content .field,
+.register-screen .card .mid .content .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.register-screen .card .top #please-note,
+.register-screen .card .mid #please-note {
+  border: solid 1px rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.register-screen .card .top #please-note hr,
+.register-screen .card .mid #please-note hr {
+  border: rgba(255, 255, 255, 0.3) 1px solid;
+}
+
+.register-screen .card .top #please-note *,
+.register-screen .card .mid #please-note * {
+  font-size: .9rem;
+}
+
+.register-screen .card button {
+  margin-top: 1rem;
+}
+
 .helpdesk .main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -589,21 +707,25 @@ input {
 }
 
 .clinics-map main {
-  width: 100%;
+  width: calc(min(1200px, 90%));
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   gap: 1rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
 .clinics-map main .locations {
-  width: 100%;
-  max-height: 1000px;
+  width: clamp(40%, 600px, 90%);
   overflow: hidden;
   overflow-y: scroll;
+  margin: 0 auto;
 }
 
 .clinics-map main .locations .location {
@@ -633,32 +755,59 @@ input {
 
 .clinics-map .map {
   min-width: 400px;
-  margin: 1rem 0;
+  margin: 1rem auto;
 }
 
 .footer {
   background-color: #333;
   color: white;
-  height: 25vh;
+  padding: 1rem 0;
+}
+
+.footer * {
+  font-size: .8rem;
 }
 
 .footer .container {
-  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: auto;
+}
+
+.footer .container .top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0 15px;
 }
 
 .footer .container .side {
-  margin-right: auto;
+  width: 100%;
 }
 
-.footer #Ireland::after {
-  content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
+.footer .container .side a {
+  color: white;
 }
 
-.footer #UK::after {
-  content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
+.footer .container .side a:hover {
+  text-decoration: underline;
+}
+
+.footer .container .side div {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.footer .container .side span {
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {

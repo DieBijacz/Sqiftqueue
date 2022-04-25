@@ -29,9 +29,12 @@ const Profile = () => {
 
   return (
     <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
-      <div>{userInfo && userInfo.email}</div>
-      <div>{user && user.email}</div>
-      <button onClick={logoutHandler}>Logout</button>
+      <div className="container">
+        <div className="profile">
+          <div>{user && user.email}</div>
+          <button onClick={logoutHandler}>Logout</button>
+        </div>
+      </div>
     </motion.div>
   )
 }

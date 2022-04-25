@@ -80,7 +80,7 @@ const LoginScreen = () => {
                   <hr />
                   <div className='side'>
                     <h1>Don't have an account yet?</h1>
-                    <motion.button onClick={openModal ? () => setOpenModal(false) : () => setOpenModal(true)} className='btn' whileHover={{ scale: 1.02 }} whileTap={{ scale: .9 }}>Register here</motion.button>
+                    <button onClick={openModal ? () => setOpenModal(false) : () => setOpenModal(true)} className='btn register-btn'>Register here</button>
                   </div>
                 </motion.div>
               )}

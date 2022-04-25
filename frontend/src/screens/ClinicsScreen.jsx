@@ -50,24 +50,6 @@ const ClinicsList = () => {
     <motion.div className='clinics-map' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <div className='blue-strip'></div>
       <main>
-        <div className="locations">
-          {userData && userData.places.map(place => (
-            <div key={place._id} className='location'>
-              <>
-                {place.name} <br />
-                {`(${place.phone})`} <br />
-                8:00 - 18:00
-              </>
-              <div className='align-right'>
-                <button value={place._id} className='icon' onClick={(e) => setLocationHandler(e)}><FontAwesomeIcon icon={faCrosshairs} /></button>
-                <div>
-                  Next available appointment: <br />
-                  {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
         <div className='map'>
           {userData && (
             <MapContainer center={[51.30, -0.7]} zoom={13} scrollWheelZoom={true}>
@@ -102,6 +84,24 @@ const ClinicsList = () => {
               })}
             </MapContainer>
           )}
+        </div>
+        <div className="locations">
+          {userData && userData.places.map(place => (
+            <div key={place._id} className='location'>
+              <>
+                {place.name} <br />
+                {`(${place.phone})`} <br />
+                8:00 - 18:00
+              </>
+              <div className='align-right'>
+                <button value={place._id} className='icon' onClick={(e) => setLocationHandler(e)}><FontAwesomeIcon icon={faCrosshairs} /></button>
+                <div>
+                  Next available appointment: <br />
+                  {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
     </motion.div >
