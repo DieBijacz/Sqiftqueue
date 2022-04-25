@@ -90,28 +90,12 @@ input {
 
 // MODAL
 
-
-
 .column {
   width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
 }
-
-.icon {
-  background-color: transparent;
-  border: none;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-  height: 1.3rem;
-
-  &:hover {
-    font-size: 1.3rem;
-  }
-}
-
 
 .align-right {
   display: flex;
@@ -129,16 +113,9 @@ input {
 // COMPONENTS
 .container {
   width: calc(min(1200px, 90%));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.row {
-  display: flex;
-  max-width: 100%;
   height: 100%;
+  display: flex;
+  margin: 0 auto;
 }
 
 .card {
@@ -300,15 +277,17 @@ input {
     font-weight: bold;
   }
 
-  // SECTION 2
-  .main-section-2 {
+  .section {
     width: calc(min(1200px, 90%));
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
 
+  // SECTION 2
+  .main-section-2 {
     button {
       margin: 2rem 0;
     }
@@ -339,27 +318,24 @@ input {
 
   // SECTION 4
   .main-section-4 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    margin: 3rem 0;
-    gap: 5rem;
-    text-align: start;
+    flex-direction: row;
 
     .section-4-info {
       display: flex;
       flex-direction: column;
       text-align: flex-start;
       gap: 1rem;
+      margin: 1rem;
 
       ul {
         margin-left: 40px;
         list-style: initial;
       }
 
-      button {
-        margin: 0 auto 0 0;
+      img {
+        margin: 1rem;
       }
+
     }
   }
 }
@@ -449,69 +425,47 @@ input {
 
 .search-for-appointment {
   background-color: var(--second-blue);
-  min-height: 75%;
   color: white;
-  width: 100%;
+  display: flex;
+  height: 500px;
 
-  .container {
+  section {
+    display: flex;
     flex-direction: column;
-  }
+    justify-content: space-around;
+    width: calc(min(1200px, 90%));
+    margin: 0 auto;
 
-  .top {
-    padding: 3rem 0;
-
-    :nth-child(1) {
-      font-weight: 100;
-      font-size: 2rem;
+    .top {
+      display: flex;
+      flex-direction: column;
     }
-  }
 
-  .row {
-    width: 100%;
-  }
-
-  .searchbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-
-    .item {
+    .searchbar {
       width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 3rem;
 
-      label {
-        font-weight: 400;
-        margin-bottom: 5px;
-      }
+      .item {
+        label {
+          margin-bottom: 5px;
+        }
 
-      input {
-        padding: 15px;
-        border-radius: 5px;
-        border: none;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
       }
     }
 
-    button {
-      align-self: flex-end;
+    .icons {
+      display: flex;
+      gap: 3rem;
+      text-align: center;
     }
   }
 
-  .icons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    padding: 3rem 0;
-
-    .icon {
-      width: 100%;
-    }
-
-    :nth-child(1) {
-      font-size: 1.5rem;
-    }
-  }
 }
 
 .clinics-map {
@@ -559,34 +513,24 @@ input {
 .footer {
   background-color: #333;
   color: white;
-  padding: 1rem 0;
+  height: 25vh;
 
-  .split {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 1rem 0;
+  .container {
+    height: 100%;
+    display: flex;
+
+    .side {
+      margin-right: auto;
+    }
   }
 
-  .left {
-    display: flex;
-    flex-direction: column;
 
-    #Ireland::after {
-      content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
-    }
+  #Ireland::after {
+    content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
+  }
 
-    #UK::after {
-      content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
-    }
-
-    a {
-      color: white;
-      margin-top: 1rem;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+  #UK::after {
+    content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
   }
 }
 
@@ -596,6 +540,12 @@ input {
       .card {
         flex-direction: column;
       }
+    }
+  }
+
+  .main-homescreen {
+    .main-section-4 {
+      flex-direction: column;
     }
   }
 }

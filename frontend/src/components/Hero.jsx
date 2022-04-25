@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from './Container'
 import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
@@ -7,7 +6,7 @@ const Hero = () => {
 
   return (
     <div className="hero bg-image">
-      <Container>
+      <div className="container">
         <div className="card">
           <div className="card-text">
             <p>The complete enterprise scheduling platform for healthcare</p>
@@ -19,7 +18,7 @@ const Hero = () => {
             <button className='btn'>Learn More</button>
           </div>
         </div>
-      </Container>
+      </div>
       <div className="blue-strip">
         Online Appointments | Electronic Referrals | Automated Patient Flow | Real Time Metrics
       </div>

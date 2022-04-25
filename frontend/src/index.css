@@ -116,19 +116,6 @@ input {
           flex-direction: column;
 }
 
-.icon {
-  background-color: transparent;
-  border: none;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-  height: 1.3rem;
-}
-
-.icon:hover {
-  font-size: 1.3rem;
-}
-
 .align-right {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -144,24 +131,11 @@ input {
 
 .container {
   width: calc(min(1200px, 90%));
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 auto;
-}
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
 }
 
 .card {
@@ -354,7 +328,7 @@ input {
   font-weight: bold;
 }
 
-.main-homescreen .main-section-2 {
+.main-homescreen .section {
   width: calc(min(1200px, 90%));
   margin: 0 auto;
   display: -webkit-box;
@@ -409,16 +383,10 @@ input {
 }
 
 .main-homescreen .main-section-4 {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 3rem 0;
-  gap: 5rem;
-  text-align: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .main-homescreen .main-section-4 .section-4-info {
@@ -431,6 +399,7 @@ input {
           flex-direction: column;
   text-align: flex-start;
   gap: 1rem;
+  margin: 1rem;
 }
 
 .main-homescreen .main-section-4 .section-4-info ul {
@@ -438,8 +407,8 @@ input {
   list-style: initial;
 }
 
-.main-homescreen .main-section-4 .section-4-info button {
-  margin: 0 auto 0 0;
+.main-homescreen .main-section-4 .section-4-info img {
+  margin: 1rem;
 }
 
 .login-screen section {
@@ -551,32 +520,38 @@ input {
 
 .search-for-appointment {
   background-color: var(--second-blue);
-  min-height: 75%;
   color: white;
-  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 500px;
 }
 
-.search-for-appointment .container {
+.search-for-appointment section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: calc(min(1200px, 90%));
+  margin: 0 auto;
+}
+
+.search-for-appointment section .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 
-.search-for-appointment .top {
-  padding: 3rem 0;
-}
-
-.search-for-appointment .top :nth-child(1) {
-  font-weight: 100;
-  font-size: 2rem;
-}
-
-.search-for-appointment .row {
-  width: 100%;
-}
-
-.search-for-appointment .searchbar {
+.search-for-appointment section .searchbar {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -584,52 +559,33 @@ input {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1rem;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 3rem;
 }
 
-.search-for-appointment .searchbar .item {
+.search-for-appointment section .searchbar .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
 }
 
-.search-for-appointment .searchbar .item label {
-  font-weight: 400;
+.search-for-appointment section .searchbar .item label {
   margin-bottom: 5px;
 }
 
-.search-for-appointment .searchbar .item input {
-  padding: 15px;
-  border-radius: 5px;
-  border: none;
-}
-
-.search-for-appointment .searchbar button {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.search-for-appointment .icons {
+.search-for-appointment section .icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 2rem;
-  padding: 3rem 0;
-}
-
-.search-for-appointment .icons .icon {
-  width: 100%;
-}
-
-.search-for-appointment .icons :nth-child(1) {
-  font-size: 1.5rem;
+  gap: 3rem;
+  text-align: center;
 }
 
 .clinics-map main {
@@ -683,46 +639,36 @@ input {
 .footer {
   background-color: #333;
   color: white;
-  padding: 1rem 0;
+  height: 25vh;
 }
 
-.footer .split {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  margin: 1rem 0;
-}
-
-.footer .left {
+.footer .container {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
-.footer .left #Ireland::after {
+.footer .container .side {
+  margin-right: auto;
+}
+
+.footer #Ireland::after {
   content: 'Eolas Building, Maynooth, Co. Kildare, Ireland';
 }
 
-.footer .left #UK::after {
+.footer #UK::after {
   content: 'The Gridiron Building, 1 Pancras SQ, London, N1C 4AG';
-}
-
-.footer .left a {
-  color: white;
-  margin-top: 1rem;
-}
-
-.footer .left a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
   .login-screen section .card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .main-homescreen .main-section-4 {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
