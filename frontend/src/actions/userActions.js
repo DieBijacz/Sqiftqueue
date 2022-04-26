@@ -95,6 +95,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
 // UPDATE USER LOCATION
 export const updateUserLocation = (location) => async (dispatch, getState) => {
+  // dispatched from searchScreen
   try {
     dispatch({ type: USER_LOCATION_REQUEST })
 
@@ -108,14 +109,11 @@ export const updateUserLocation = (location) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put('/api/users/profile', { location }, config)
+    await axios.post('/api/users/location', { location }, config)
 
-    setTimeout(() => {
-      dispatch({
-        type: USER_LOCATION_SUCCESS,
-        payload: data
-      })
-    }, 3000)
+    dispatch({
+      type: USER_LOCATION_SUCCESS,
+    })
 
   } catch (error) {
     dispatch({

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const HelpDeskScreen = () => {
   const navigate = useNavigate()
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
       <div className="helpdesk">
         <div className="bg-image hero"></div>
         <div className="main">

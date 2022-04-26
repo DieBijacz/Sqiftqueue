@@ -45,16 +45,16 @@ export const userDetailsReducer = (state = {}, action) => {
   }
 }
 
-export const userLocationReducer = (state = {}, action) => {
+export const updateUserLocationReducer = (state = { success: false }, action) => {
   switch (action.type) {
     case USER_LOCATION_REQUEST:
       return { loading: true }
     case USER_LOCATION_SUCCESS:
-      return { loading: false, userLocation: action.payload }
+      return { loading: false, success: true }
     case USER_LOCATION_FAIL:
       return { loading: false, error: action.payload }
     case USER_LOCATION_RESET:
-      return {}
+      return { loading: false, success: false }
     default:
       return state
   }

@@ -16,7 +16,7 @@ const HomeScreen = () => {
   const navigate = useNavigate()
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
       <Hero />
       <Herby />
       <hr />
@@ -86,7 +86,7 @@ const HomeScreen = () => {
           <button className='btn btn-green' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
         </div>
       </div>
-    </motion.div>
+    </motion.div >
   )
 }
 

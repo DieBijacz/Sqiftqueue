@@ -1,5 +1,5 @@
 import express from "express";
-import { authUser, getUserById, registerUser, updateUserProfile } from "../controllers/userController.js";
+import { addUserLocation, authUser, getUserById, getUserLocations, registerUser, updateUserProfile } from "../controllers/userController.js";
 import protect from "../middleware/authMiddleware.js";
 const router = express.Router()
 
@@ -8,4 +8,5 @@ router.route('/login').post(authUser)
 router.route('/profile')
   .put(protect, updateUserProfile)
 router.route('/:id').get(getUserById)
+router.route('/location').post(protect, addUserLocation).get(getUserLocations)
 export default router

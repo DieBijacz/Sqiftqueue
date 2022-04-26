@@ -1,50 +1,41 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { updateUserLocation } from '../actions/userActions'
 import { motion } from 'framer-motion'
+import { USER_LOCATION_RESET } from '../constants/userConstants'
 
 const Search = () => {
-  const [userLocation, setUserLocation] = useState('')
-  const [moving, setMoving] = useState(false)
-  const [allowed, setAllowed] = useState(false)
-  const [showRedirectMessage, setShowRedirectMessage] = useState(false)
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const userLogin = useSelector(state => state.userLogin)
   const { loading: loadingUser, error, userInfo } = userLogin
 
+  const updatedUserLocation = useSelector(state => state.updatedUserLocation)
+  const { success } = updatedUserLocation
+
   useEffect(() => {
-    if (!userInfo) {
-      setShowRedirectMessage(true)
-      setTimeout(() => {
-        setShowRedirectMessage(false)
-        navigate('/login')
-      }, 2000)
+    if (!userInfo) navigate('/login')
+    if (success) {
+      dispatch({ type: USER_LOCATION_RESET })
+      navigate('/clinicsmap')
     }
-    if (userLocation) {
-      dispatch(updateUserLocation(userLocation))
-      setMoving(true)
-      setTimeout(() => {
-        navigate('/clinicsmap')
-      }, 2000)
-    } else {
-      allowed && navigator.geolocation.getCurrentPosition((pos) => {
-        setUserLocation([pos.coords.latitude, pos.coords.longitude])
-      })
-    }
-  }, [navigate, dispatch, userLocation, allowed, userInfo])
+  }, [navigate, dispatch, userInfo, success])
+
+  function updateLocation() {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      dispatch(updateUserLocation([pos.coords.latitude, pos.coords.longitude]))
+    })
+  }
 
   return (
     <motion.div className="search-for-appointment" initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
       <section>
-        {showRedirectMessage && 'You need to log in first. You will be redirect in 2sec'}
         <div className="top">
           <div>
-            <button onClick={() => setAllowed(true)}>Use my current location</button>
-            {moving && <h1>You will be moved</h1>}
+            <button onClick={() => updateLocation()}>Use my current location</button>
+            {loadingUser && <h1>You will be moved</h1>}
           </div>
           <h1>Find a GP/Clinic and Book an Appointment</h1>
           <p>Simple Instant Healthcare Bookings</p>

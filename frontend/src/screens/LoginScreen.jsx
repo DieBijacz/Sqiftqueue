@@ -28,7 +28,7 @@ const LoginScreen = () => {
   }, [userInfo, navigate])
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
       <div className='login-screen bg-image'>
         <div className="blue-strip">
           <h1>Login/Register</h1>

@@ -25,7 +25,7 @@ const RegisterScreen = () => {
       disptach({ type: USER_REGISTER_RESET })
       navigate('/')
     }
-  }, [success])
+  }, [success, disptach, navigate])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -37,7 +37,7 @@ const RegisterScreen = () => {
   }
 
   return (
-    <motion.div className='register-screen bg-image' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+    <motion.div className='register-screen bg-image' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
       <div className="blue-strip"><h1>Register as Patient</h1></div>
       <motion.div className="card" initial={{ y: '100vh' }} animate={{ y: 0 }} transition={{ duration: 1 }}>
         <form onSubmit={submitHandler}>

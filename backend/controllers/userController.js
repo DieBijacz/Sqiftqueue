@@ -2,7 +2,6 @@ import asyncHandler from 'express-async-handler'
 import User from "../Models/userModel.js";
 import generateToken from '../utils/generateToken.js'
 import colors from 'colors'
-import { names } from '../data/ClinicNames.js';
 import { generateRandomPlaces } from '../Hooks/generateRandomPlaces.js';
 
 // POST Auth user
@@ -61,27 +60,49 @@ export const getUserById = asyncHandler(async (req, res) => {
   }
 })
 
-// ====================== UPDATE USER PROFILE ======================
-// uppdates user details
-// creates new locations
+// PUT /profile
 export const updateUserProfile = asyncHandler(async (req, res) => {
-  const { location, name } = req.body
+  const { name } = req.body
   const { user } = req
   if (user) {
     user.name = name || user.name
     user.email
-    // if updateds location
+
+    const updatedUser = await user.save()
+    res.json(updatedUser)
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+// GET /location
+export const getUserLocations = asyncHandler(async (req, res) => {
+
+})
+
+// POST /location
+export const addUserLocation = asyncHandler(async (req, res) => {
+  const { location } = req.body
+  const { user } = req
+
+  console.log('render')
+
+  if (user) {
     if (location) {
-      // adds only new location to user locations
+      // adds only new location
       if (user.locations.filter(loc => loc.latitude !== location[0] && loc.longitude !== location[1]).length === 0) {
         user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
-        console.log('Dodał'.green.bold)
+        console.log('adds new location'.green.bold)
 
+        // generate random places with appointments
         generateRandomPlaces(user, location)
+
       } else {
-        console.log('Nie dodał'.red.bold)
+        console.log('did NOT add location'.red.bold)
       }
     }
+
     const updatedUser = await user.save()
     res.json(updatedUser)
   } else {

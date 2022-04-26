@@ -4,10 +4,11 @@ const NUMBER_OF_PLACES = 10
 const MAX_APPOINTMENTS_FOR_PLACE = 7
 
 export const generateRandomPlaces = (user, coords) => {
+  console.log('generate places')
   let generatedPlaces = 0
   while (generatedPlaces < NUMBER_OF_PLACES) {
     // generate available appointments
-    const appointmets = generateAppointments(Math.floor(Math.random() * MAX_APPOINTMENTS_FOR_PLACE) + 1)
+    const appointmets = generateAppointments()
 
     // create new place
     const newPlace = {
@@ -26,13 +27,13 @@ export const generateRandomPlaces = (user, coords) => {
   function randomNumber(n, r = 1) {
     return (Math.random() * (Math.random() > n ? -1 / r : 1 / r)) //TODO r sets range
   }
-
-  return user
+  const succes = true
+  return { user, succes }
 }
 
-export const generateAppointments = (n) => {
+export const generateAppointments = () => {
   const appointmets = []
-  while (appointmets.length < n) {
+  while (appointmets.length < Math.floor(Math.random() * MAX_APPOINTMENTS_FOR_PLACE) + 1) {
     const add = (Math.floor(Math.random() * 40) * 15)
     const m = ((480 + add) / 60).toString().split('.')[1]
     const hour = ((480 + add) / 60).toString().split('.')[0]
