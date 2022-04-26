@@ -3,8 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCrosshairs } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 
 const ClinicsList = () => {
@@ -13,6 +11,7 @@ const ClinicsList = () => {
 
   const [userData, setUserData] = useState(null)
   const [showLocation, setShowLocation] = useState()
+  const [showMoreInfo, setShowMoreInfo] = useState('')
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -30,12 +29,6 @@ const ClinicsList = () => {
     userData && console.log(userData)
   }, [disptach, navigate, user, userInfo, userData])
 
-  function setLocationHandler(e) {
-    const location = userData.places.filter(p => p._id === e.currentTarget.value)[0]
-    const coords = [location.latitude, location.longitude]
-    setShowLocation(coords)
-  }
-
   function GoTo({ location }) {
     const map = useMap()
     map.flyTo(location, 14, { duration: 1.5 })
@@ -44,6 +37,11 @@ const ClinicsList = () => {
 
   function bookAppointmentHandler(e) {
     e.preventDefault()
+  }
+
+  function locationClickHandler(place) {
+    setShowLocation([place.latitude, place.longitude])
+    setShowMoreInfo(() => showMoreInfo == place._id ? '' : place._id)
   }
 
   return (
@@ -87,19 +85,31 @@ const ClinicsList = () => {
         </div>
         <div className="locations">
           {userData && userData.places.map(place => (
-            <div key={place._id} className='location'>
-              <>
-                {place.name} <br />
-                {`(${place.phone})`} <br />
-                8:00 - 18:00
-              </>
-              <div className='align-right'>
-                <button value={place._id} className='icon' onClick={(e) => setLocationHandler(e)}><FontAwesomeIcon icon={faCrosshairs} /></button>
+            <div key={place._id} className='location' onClick={() => locationClickHandler(place)}>
+              <div className='top'>
                 <div>
-                  Next available appointment: <br />
-                  {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
+                  {place.name} <br />
+                  {`(${place.phone})`} <br />
+                  8:00 - 18:00
+                </div>
+                <div>
+                  <div>
+                    Next available appointment: <br />
+                    {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
+                  </div>
                 </div>
               </div>
+              {showMoreInfo == place._id && (
+                <div className="more-info">
+                  <hr />
+                  <h1>MORE INFO</h1>
+                  <h1>MORE INFO</h1>
+                  <h1>MORE INFO</h1>
+                  <h1>MORE INFO</h1>
+                  <h1>MORE INFO</h1>
+                  <h1>MORE INFO</h1>
+                </div>
+              )}
             </div>
           ))}
         </div>

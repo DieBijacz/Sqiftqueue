@@ -128,19 +128,6 @@ input {
           flex-direction: column;
 }
 
-.align-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-}
-
 .container {
   width: calc(min(1200px, 90%));
   height: 100%;
@@ -734,8 +721,11 @@ button:hover {
   color: white;
   padding: 10px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 0 5px var(--main-blue);
-          box-shadow: 0 0 5px var(--main-blue);
+  -webkit-box-shadow: 5px 5px 10px #ccc;
+          box-shadow: 5px 5px 10px #ccc;
+}
+
+.clinics-map main .locations .location .top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

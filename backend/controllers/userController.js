@@ -76,17 +76,10 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
-// GET /location
-export const getUserLocations = asyncHandler(async (req, res) => {
-
-})
-
 // POST /location
 export const addUserLocation = asyncHandler(async (req, res) => {
   const { location } = req.body
   const { user } = req
-
-  console.log('render')
 
   if (user) {
     if (location) {
@@ -94,10 +87,6 @@ export const addUserLocation = asyncHandler(async (req, res) => {
       if (user.locations.filter(loc => loc.latitude !== location[0] && loc.longitude !== location[1]).length === 0) {
         user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
         console.log('adds new location'.green.bold)
-
-        // generate random places with appointments
-        generateRandomPlaces(user, location)
-
       } else {
         console.log('did NOT add location'.red.bold)
       }
@@ -109,4 +98,14 @@ export const addUserLocation = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('User not found')
   }
+})
+
+// GET /location
+export const getUsersClinics = asyncHandler(async (req, res) => {
+  const { user } = req
+  // if user have no clinics generate new
+  // else send those what he have for current location
+
+  // generate random places with appointments
+  generateRandomPlaces(user, location)
 })

@@ -95,7 +95,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
 // UPDATE USER LOCATION
 export const updateUserLocation = (location) => async (dispatch, getState) => {
-  // dispatched from searchScreen
   try {
     dispatch({ type: USER_LOCATION_REQUEST })
 
