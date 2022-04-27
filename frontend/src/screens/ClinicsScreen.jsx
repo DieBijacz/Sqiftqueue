@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
-import { motion } from 'framer-motion'
+import { animate, motion, transform } from 'framer-motion'
 
 const ClinicsList = () => {
   const navigate = useNavigate()
@@ -18,6 +18,20 @@ const ClinicsList = () => {
 
   const userDetails = useSelector(state => state.userDetails)
   const { user } = userDetails
+
+  // Variants for framer-motion
+  const container = {
+    show: {
+      transition: {
+        staggerChildren: .2,
+      }
+    }
+  }
+  const item = {
+    hidden: { opacity: 0, x: -200 },
+    show: { opacity: 1, x: 0, transition: { ease: 'backInOut', duration: 1.6 } },
+    exit: { opacity: 0, x: 200, transition: { ease: 'easeInOut', duration: .8 } },
+  }
 
   useEffect(() => {
     if (!userInfo) navigate('/login')
@@ -39,9 +53,10 @@ const ClinicsList = () => {
     e.preventDefault()
   }
 
-  function locationClickHandler(place) {
+  function locationClickHandler(place, e) {
+    e.stopPropagation()
     setShowLocation([place.latitude, place.longitude])
-    setShowMoreInfo(() => showMoreInfo == place._id ? '' : place._id)
+    setShowMoreInfo(() => showMoreInfo === place._id ? '' : place._id)
   }
 
   return (
@@ -83,37 +98,35 @@ const ClinicsList = () => {
             </MapContainer>
           )}
         </div>
-        <div className="locations">
-          {userData && userData.places.map(place => (
-            <div key={place._id} className='location' onClick={() => locationClickHandler(place)}>
-              <div className='top'>
-                <div>
-                  {place.name} <br />
-                  {`(${place.phone})`} <br />
-                  8:00 - 18:00
-                </div>
-                <div>
+        {userData && (
+          <motion.div className="locations" variants={container} initial='hidden' animate='show' exit='exit' >
+            {userData.places.map(place => (
+              <motion.div key={place._id} className='location' onClick={(e) => locationClickHandler(place, e)} variants={item} whileHover={{ scale: 1.02 }}>
+                <div className='top'>
                   <div>
-                    Next available appointment: <br />
-                    {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
+                    <h1 className='location-place-name'>{place.name}</h1> <br />
+                    {`(${place.phone})`} <br />
+                    8:00 - 18:00
+                  </div>
+                  <div>
+                    <div className='top-right'>
+                      <p>Next available appointment:</p> <br />
+                      {place.availableAppointments.length > 0 && place.availableAppointments[0].time}
+                    </div>
                   </div>
                 </div>
-              </div>
-              {showMoreInfo == place._id && (
-                <div className="more-info">
-                  <hr />
-                  <h1>MORE INFO</h1>
-                  <h1>MORE INFO</h1>
-                  <h1>MORE INFO</h1>
-                  <h1>MORE INFO</h1>
-                  <h1>MORE INFO</h1>
-                  <h1>MORE INFO</h1>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </main>
+                {showMoreInfo === place._id && (
+                  <motion.div className="more-info" initial={{ y: '-50px', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '-50px', opacity: 0 }} transition={{ duration: .3, ease: 'easeOut' }}>
+                    <h1>Times available:</h1>
+                    {place.availableAppointments.map(ap => <div className='location-time-available' key={ap._id}>{ap.time}</div>)}
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        )
+        }
+      </main >
     </motion.div >
   )
 }
