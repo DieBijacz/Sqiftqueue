@@ -339,7 +339,7 @@ button:hover {
 
 .main-homescreen .section {
   width: calc(min(1200px, 90%));
-  margin: 0 auto;
+  margin: 2rem auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

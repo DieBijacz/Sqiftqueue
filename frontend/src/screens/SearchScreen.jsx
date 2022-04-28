@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { updateUserLocation } from '../actions/userActions'
 import { motion } from 'framer-motion'
 import { USER_LOCATION_RESET } from '../constants/userConstants'
+import { pageTransition } from '../animationsVariants'
 
 const Search = () => {
   const navigate = useNavigate()
@@ -30,7 +31,8 @@ const Search = () => {
   }
 
   return (
-    <motion.div className="search-for-appointment" initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+
+    <motion.div className="search-for-appointment" variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <section>
         <div className="top">
           <div>

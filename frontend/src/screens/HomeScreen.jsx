@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from '../components/Hero'
 import Herby from '../components/Herby'
 import browserImage from '../images/browsers.png'
@@ -10,25 +10,40 @@ import security from '../images/section-3/SQ_icon_security-275.png'
 import kiosk from '../images/section-3/SQ_icon_service_kiosk.png'
 import macbook from '../images/macbook1.png'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { fromBottom, fromLeft, fromRight, pageTransition } from '../animationsVariants'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
+  const controls = useAnimation()
+  const controls2 = useAnimation()
+  const controls3 = useAnimation()
+  const [sec2, inSec2] = useInView()
+  const [sec3, inSec3] = useInView()
+  const [sec4, inSec4] = useInView()
+
+  // for animations
+  useEffect(() => {
+    if (inSec2) { controls.start('show') }
+    if (inSec3) { controls2.start('show') }
+    if (inSec4) { controls3.start('show') }
+  }, [controls, controls2, controls3, inSec2, inSec3, inSec4])
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <Hero />
       <Herby />
       <hr />
       <div className="main-homescreen">
-        <div className="main-section-2 section">
+        <motion.div className="main-section-2 section" ref={sec2} variants={fromLeft} initial='hidden' animate={controls}>
           <h1>Reduce Clinic Waiting Times from Day One</h1>
           <h3>Join #1 Online Healthcare Appointment Platform</h3>
           <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
           <img src={browserImage} alt="browsers" />
-        </div>
+        </motion.div>
         <hr />
-        <div className="main-section-3 section">
+        <motion.div className="main-section-3 section" ref={sec3} variants={fromRight} initial='hidden' animate={controls2}>
           <h1>See how Swiftqueue can improve your clinic today</h1>
           <h3>Create a seamless and integrated patient pathway experience</h3>
           <div className="icons">
@@ -63,9 +78,9 @@ const HomeScreen = () => {
               <p>Swiftqueue provides a market leading patient portal, where patients can view, reschedule, cancel appointments and view specific results.</p>
             </div>
           </div>
-        </div>
+        </motion.div>
         <div className="blue-strip">Improved Communication   |   Reduced DNA   |   Reduced Waiting Times   |   Cost Effective</div>
-        <div className="main-section-4 section">
+        <motion.div className="main-section-4 section" ref={sec4} variants={fromLeft} initial='hidden' animate={controls3}>
           <div className='section-4-info'>
             <h1>Co-ordinated Healthcare... Empowered</h1>
             <p>Growing demand... higher expectations... more patient interactions.
@@ -81,7 +96,7 @@ const HomeScreen = () => {
             <p>Delivering an all round greater personal experience.</p>
           </div>
           <img src={macbook} alt="stats" />
-        </div>
+        </motion.div>
         <div className="blue-strip">Need help booking online?
           <button className='btn btn-green' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>
         </div>

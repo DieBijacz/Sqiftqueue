@@ -4,6 +4,7 @@ import { register } from '../actions/userActions'
 import { useNavigate } from 'react-router-dom'
 import { USER_REGISTER_RESET } from '../constants/userConstants'
 import { motion } from 'framer-motion'
+import { pageTransition } from '../animationsVariants'
 
 const RegisterScreen = () => {
   const [name, setName] = useState('')
@@ -37,7 +38,7 @@ const RegisterScreen = () => {
   }
 
   return (
-    <motion.div className='register-screen bg-image' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div className='register-screen bg-image' variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <div className="blue-strip"><h1>Register as Patient</h1></div>
       <motion.div className="card" initial={{ y: '100vh' }} animate={{ y: 0 }} transition={{ duration: 1 }}>
         <form onSubmit={submitHandler}>

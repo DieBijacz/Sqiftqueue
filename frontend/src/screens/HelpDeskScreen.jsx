@@ -1,11 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { pageTransition } from '../animationsVariants'
 
 const HelpDeskScreen = () => {
   const navigate = useNavigate()
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <div className="helpdesk">
         <div className="bg-image hero"></div>
         <div className="main">

@@ -3,7 +3,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
-import { animate, motion, transform } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { pageTransition } from '../animationsVariants'
 
 const ClinicsList = () => {
   const navigate = useNavigate()
@@ -60,7 +61,7 @@ const ClinicsList = () => {
   }
 
   return (
-    <motion.div className='clinics-map' initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+    <motion.div className='clinics-map' variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <div className='blue-strip'></div>
       <main>
         <div className='map'>

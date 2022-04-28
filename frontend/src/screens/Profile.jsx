@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getUserDetails, logout } from '../actions/userActions'
 import { motion } from 'framer-motion'
+import { pageTransition } from '../animationsVariants'
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ const Profile = () => {
   }, [dispatch, navigate, userInfo])
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth, transition: { duration: 0.02 } }}>
+    <motion.div variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <div className="container">
         <div className="profile">
           <div>{user && user.email}</div>

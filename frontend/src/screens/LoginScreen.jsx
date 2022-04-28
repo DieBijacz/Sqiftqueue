@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../actions/userActions'
 import { AnimatePresence, motion } from 'framer-motion'
 import Modal from '../components/Modal/Modal'
+import { pageTransition } from '../animationsVariants'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('masta@example.com') //!TO BE REMOVED
@@ -28,7 +29,7 @@ const LoginScreen = () => {
   }, [userInfo, navigate])
 
   return (
-    <motion.div initial={{ width: '0' }} animate={{ width: '100%' }} exit={{ x: window.innerWidth }} transition={{ duration: 0.1 }}>
+    <motion.div variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <div className='login-screen bg-image'>
         <div className="blue-strip">
           <h1>Login/Register</h1>
