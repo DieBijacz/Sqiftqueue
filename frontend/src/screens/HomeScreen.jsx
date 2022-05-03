@@ -12,7 +12,7 @@ import macbook from '../images/macbook1.png'
 import { useNavigate } from 'react-router-dom'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { fromBottom, fromLeft, fromRight, pageTransition } from '../animationsVariants'
+import { fromLeft, fromRight, pageTransition } from '../animationsVariants'
 
 const HomeScreen = () => {
   const navigate = useNavigate()

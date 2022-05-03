@@ -17,7 +17,12 @@
   font-weight: 200;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-size: clamp(0.9rem, 0.8vw, 1.1rem);
+  font-size: clamp(0.9rem, 0.9vw, 1.1rem);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 body {
@@ -98,10 +103,6 @@ input {
   background-color: white;
   overflow: hidden;
   overflow-y: scroll;
-}
-
-.modal-register h1 {
-  font-weight: 400;
 }
 
 .modal-register ul {
@@ -498,12 +499,6 @@ button:hover {
   width: 100%;
 }
 
-.register-screen .card .top .content h1,
-.register-screen .card .mid .content h1 {
-  font-weight: 400;
-  font-size: 1.1rem;
-}
-
 .register-screen .card .top .content ul,
 .register-screen .card .mid .content ul {
   list-style: none;
@@ -647,13 +642,13 @@ button:hover {
 }
 
 .search-for-appointment section .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  margin-top: 2rem;
+}
+
+.search-for-appointment section .top button {
+  margin: 1rem 0;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .search-for-appointment section .searchbar {
@@ -722,11 +717,6 @@ button:hover {
   cursor: pointer;
 }
 
-.clinics-map main .locations .location h1 {
-  font-weight: 400;
-  font-size: 1.3em;
-}
-
 .clinics-map main .locations .location hr {
   margin: 20px 0;
 }
@@ -764,8 +754,48 @@ button:hover {
 }
 
 .clinics-map .map {
-  min-width: 500px;
+  width: calc(min(500px, 90%));
   margin: 1rem auto;
+}
+
+.booking {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.booking main {
+  width: calc(min(900px, 90%));
+  margin: 1rem auto;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.booking main .top {
+  text-align: center;
+  background-color: var(--second-blue);
+  color: white;
+  padding: 1rem;
+}
+
+.booking main .body {
+  padding: 1rem;
+}
+
+.booking main .body span {
+  font-weight: 400;
+}
+
+.booking main .body hr {
+  margin: 1rem 0;
 }
 
 .footer {

@@ -17,7 +17,12 @@
   padding: 0;
   font-weight: 200;
   box-sizing: border-box;
-  font-size: clamp(.9rem, .8vw, 1.1rem);
+  font-size: clamp(.9rem, .9vw, 1.1rem);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 body {
@@ -85,10 +90,6 @@ input {
 }
 
 .modal-register {
-  h1 {
-    font-weight: 400;
-  }
-
   ul {
     margin-left: 2rem;
   }
@@ -410,11 +411,6 @@ button:hover {
         justify-content: flex-start;
         width: 100%;
 
-        h1 {
-          font-weight: 400;
-          font-size: 1.1rem;
-        }
-
         ul {
           list-style: none;
         }
@@ -529,8 +525,13 @@ button:hover {
     margin: 0 auto;
 
     .top {
-      display: flex;
-      flex-direction: column;
+      margin-top: 2rem;
+
+      button {
+        margin: 1rem 0;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
     }
 
     .searchbar {
@@ -581,11 +582,6 @@ button:hover {
         padding: 1rem 0;
         cursor: pointer;
 
-        h1 {
-          font-weight: 400;
-          font-size: 1.3em;
-        }
-
         hr {
           margin: 20px 0;
         }
@@ -624,10 +620,43 @@ button:hover {
   }
 
   .map {
-    min-width: 500px;
+    width: calc(min(500px, 90%));
     margin: 1rem auto;
   }
 
+}
+
+.booking {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  main {
+    width: calc(min(900px, 90%));
+    margin: 1rem auto;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .top {
+      text-align: center;
+      background-color: var(--second-blue);
+      color: white;
+      padding: 1rem;
+    }
+
+    .body {
+      padding: 1rem;
+
+      span {
+        font-weight: 400;
+      }
+
+      hr {
+        margin: 1rem 0;
+      }
+    }
+  }
 }
 
 .footer {

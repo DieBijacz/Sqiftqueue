@@ -9,6 +9,7 @@ import Profile from '../screens/Profile'
 import RegisterScreen from '../screens/RegisterScreen'
 import SearchScreen from '../screens/SearchScreen'
 import WIPScreen from '../screens/WIPScreen'
+import BookingScreen from '../screens/BookingScreen'
 
 const AnimatedRoutes = () => {
   const location = useLocation()
@@ -24,6 +25,7 @@ const AnimatedRoutes = () => {
         <Route path='/clinicsmap' element={<ClinicsScreen />} />
         <Route path='/login' element={<LoginScreen />} />
         <Route path='/register' element={<RegisterScreen />} />
+        <Route path='/booking/:id' element={<BookingScreen />} />
       </Routes>
     </AnimatePresence>
   )

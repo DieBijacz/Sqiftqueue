@@ -35,12 +35,10 @@ const Search = () => {
     <motion.div className="search-for-appointment" variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <section>
         <div className="top">
-          <div>
-            <button onClick={() => updateLocation()}>Use my current location</button>
-            {loadingUser && <h1>You will be moved</h1>}
-          </div>
+          {loadingUser && <h1>You will be moved</h1>}
           <h1>Find a GP/Clinic and Book an Appointment</h1>
           <p>Simple Instant Healthcare Bookings</p>
+          <button className='btn btn-green' onClick={() => updateLocation()}>Use my current location</button>
         </div>
         <div className="searchbar">
           <div className="item">

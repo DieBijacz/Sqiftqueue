@@ -87,6 +87,7 @@ export const addUserLocation = asyncHandler(async (req, res) => {
       if (user.locations.filter(loc => loc.latitude !== location[0] && loc.longitude !== location[1]).length === 0) {
         user.locations = [{ latitude: location[0], longitude: location[1] }, ...user.locations]
         console.log('adds new location'.green.bold)
+        generateRandomPlaces(user, location)
       } else {
         console.log('did NOT add location'.red.bold)
       }

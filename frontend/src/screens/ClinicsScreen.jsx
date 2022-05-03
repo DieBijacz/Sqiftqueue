@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
 import { motion } from 'framer-motion'
-import { pageTransition } from '../animationsVariants'
+import { itemTimes, pageTransition } from '../animationsVariants'
+import { item } from '../animationsVariants'
 
 const ClinicsList = () => {
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ const ClinicsList = () => {
   const [userData, setUserData] = useState(null)
   const [showLocation, setShowLocation] = useState()
   const [showMoreInfo, setShowMoreInfo] = useState('')
+  const [bookingTime, setBookingTime] = useState(null)
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -28,13 +30,9 @@ const ClinicsList = () => {
       }
     }
   }
-  const item = {
-    hidden: { opacity: 0, x: -200 },
-    show: { opacity: 1, x: 0, transition: { ease: 'backInOut', duration: 1.6 } },
-    exit: { opacity: 0, x: 200, transition: { ease: 'easeInOut', duration: .8 } },
-  }
 
   useEffect(() => {
+    bookingTime && navigate(`/booking/${bookingTime}`)
     if (!userInfo) navigate('/login')
     if (!user) {
       disptach(getUserDetails(userInfo._id))
@@ -42,7 +40,7 @@ const ClinicsList = () => {
       setUserData(user)
     }
     userData && console.log(userData)
-  }, [disptach, navigate, user, userInfo, userData])
+  }, [disptach, navigate, user, userInfo, userData, bookingTime])
 
   function GoTo({ location }) {
     const map = useMap()
@@ -50,8 +48,8 @@ const ClinicsList = () => {
     return null
   }
 
-  function bookAppointmentHandler(e) {
-    e.preventDefault()
+  function bookAppointmentHandler(app) {
+    console.log(app)
   }
 
   function locationClickHandler(place, e) {
@@ -117,9 +115,9 @@ const ClinicsList = () => {
                   </div>
                 </div>
                 {showMoreInfo === place._id && (
-                  <motion.div className="more-info" initial={{ y: '-50px', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '-50px', opacity: 0 }} transition={{ duration: .3, ease: 'easeOut' }}>
+                  <motion.div className="more-info" variants={itemTimes} initial='hidden' animate='show' exit='exit'>
                     <h1>Times available:</h1>
-                    {place.availableAppointments.map(ap => <div className='location-time-available' key={ap._id}>{ap.time}</div>)}
+                    {place.availableAppointments.map(ap => <div value={ap._id} onClick={() => setBookingTime(ap._id)} className='location-time-available' key={ap._id}>{ap.time}</div>)}
                   </motion.div>
                 )}
               </motion.div>
