@@ -21,7 +21,7 @@
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 400;
 }
 
@@ -705,6 +705,7 @@ button:hover {
 
 .clinics-map main .locations {
   width: clamp(40%, 600px, 90%);
+  height: 70vh;
   overflow: hidden;
   overflow-y: scroll;
   margin: 0 auto;
@@ -796,6 +797,40 @@ button:hover {
 
 .booking main .body hr {
   margin: 1rem 0;
+}
+
+.booking main .body h4 {
+  font-weight: 400;
+}
+
+.booking main .body textarea {
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+}
+
+.booking main .body .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin: 1rem 2rem;
+}
+
+.booking main .body .checkbox img {
+  margin: 0 10px;
+}
+
+.booking main .body .assistance {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .footer {

@@ -21,7 +21,7 @@
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 400;
 }
 
@@ -572,6 +572,7 @@ button:hover {
 
     .locations {
       width: clamp(40%, 600px, 90%);
+      height: 70vh;
       overflow: hidden;
       overflow-y: scroll;
       margin: 0 auto;
@@ -654,6 +655,33 @@ button:hover {
 
       hr {
         margin: 1rem 0;
+      }
+
+      h4 {
+        font-weight: 400;
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+        resize: vertical;
+      }
+
+      .checkbox {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 1rem 2rem;
+
+        img {
+          margin: 0 10px;
+        }
+
+      }
+
+      .assistance {
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
