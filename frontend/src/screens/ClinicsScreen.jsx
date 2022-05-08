@@ -13,7 +13,7 @@ const ClinicsList = () => {
 
   const [userData, setUserData] = useState(null)
   const [showLocation, setShowLocation] = useState()
-  const [showMoreInfo, setShowMoreInfo] = useState('')
+  const [showMoreInfo, setShowMoreInfo] = useState(null)
   const [bookingTime, setBookingTime] = useState(null)
 
   const userLogin = useSelector(state => state.userLogin)
@@ -55,7 +55,7 @@ const ClinicsList = () => {
   function locationClickHandler(place, e) {
     e.stopPropagation()
     setShowLocation([place.latitude, place.longitude])
-    setShowMoreInfo(() => showMoreInfo === place._id ? '' : place._id)
+    setShowMoreInfo(() => showMoreInfo === place._id ? null : place._id)
   }
 
   return (
@@ -114,7 +114,7 @@ const ClinicsList = () => {
                     </div>
                   </div>
                   {showMoreInfo === place._id && (
-                    <motion.div className="more-info" variants={itemTimes} initial='hidden' animate='show' exit='exit'>
+                    <motion.div className="more-info" key={place._id} variants={itemTimes} initial='hidden' animate='show' exit='exit'>
                       <h1>Times available:</h1>
                       {place.availableAppointments.map(ap => <div value={ap._id} onClick={() => setBookingTime(ap._id)} className='location-time-available' key={ap._id}>{ap.time}</div>)}
                     </motion.div>

@@ -26,4 +26,5 @@ export const item = {
 export const itemTimes = {
   hidden: { y: '-50px', opacity: 0 },
   show: { y: 0, opacity: 1, transition: { ease: 'backInOut', duration: .3 } },
+  exit: { y: '-50px', opacity: 0, transition: { ease: 'backInOut', duration: 3 } },
 }

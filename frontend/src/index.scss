@@ -4,7 +4,7 @@
   --main-blue: #002940;
   --second-blue: #024166;
   --main-green: #87c641;
-  --main-green-hover: #66972f;
+  --main-green-hover: #97df46;
   --blue-gradient: linear-gradient(180deg,
       rgba(117, 161, 185, 1) 0%,
       rgba(27, 72, 97, 1) 75%);
@@ -57,6 +57,12 @@ input {
   border-radius: 4px;
   border: none;
   outline: none;
+}
+
+input[type=checkbox] {
+  transform: scale(1.2);
+  cursor: pointer;
+  margin-right: 1rem;
 }
 
 .bg-image {
@@ -415,7 +421,6 @@ button:hover {
           list-style: none;
         }
 
-
         input {
           margin: 5px 0;
           width: 100%;
@@ -457,8 +462,6 @@ button:hover {
     }
   }
 }
-
-
 
 .helpdesk {
 
@@ -632,9 +635,9 @@ button:hover {
   justify-content: center;
   flex-direction: column;
 
-  main {
+  form {
     width: calc(min(900px, 90%));
-    margin: 1rem auto;
+    margin: 3rem auto;
     border: 1px solid #333;
     border-radius: 10px;
     overflow: hidden;
@@ -672,16 +675,26 @@ button:hover {
         align-items: center;
         width: 100%;
         margin: 1rem 2rem;
-
-        img {
-          margin: 0 10px;
-        }
-
       }
 
       .assistance {
         display: flex;
         justify-content: space-between;
+
+        span {
+          margin-left: 1rem;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        button {
+          font-size: 1.1rem;
+          margin-left: 2rem;
+        }
       }
     }
   }

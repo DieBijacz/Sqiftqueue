@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { pageTransition } from '../animationsVariants'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +16,8 @@ const BookingScreen = () => {
   const navigate = useNavigate()
 
   const [userData, setUserData] = useState(null)
-  const [assistance, setAssistance] = useState([])
+  const [assistances, setAssistances] = useState([])
+  const [appointment, setAppointment] = useState(null)
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -30,19 +31,35 @@ const BookingScreen = () => {
       disptach(getUserDetails(userInfo._id))
     } else {
       setUserData(user)
+      findPlace()
     }
-    userData && console.log(userData)
-  }, [disptach, navigate, user, userInfo, userData])
+  }, [disptach, navigate, user, userInfo, params])
 
-  function handleCheckbox(e) {
-    // check if there was it before. if thats a case then remove it
-    // else add it to assistance
+  function handleCheckbox(newAssistance) {
+    // check if there was it before. if thats a case then remove it else add it to assistances
+    setAssistances(prevAssistances => prevAssistances.includes(newAssistance) ? prevAssistances.filter(assistance => assistance !== newAssistance) : [...prevAssistances, newAssistance])
+  }
+
+  function findPlace() {
+    return user.places.reduce((place, curr) => {
+      curr.availableAppointments.map(ap => {
+        if (ap._id === params.id) {
+          setAppointment(curr)
+        }
+      })
+      return place
+    }, {})
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log('submit')
   }
 
   return (
     <motion.div className='booking' variants={pageTransition} initial='hidden' animate='show' exit='exit'>
       <div className="blue-strip"></div>
-      <main>
+      <form onSubmit={handleSubmit}>
         {userData && <>
           <div className="top">
             <h1>Confirm Your Appointment</h1>
@@ -60,31 +77,31 @@ const BookingScreen = () => {
             <h4>Do you require any special assistance?</h4>
             <div className='assistance'>
               <div>
-                <div className='checkbox' onClick={(e) => handleCheckbox(e)}>
-                  <input type='checkbox' id='Sight' />
-                  <img src={hearing} alt="Sight" /> Sight
+                <div className='checkbox' >
+                  <input type='checkbox' value='sight' id='Sight' onChange={(e) => handleCheckbox(e.target.value)} />
+                  <img src={hearing} alt="Sight" /> <span>Sight</span>
                 </div>
                 <div className='checkbox'>
-                  <input type='checkbox' id='Hearing' />
-                  <img src={hearing} alt="Hearing" /> Hearing
+                  <input type='checkbox' value='hearing' id='Hearing' onChange={(e) => handleCheckbox(e.target.value)} />
+                  <img src={hearing} alt="Hearing" /> <span>Hearing</span>
                 </div>
                 <div className='checkbox'>
-                  <input type='checkbox' id='Wheelchair' />
-                  <img src={wheelchair} alt="Wheelchair" /> Wheelchair
+                  <input type='checkbox' value='wheelchair' id='Wheelchair' onChange={(e) => handleCheckbox(e.target.value)} />
+                  <img src={wheelchair} alt="Wheelchair" /> <span>Wheelchair</span>
                 </div>
               </div>
               <div>
                 <div className='checkbox'>
-                  <input type='checkbox' id='Immobility' />
-                  <img src={immobility} alt="Immobility" /> Immobility
+                  <input type='checkbox' value='immobility' id='Immobility' onChange={(e) => handleCheckbox(e.target.value)} />
+                  <img src={immobility} alt="Immobility" /> <span>Immobility</span>
                 </div>
                 <div className='checkbox'>
-                  <input type='checkbox' id='Learning' />
-                  <img src={learning_disabilities} alt="Learning Difficulties" /> Learning Difficulties
+                  <input type='checkbox' value='learning' id='Learning' onChange={(e) => handleCheckbox(e.target.value)} />
+                  <img src={learning_disabilities} alt="Learning Difficulties" /> <span>Learning Difficulties</span>
                 </div>
                 <div className='checkbox'>
-                  <input type='checkbox' id='Translator' />
-                  <img src={requires_translator} alt="Translator" /> Requires Translator/Interpreter
+                  <input type='checkbox' value='translator' id='Translator' onChange={(e) => handleCheckbox(e.target.value)} />
+                  <img src={requires_translator} alt="Translator" /> <span>Requires Translator/Interpreter</span>
                 </div>
               </div>
             </div>
@@ -94,17 +111,22 @@ const BookingScreen = () => {
             <hr />
             <h4>Terms & Conditions of this Appointment</h4>
             <div className='checkbox'>
-              <input type='checkbox' id='terms' />
-              <label htmlFor='terms'> I agree to the terms of this appointment</label>
+              <input type='checkbox' id='terms' required />
+              <label htmlFor='terms'>I agree to the terms of this appointment<span style={{ color: 'red' }}>*</span> </label>
             </div>
             <div className='checkbox'>
               <input type='checkbox' id='gp' />
               <label htmlFor='gp'> I agree to bring my GP referral card/letter with me to this appointment</label>
             </div>
+            <hr />
+            <div className="buttons">
+              <Link to='/'>Cancel</Link>
+              <button className='btn btn-green' type='submit'>Confirm</button>
+            </div>
           </div>
         </>
         }
-      </main >
+      </form >
     </motion.div >
   )
 }

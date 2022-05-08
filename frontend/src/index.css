@@ -3,7 +3,7 @@
   --main-blue: #002940;
   --second-blue: #024166;
   --main-green: #87c641;
-  --main-green-hover: #66972f;
+  --main-green-hover: #97df46;
   --blue-gradient: linear-gradient(180deg,
       rgba(117, 161, 185, 1) 0%,
       rgba(27, 72, 97, 1) 75%);
@@ -62,6 +62,13 @@ input {
   border-radius: 4px;
   border: none;
   outline: none;
+}
+
+input[type=checkbox] {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  cursor: pointer;
+  margin-right: 1rem;
 }
 
 .bg-image {
@@ -772,44 +779,44 @@ button:hover {
           flex-direction: column;
 }
 
-.booking main {
+.booking form {
   width: calc(min(900px, 90%));
-  margin: 1rem auto;
+  margin: 3rem auto;
   border: 1px solid #333;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.booking main .top {
+.booking form .top {
   text-align: center;
   background-color: var(--second-blue);
   color: white;
   padding: 1rem;
 }
 
-.booking main .body {
+.booking form .body {
   padding: 1rem;
 }
 
-.booking main .body span {
+.booking form .body span {
   font-weight: 400;
 }
 
-.booking main .body hr {
+.booking form .body hr {
   margin: 1rem 0;
 }
 
-.booking main .body h4 {
+.booking form .body h4 {
   font-weight: 400;
 }
 
-.booking main .body textarea {
+.booking form .body textarea {
   width: 100%;
   height: 100px;
   resize: vertical;
 }
 
-.booking main .body .checkbox {
+.booking form .body .checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -820,17 +827,34 @@ button:hover {
   margin: 1rem 2rem;
 }
 
-.booking main .body .checkbox img {
-  margin: 0 10px;
-}
-
-.booking main .body .assistance {
+.booking form .body .assistance {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.booking form .body .assistance span {
+  margin-left: 1rem;
+}
+
+.booking form .body .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.booking form .body .buttons button {
+  font-size: 1.1rem;
+  margin-left: 2rem;
 }
 
 .footer {
