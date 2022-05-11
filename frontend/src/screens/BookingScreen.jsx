@@ -17,7 +17,7 @@ const BookingScreen = () => {
 
   const [userData, setUserData] = useState(null)
   const [assistances, setAssistances] = useState([])
-  const [appointment, setAppointment] = useState(null)
+  const [appointmentDetails, setAppointmentDetails] = useState(null)
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -31,24 +31,15 @@ const BookingScreen = () => {
       disptach(getUserDetails(userInfo._id))
     } else {
       setUserData(user)
-      findPlace()
+      if (appointmentDetails === null) {
+        user.places.map(place => place.availableAppointments.map(a => a._id === params.id ? setAppointmentDetails({ place, time: a.time }) : ''))
+      }
     }
-  }, [disptach, navigate, user, userInfo, params])
+  }, [disptach, navigate, user, userInfo, params, appointmentDetails])
 
   function handleCheckbox(newAssistance) {
     // check if there was it before. if thats a case then remove it else add it to assistances
     setAssistances(prevAssistances => prevAssistances.includes(newAssistance) ? prevAssistances.filter(assistance => assistance !== newAssistance) : [...prevAssistances, newAssistance])
-  }
-
-  function findPlace() {
-    return user.places.reduce((place, curr) => {
-      curr.availableAppointments.map(ap => {
-        if (ap._id === params.id) {
-          setAppointment(curr)
-        }
-      })
-      return place
-    }, {})
   }
 
   function handleSubmit(e) {
@@ -67,12 +58,12 @@ const BookingScreen = () => {
           <div className="body">
             <h4>Appointment For: <span>{userData.name}</span></h4>
             <hr />
-            <h4>Clinic</h4>
+            <h4>Clinic: {appointmentDetails && <span>{appointmentDetails.place.name}</span>}</h4>
             <hr />
             <h4>Appointment Reason</h4>
             <p>Blood Test · 10 minutes </p>
             <hr />
-            <h4>Appointment Date/Time</h4>
+            <h4>Appointment Time: {appointmentDetails && <span>{appointmentDetails.time}</span>}</h4>
             <hr />
             <h4>Do you require any special assistance?</h4>
             <div className='assistance'>
