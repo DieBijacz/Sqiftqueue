@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOCATION_FAIL, USER_LOCATION_REQUEST, USER_LOCATION_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants"
+import { USER_BOOK_APPOINTMENT_FAIL, USER_BOOK_APPOINTMENT_REQUEST, USER_BOOK_APPOINTMENT_SUCCESS, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOCATION_FAIL, USER_LOCATION_REQUEST, USER_LOCATION_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants"
 
 // LOGIN
 export const login = (email, password) => async (dispatch) => {
@@ -117,6 +117,35 @@ export const updateUserLocation = (location) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_LOCATION_FAIL,
+      payload: error.message
+    })
+  }
+}
+
+// ADD USER APPOINTMENT
+export const addUserAppointment = (assistances, appointmentDetails) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_BOOK_APPOINTMENT_REQUEST })
+
+    // get user token for veryfication
+    const { userLogin: { userInfo } } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    await axios.post('/api/users/appointment', { assistances, appointmentDetails }, config)
+
+    dispatch({
+      type: USER_BOOK_APPOINTMENT_SUCCESS,
+    })
+
+  } catch (error) {
+    dispatch({
+      type: USER_BOOK_APPOINTMENT_FAIL,
       payload: error.message
     })
   }

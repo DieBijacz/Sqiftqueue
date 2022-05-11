@@ -110,3 +110,19 @@ export const getUsersClinics = asyncHandler(async (req, res) => {
   // generate random places with appointments
   generateRandomPlaces(user, location)
 })
+
+// ADD APPOINTEMTN
+export const addUserAppointment = asyncHandler(async (req, res) => {
+  const { user } = req
+  const { assistances, appointmentDetails } = req.body
+  const { place, time } = appointmentDetails
+
+  if (user) {
+    user.appointmets = [...user.appointmets, { place, time, assistances }]
+    await user.save()
+
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})

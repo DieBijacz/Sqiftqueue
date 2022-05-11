@@ -7,24 +7,9 @@ const locationSchema = mongoose.Schema({
 })
 
 const appointmetSchema = mongoose.Schema({
-  userName: {
-    type: String,
-    required: true
-  },
-  userEmail: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    required: true
-  },
-  address: {
-    address: { type: String, required: true },
-    city: { type: String, required: true },
-    postCode: { type: String, required: true },
-    country: { type: String, required: true },
-  }
+  place: {},
+  time: {},
+  assistances: []
 }, { timestamps: true })
 
 const slot = mongoose.Schema({
@@ -70,7 +55,7 @@ const userSchema = mongoose.Schema({
   },
   locations: [locationSchema],
   appointmets: [appointmetSchema],
-  places: [placeSchema]
+  places: [placeSchema],
 }, {
   timestamps: true
 })

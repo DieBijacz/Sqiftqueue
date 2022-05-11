@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { pageTransition } from '../animationsVariants'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails } from '../actions/userActions'
+import { addUserAppointment, getUserDetails } from '../actions/userActions'
 import hearing from '../images/icons/hearing.png'
 import immobility from '../images/icons/immobility.png'
 import learning_disabilities from '../images/icons/learning_disabilities.png'
@@ -44,7 +44,9 @@ const BookingScreen = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
+    //TODO dispatch action to add appointment to user details
     console.log('submit')
+    disptach(addUserAppointment(assistances, appointmentDetails))
   }
 
   return (
