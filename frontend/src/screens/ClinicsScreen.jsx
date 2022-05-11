@@ -32,15 +32,13 @@ const ClinicsList = () => {
   }
 
   useEffect(() => {
-    bookingTime && navigate(`/booking/${bookingTime}`)
     if (!userInfo) navigate('/login')
     if (!user) {
       disptach(getUserDetails(userInfo._id))
     } else {
       setUserData(user)
     }
-    userData && console.log(userData)
-  }, [disptach, navigate, user, userInfo, userData, bookingTime])
+  }, [disptach, navigate, user, userInfo, userData])
 
   function GoTo({ location }) {
     const map = useMap()
@@ -48,8 +46,14 @@ const ClinicsList = () => {
     return null
   }
 
-  function bookAppointmentHandler(app) {
-    console.log(app)
+  function bookAppointmentHandler(e) {
+    e.preventDefault()
+    bookingTime && navigate(`/booking/${bookingTime}`)
+  }
+
+  function setLocationHandler(e, place) {
+    setBookingTime(e.target.value)
+    setShowLocation([place.latitude, place.longitude])
   }
 
   function locationClickHandler(place, e) {
@@ -84,7 +88,7 @@ const ClinicsList = () => {
                       <div className="popup-bottom">
                         <form onSubmit={(e) => bookAppointmentHandler(e)}>
                           Next available time: <br />
-                          <select onChange={(e) => console.log(e.target.value)}>
+                          <select onChange={(e) => setLocationHandler(e, place)}>
                             <option>Select time</option>
                             {place.availableAppointments.map(a => <option key={a._id} value={a._id}>{a.time}</option>)}
                           </select>
@@ -116,7 +120,7 @@ const ClinicsList = () => {
                   {showMoreInfo === place._id && (
                     <motion.div className="more-info" key={place._id} variants={itemTimes} initial='hidden' animate='show' exit='exit'>
                       <h1>Times available:</h1>
-                      {place.availableAppointments.map(ap => <div value={ap._id} onClick={() => setBookingTime(ap._id)} className='location-time-available' key={ap._id}>{ap.time}</div>)}
+                      {place.availableAppointments.map(ap => <div value={ap._id} onClick={() => navigate(`/booking/${ap._id}`)} className='location-time-available' key={ap._id}>{ap.time}</div>)}
                     </motion.div>
                   )}
                 </motion.div>
