@@ -174,8 +174,14 @@ input[type=checkbox] {
   font-size: 2rem;
 }
 
+.btn-logout {
+  background: white;
+  color: #333;
+  border: 1px solid #333;
+}
+
 button:hover {
-  transform: scale(1.02);
+  transform: scale(1.015);
 }
 
 .blue-strip {
@@ -214,7 +220,7 @@ button:hover {
 }
 
 // COMPONENTS
-// HEADER
+// PAGES
 .header {
   height: 65px;
   width: calc(min(1200px, 90%));
@@ -698,6 +704,60 @@ button:hover {
       }
     }
   }
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  width: calc(min(1200px, 90%));
+  gap: 1rem;
+
+  .user-details {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .summary-panel {
+    display: flex;
+    gap: 1rem;
+
+    .panel {
+      width: 100%;
+      text-align: center;
+      border: 1px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 5px 5px 10px #ccc;
+
+      .top {
+        background-color: #024166;
+        color: white;
+        padding: 10px;
+      }
+
+      .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+      }
+    }
+
+  }
+
+  .appointments {
+    .appointment {
+      margin: 1rem;
+
+      .info {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+      }
+    }
+  }
+
 }
 
 .footer {

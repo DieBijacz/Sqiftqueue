@@ -185,9 +185,15 @@ input[type=checkbox] {
   font-size: 2rem;
 }
 
+.btn-logout {
+  background: white;
+  color: #333;
+  border: 1px solid #333;
+}
+
 button:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  -webkit-transform: scale(1.015);
+          transform: scale(1.015);
 }
 
 .blue-strip {
@@ -855,6 +861,78 @@ button:hover {
 .booking form .body .buttons button {
   font-size: 1.1rem;
   margin-left: 2rem;
+}
+
+.profile-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 3rem auto;
+  width: calc(min(1200px, 90%));
+  gap: 1rem;
+}
+
+.profile-page .user-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profile-page .summary-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-page .summary-panel .panel {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 5px 5px 10px #ccc;
+          box-shadow: 5px 5px 10px #ccc;
+}
+
+.profile-page .summary-panel .panel .top {
+  background-color: #024166;
+  color: white;
+  padding: 10px;
+}
+
+.profile-page .summary-panel .panel .body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80px;
+}
+
+.profile-page .appointments .appointment {
+  margin: 1rem;
+}
+
+.profile-page .appointments .appointment .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem 0;
 }
 
 .footer {
