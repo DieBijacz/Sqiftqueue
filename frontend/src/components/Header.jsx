@@ -15,7 +15,7 @@ const Header = () => {
       </Link>
       <div className="panel">
         <Link to={userInfo ? '/profile' : '/login'}>
-          <button className='btn btn-blue'>{userInfo ? 'Go to Profile' : 'Login / Create Account'}</button>
+          <button className='btn btn-blue'>{userInfo ? 'Profile' : 'Login / Create Account'}</button>
         </Link>
         <Link to="/search">
           <button className='btn btn-green'>Book an Appointment</button>

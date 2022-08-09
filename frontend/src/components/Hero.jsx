@@ -5,13 +5,13 @@ const Hero = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="hero bg-image">
+    <div className="hero">
       <div className="container">
         <div className="card">
           <div className="card-text">
-            <p>The complete enterprise scheduling platform for healthcare</p>
-            <p>Patient Engagement made easy</p>
-            <p>Working with Hospitals and Clinics we are revolutionising healthcare appointments to enable a more efficient patient centered process to deliver on growing patient expectations.</p>
+            <h2>The complete enterprise scheduling platform for healthcare</h2>
+            <h3>Patient Engagement made easy</h3>
+            <h4>Working with Hospitals and Clinics we are revolutionising healthcare appointments to enable a more efficient patient centered process to deliver on growing patient expectations.</h4>
           </div>
           <div className="buttons">
             <button className='btn' onClick={() => navigate('/helpdesk')}>Visit Our Help Centre</button>

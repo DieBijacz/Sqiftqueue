@@ -17,21 +17,11 @@
   font-weight: 200;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-size: clamp(0.9rem, 0.9vw, 1.1rem);
-}
-
-h1 {
-  font-size: 1.7rem;
-  font-weight: 400;
 }
 
 body {
+  font-size: clamp(0.8rem, 0.9vw, 1.1rem);
   font-family: 'Fira Sans', sans-serif;
-}
-
-body::-webkit-scrollbar {
-  overflow-x: hidden;
-  display: none;
 }
 
 .d-flex-column {
@@ -57,6 +47,14 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
 input {
   padding: 10px;
   border-radius: 4px;
@@ -65,16 +63,8 @@ input {
 }
 
 input[type=checkbox] {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
   cursor: pointer;
-  margin-right: 1rem;
-}
-
-.bg-image {
-  background-image: url("../src/images/hero.jpg");
-  background-size: cover;
-  background-position: center;
+  margin: .5rem;
 }
 
 .backdrop {
@@ -155,15 +145,11 @@ input[type=checkbox] {
   height: calc(min(50%, 300px));
 }
 
-*::-webkit-scrollbar {
-  display: none;
-}
-
 .btn {
   color: white;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: var(--second-blue) 1px solid;
+  padding: 10px 10px;
+  margin: 0 8px;
+  border: none;
   border-radius: 5px;
   background: var(--blue-gradient);
   cursor: pointer;
@@ -210,6 +196,7 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
 }
 
 .leaflet-container {
@@ -250,20 +237,24 @@ button:hover {
           align-items: center;
 }
 
+.header .panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .header img {
-  height: 50px;
+  max-height: 50px;
   cursor: pointer;
 }
 
-.header a {
-  color: var(--main-green);
-}
-
-.header a:hover {
-  text-decoration: underline;
-}
-
 .hero {
+  background-image: url("../src/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
   height: 60vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -275,7 +266,20 @@ button:hover {
 }
 
 .hero .card {
-  width: calc(min(500px, 90%));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(min(600px, 90%));
   height: auto;
   margin: auto auto 0 0;
   background-color: rgba(0, 0, 0, 0.2);
@@ -294,17 +298,11 @@ button:hover {
   height: 100%;
 }
 
-.hero .card .card-text :nth-child(1) {
-  font-size: 2rem;
-  line-height: 2.2rem;
-}
-
-.hero .card .card-text :nth-child(2) {
-  font-size: 1.3rem;
-}
-
 .hero .card .buttons {
   margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .herby {
@@ -317,6 +315,10 @@ button:hover {
   overflow: hidden;
   overflow-x: scroll;
   margin: 1rem auto;
+}
+
+.herby::-webkit-scrollbar {
+  display: none;
 }
 
 .herby img {
@@ -373,17 +375,13 @@ button:hover {
   margin: 2rem 0;
 }
 
-.main-homescreen .main-section-2 img {
-  width: 100%;
-}
-
 .main-homescreen .main-section-3 .icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 3rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(100px, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+  margin: 2rem 0;
+  gap: 1rem;
 }
 
 .main-homescreen .main-section-3 .icons .box {
@@ -400,9 +398,7 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 300px;
-  margin: 1rem auto;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .main-homescreen .main-section-4 {
@@ -422,15 +418,6 @@ button:hover {
           flex-direction: column;
   text-align: flex-start;
   gap: 1rem;
-  margin: 1rem;
-}
-
-.main-homescreen .main-section-4 .section-4-info ul {
-  margin-left: 40px;
-  list-style: initial;
-}
-
-.main-homescreen .main-section-4 .section-4-info img {
   margin: 1rem;
 }
 
@@ -510,11 +497,6 @@ button:hover {
       -ms-flex-pack: start;
           justify-content: flex-start;
   width: 100%;
-}
-
-.register-screen .card .top .content ul,
-.register-screen .card .mid .content ul {
-  list-style: none;
 }
 
 .register-screen .card .top .content input,
@@ -637,7 +619,7 @@ button:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 500px;
+  min-height: 500px;
 }
 
 .search-for-appointment section {
@@ -665,20 +647,25 @@ button:hover {
 }
 
 .search-for-appointment section .searchbar {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  gap: 3rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.search-for-appointment section .searchbar .item {
+.search-for-appointment section .searchbar button {
+  margin: 0;
+}
+
+.search-for-appointment section .searchbar .field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -686,19 +673,30 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-for-appointment section .searchbar .field input {
   width: 100%;
 }
 
-.search-for-appointment section .searchbar .item label {
-  margin-bottom: 5px;
+.search-for-appointment section .icons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+  margin: 1rem;
 }
 
-.search-for-appointment section .icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 3rem;
-  text-align: center;
+.search-for-appointment section .icons hr {
+  margin: 1rem 0;
 }
 
 .clinics-map main {
@@ -787,7 +785,7 @@ button:hover {
 
 .booking form {
   width: calc(min(900px, 90%));
-  margin: 3rem auto;
+  margin: 1rem auto;
   border: 1px solid #333;
   border-radius: 10px;
   overflow: hidden;
@@ -801,7 +799,7 @@ button:hover {
 }
 
 .booking form .body {
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .booking form .body span {
@@ -829,21 +827,19 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
-  margin: 1rem 2rem;
+  width: 40px;
+  margin: .5rem;
 }
 
 .booking form .body .assistance {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
 }
 
 .booking form .body .assistance span {
-  margin-left: 1rem;
+  margin-left: .2rem;
 }
 
 .booking form .body .buttons {
@@ -856,11 +852,6 @@ button:hover {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-}
-
-.booking form .body .buttons button {
-  font-size: 1.1rem;
-  margin-left: 2rem;
 }
 
 .profile-page {
@@ -993,6 +984,14 @@ button:hover {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .search-for-appointment section .icons hr,
+  .search-for-appointment section .icons p {
+    display: none;
+  }
+  .main-homescreen .main-section-3 .icons {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
   }
   .main-homescreen .main-section-4 {
     -webkit-box-orient: vertical;

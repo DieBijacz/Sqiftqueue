@@ -17,21 +17,11 @@
   padding: 0;
   font-weight: 200;
   box-sizing: border-box;
-  font-size: clamp(.9rem, .9vw, 1.1rem);
-}
-
-h1 {
-  font-size: 1.7rem;
-  font-weight: 400;
 }
 
 body {
+  font-size: clamp(.8rem, .9vw, 1.1rem);
   font-family: 'Fira Sans', sans-serif;
-}
-
-body::-webkit-scrollbar {
-  overflow-x: hidden;
-  display: none;
 }
 
 .d-flex-column {
@@ -52,6 +42,14 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
 input {
   padding: 10px;
   border-radius: 4px;
@@ -60,16 +58,10 @@ input {
 }
 
 input[type=checkbox] {
-  transform: scale(1.2);
   cursor: pointer;
-  margin-right: 1rem;
+  margin: .5rem;
 }
 
-.bg-image {
-  background-image: url('../src/images/hero.jpg');
-  background-size: cover;
-  background-position: center;
-}
 
 // MODAL
 .backdrop {
@@ -140,19 +132,14 @@ input[type=checkbox] {
   padding: 20px;
   border-radius: 10px;
   width: calc(min(900px, 90%));
-  // width: clamp(50%, 900px, 90%);
   height: calc(min(50%, 300px));
-}
-
-*::-webkit-scrollbar {
-  display: none;
 }
 
 .btn {
   color: white;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: var(--second-blue) 1px solid;
+  padding: 10px 10px;
+  margin: 0 8px;
+  border: none;
   border-radius: 5px;
   background: var(--blue-gradient);
   cursor: pointer;
@@ -192,6 +179,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .leaflet-container {
@@ -229,27 +217,31 @@ button:hover {
   justify-content: space-between;
   align-items: center;
 
+  .panel {
+    display: flex;
+    align-items: center;
+  }
+
   img {
-    height: 50px;
+    max-height: 50px;
     cursor: pointer;
-  }
-
-  a {
-    color: var(--main-green);
-  }
-
-  a:hover {
-    text-decoration: underline;
   }
 }
 
 .hero {
+  background-image: url('../src/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
   height: 60vh;
   display: flex;
   flex-direction: column;
 
   .card {
-    width: calc(min(500px, 90%));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(min(600px, 90%));
     height: auto;
     margin: auto auto 0 0;
     background-color: rgba(0, 0, 0, 0.2);
@@ -260,19 +252,11 @@ button:hover {
       flex-direction: column;
       gap: 20px;
       height: 100%;
-
-      :nth-child(1) {
-        font-size: 2rem;
-        line-height: 2.2rem;
-      }
-
-      :nth-child(2) {
-        font-size: 1.3rem;
-      }
     }
 
     .buttons {
       margin-top: 1rem;
+      display: flex;
     }
   }
 }
@@ -284,6 +268,11 @@ button:hover {
   width: (calc(min(500px, 90%)));
   overflow: hidden;
   overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   margin: 1rem auto;
 
   img {
@@ -323,27 +312,22 @@ button:hover {
     button {
       margin: 2rem 0;
     }
-
-    img {
-      width: 100%;
-    }
   }
 
   // SECTION 3
   .main-section-3 {
     .icons {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+      margin: 2rem 0;
+      gap: 1rem;
 
       .box {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        max-width: 300px;
-        margin: 1rem auto;
-        gap: 10px;
+        gap: 1rem;
       }
     }
   }
@@ -358,15 +342,6 @@ button:hover {
       text-align: flex-start;
       gap: 1rem;
       margin: 1rem;
-
-      ul {
-        margin-left: 40px;
-        list-style: initial;
-      }
-
-      img {
-        margin: 1rem;
-      }
 
     }
   }
@@ -422,10 +397,6 @@ button:hover {
         flex-direction: column;
         justify-content: flex-start;
         width: 100%;
-
-        ul {
-          list-style: none;
-        }
 
         input {
           margin: 5px 0;
@@ -524,7 +495,7 @@ button:hover {
   background-color: var(--second-blue);
   color: white;
   display: flex;
-  height: 500px;
+  min-height: 500px;
 
   section {
     display: flex;
@@ -544,27 +515,38 @@ button:hover {
     }
 
     .searchbar {
-      width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
       align-items: flex-end;
-      gap: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
 
-      .item {
-        label {
-          margin-bottom: 5px;
-        }
+      button {
+        margin: 0;
+      }
 
+      .field {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        input {
+          width: 100%;
+        }
       }
     }
 
     .icons {
-      display: flex;
-      gap: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
       text-align: center;
+      margin: 1rem;
+
+      hr {
+        margin: 1rem 0;
+      }
     }
   }
 
@@ -643,7 +625,7 @@ button:hover {
 
   form {
     width: calc(min(900px, 90%));
-    margin: 3rem auto;
+    margin: 1rem auto;
     border: 1px solid #333;
     border-radius: 10px;
     overflow: hidden;
@@ -656,7 +638,7 @@ button:hover {
     }
 
     .body {
-      padding: 1rem;
+      padding: .5rem;
 
       span {
         font-weight: 400;
@@ -679,16 +661,16 @@ button:hover {
       .checkbox {
         display: flex;
         align-items: center;
-        width: 100%;
-        margin: 1rem 2rem;
+        width: 40px;
+        margin: .5rem;
       }
 
       .assistance {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
 
         span {
-          margin-left: 1rem;
+          margin-left: .2rem;
         }
       }
 
@@ -696,11 +678,6 @@ button:hover {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-
-        button {
-          font-size: 1.1rem;
-          margin-left: 2rem;
-        }
       }
     }
   }
@@ -810,6 +787,16 @@ button:hover {
         flex-direction: column;
       }
     }
+
+  }
+
+  .search-for-appointment section .icons hr,
+  .search-for-appointment section .icons p {
+    display: none;
+  }
+
+  .main-homescreen .main-section-3 .icons {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .main-homescreen {

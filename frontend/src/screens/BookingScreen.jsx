@@ -94,7 +94,7 @@ const BookingScreen = () => {
                 </div>
                 <div className='checkbox'>
                   <input type='checkbox' value='translator' id='Translator' onChange={(e) => handleCheckbox(e.target.value)} />
-                  <img src={requires_translator} alt="Translator" /> <span>Requires Translator/Interpreter</span>
+                  <img src={requires_translator} alt="Translator" /> <span>Requires Translator</span>
                 </div>
               </div>
             </div>
@@ -103,17 +103,17 @@ const BookingScreen = () => {
             <textarea />
             <hr />
             <h4>Terms & Conditions of this Appointment</h4>
-            <div className='checkbox'>
+            <div>
               <input type='checkbox' id='terms' required />
               <label htmlFor='terms'>I agree to the terms of this appointment<span style={{ color: 'red' }}>*</span> </label>
             </div>
-            <div className='checkbox'>
+            <div>
               <input type='checkbox' id='gp' />
               <label htmlFor='gp'> I agree to bring my GP referral card/letter with me to this appointment</label>
             </div>
             <hr />
             <div className="buttons">
-              <Link to='/'>Cancel</Link>
+              <Link to='/'><button className='btn'>Cancel</button></Link>
               <button className='btn btn-green' type='submit'>Confirm</button>
             </div>
           </div>

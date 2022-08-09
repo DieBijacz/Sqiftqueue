@@ -41,11 +41,11 @@ const Search = () => {
           <button className='btn btn-green' onClick={() => updateLocation()}>Use my current location</button>
         </div>
         <div className="searchbar">
-          <div className="item">
+          <div className="field">
             <label htmlFor="search-gp">GP/Hospital Name or Location</label>
             <input type="text" id='search-gp' placeholder='Enter GP/Hospital name or locarion' />
           </div>
-          <div className="item">
+          <div className="field">
             <label htmlFor=" Speciality"> Speciality</label>
             <input type="text" id=' Speciality' placeholder='Speciality' />
           </div>
@@ -53,15 +53,18 @@ const Search = () => {
         </div>
         <div className="icons">
           <div className="icon">
-            <h1>1. Search for a GP/Clinic</h1>
+            <h2>1. Search for a GP/Clinic</h2>
+            <hr />
             <p>Swiftqueue is your hassle free guide to finding a clinic/GP near you.</p>
           </div>
           <div className="icon">
-            <h1>2. Choose a Date and Time</h1>
+            <h2>2. Choose a Date and Time</h2>
+            <hr />
             <p>Find an appointment that suits you and see real time availability.</p>
           </div>
           <div className="icon">
-            <h1>3. Easy Instant Booking</h1>
+            <h2>3. Easy Instant Booking</h2>
+            <hr />
             <p>Your appointment is instantly confirmed. Quickly reschedule or cancel if something changes.</p>
           </div>
         </div>
