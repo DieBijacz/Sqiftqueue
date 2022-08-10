@@ -12,7 +12,7 @@ import macbook from '../images/macbook1.png'
 import { useNavigate } from 'react-router-dom'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { fromLeft, fromRight, pageTransition } from '../animationsVariants'
+import { fromLeft, pageTransition } from '../animationsVariants'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
@@ -43,7 +43,7 @@ const HomeScreen = () => {
           <img src={browserImage} alt="browsers" />
         </motion.div>
         <hr />
-        <motion.div className="main-section-3 section" ref={sec3} variants={fromRight} initial='hidden' animate={controls2}>
+        <motion.div className="main-section-3 section" ref={sec3} variants={fromLeft} initial='hidden' animate={controls2}>
           <h1>See how Swiftqueue can improve your clinic today</h1>
           <h3>Create a seamless and integrated patient pathway experience</h3>
           <div className="icons">

@@ -4,11 +4,6 @@ export const pageTransition = {
   exit: { x: window.innerWidth, transition: { duration: 0.1 } },
 }
 
-export const fromRight = {
-  hidden: { opacity: 0, x: '100%' },
-  show: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeOut' } }
-}
-
 export const fromLeft = {
   hidden: { opacity: 0, x: '-100%' },
   show: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeOut' } }
