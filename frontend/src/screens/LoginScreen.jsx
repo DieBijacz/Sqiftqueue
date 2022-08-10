@@ -30,7 +30,7 @@ const LoginScreen = () => {
 
   return (
     <motion.div variants={pageTransition} initial='hidden' animate='show' exit='exit'>
-      <div className='login-screen bg-image'>
+      <div className='login-screen'>
         <div className="blue-strip">
           <h1>Login/Register</h1>
         </div>

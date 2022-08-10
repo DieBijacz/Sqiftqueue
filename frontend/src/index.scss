@@ -209,22 +209,54 @@ button:hover {
 
 // COMPONENTS
 // PAGES
-.header {
+header {
   height: 65px;
   width: calc(min(1200px, 90%));
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   .panel {
     display: flex;
     align-items: center;
   }
 
+  .mobile-panel {
+    position: absolute;
+    right: 0;
+    top: 65px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2222;
+    background-color: white;
+    padding: .5rem;
+    gap: .5rem;
+    animation: menu 100ms;
+    border-radius: 0 0 10px 10px;
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   img {
     max-height: 50px;
     cursor: pointer;
+  }
+
+  .btn-menu {
+    background: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    padding: 5px;
+    display: none;
   }
 }
 
@@ -353,6 +385,9 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url('../src/images/hero.jpg');
+    background-size: cover;
+    background-position: center;
 
     .card {
       display: flex;
@@ -781,6 +816,16 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+  header {
+    .panel {
+      display: none;
+    }
+
+    .btn-menu {
+      display: block;
+    }
+  }
+
   .login-screen {
     section {
       .card {
@@ -804,4 +849,15 @@ button:hover {
       flex-direction: column;
     }
   }
+}
+
+@keyframes menu {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
 }
