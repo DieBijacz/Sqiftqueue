@@ -1,5 +1,5 @@
 <h1>Swiftqueue</h1>
-  <img alt="hero" src="screenshots/main" width="100%">
+  <img alt="hero" src="../screenshots/main" width="100%">
 <hr/>
 
 <h3>Apointment booking platform build with <h3>
@@ -26,8 +26,8 @@
 
 <h3>Fully Responsive Website</h3>
 <div width='50%'>
-  <img alt="phone1" src="screenshots/phone1" height='400px'>
-  <img alt="phone2" src="screenshots/phone2" height='400px'>
+  <img alt="phone1" src="../screenshots/phone1" height='400px'>
+  <img alt="phone2" src="../screenshots/phone2" height='400px'>
 </div>
 
 <hr/>
@@ -35,7 +35,7 @@
 <h3>Map</h3>
 <div>
 <h4>Control Orders</h4>
-  <img alt="admin1" src="screenshots/map" width="100%">
+  <img alt="admin1" src="../screenshots/map" width="100%">
 
 <hr/>
 
