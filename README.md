@@ -29,7 +29,8 @@
 
 <h3>Map</h3>
 <div>
-<h4>Control Orders</h4>
+<h4>Shows your location and local clinics</h4>
+<p>Local clinics are random location in area of current user location</p>
   <img alt="admin1" src="screenshots/map.png" width="100%">
 
 <hr/>
